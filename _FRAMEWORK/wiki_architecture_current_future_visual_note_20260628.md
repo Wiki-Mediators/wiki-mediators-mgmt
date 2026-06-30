@@ -78,3 +78,5 @@ from commit history and references, not drawn by hand. In other words, the
 
 Do not name or taxonomize the system too early. Let the name and category
 structure emerge from what the Layer 3 tools surface.
+
+<!-- management-auto-sync-test: change-push 2026-06-30 -->
