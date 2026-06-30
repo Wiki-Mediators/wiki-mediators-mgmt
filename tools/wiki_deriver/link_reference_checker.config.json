@@ -1,0 +1,71 @@
+{
+  "_about": "Layer 3 dumb tool #1 — link/reference integrity checker. vault_root, output_path, and ignore_globs are load-bearing; this is a derived view, regenerated each run from vault source.",
+  "vault_root": "C:\\VMShare\\NT8lab",
+  "output_path": "_DERIVED/broken_links.md",
+  "worker_report_path": "_worker_reports/TASK_019_link_validator_upgrade.md",
+  "vault_index_path": "_DERIVED/vault_index.json",
+  "include_txt": false,
+  "ignore_globs": [
+    ".git",
+    ".git/*",
+    "_snapshots",
+    "_snapshots/*",
+    "databento",
+    "databento/*",
+    "tools/wiki_logger/runtime",
+    "tools/wiki_logger/runtime/*",
+    "_DERIVED",
+    "_DERIVED/*",
+    "node_modules",
+    "node_modules/*",
+    "__pycache__",
+    "__pycache__/*",
+    "_vault_upload",
+    "_vault_upload/*",
+    "_vault_upload_20260505",
+    "_vault_upload_20260505/*",
+    "_vault_upload_20260506",
+    "_vault_upload_20260506/*",
+    "_temp_oos",
+    "_temp_oos/*",
+    ".obsidian",
+    ".obsidian/*"
+  ],
+  "extension_check_for_unique_basename_match": [".md"],
+  "allowed_external_prefixes": [
+    "C:\\Sentinel\\",
+    "C:\\Users\\Administrator\\Documents\\NinjaTrader 8\\",
+    "C:\\Program Files\\Python312\\",
+    "C:\\Backup\\",
+    "C:/Users/meme/.claude/skills/",
+    "/mnt/skills/user/"
+  ],
+  "ignored_source_globs": [
+    "session_history/downloads_archive/*",
+    "file_inventory.md",
+    "nb_lib_file_inventory.md",
+    "nb_lib_file_inventory_for_gpt_review.md",
+    "wiki_orientation_export.md",
+    "_worker_tasks/*"
+  ],
+  "ignored_target_regexes": [
+    ".*(?:\\.\\.\\.|…).*",
+    ".*<[^>]+>.*",
+    ".*\\{[^{}]+\\}.*",
+    ".*(?:YYYY|yyyy|MMDD|00N).*",
+    "^\\([0-9]+\\)\\.md$",
+    ".*(?:\\.bak|\\.pybak|bakmarch|ORG).*",
+    "^(?:links|other_file|wikilink|path|target|target\\\\)$",
+    "^/(?:api|snapshot)\\b.*",
+    "^\\.[A-Za-z0-9]+$",
+    ".*(?:scratchpad/|runtime/|_run_summary\\.json|status\\.json|guard_tripped\\.txt|_sidecar\\.json|_metadata\\.json).*"
+  ],
+  "ignored_context_regexes": [
+    "\\bexample\\b",
+    "\\be\\.g\\.",
+    "\\bplaceholder\\b",
+    "\\btemplate\\b",
+    "\\bpattern\\b"
+  ],
+  "ignore_example_fences": true
+}
