@@ -4,7 +4,7 @@ Deterministic all-file index generated from `_DERIVED/vault_index.json`.
 
 ## Summary
 
-- Entries: 13
+- Entries: 14
 - Basename collisions: 0
 
 ## Counts By Extension
@@ -12,7 +12,7 @@ Deterministic all-file index generated from `_DERIVED/vault_index.json`.
 | Extension | Count |
 |---|---:|
 | `.json` | 1 |
-| `.md` | 9 |
+| `.md` | 10 |
 | `.py` | 3 |
 
 ## Basename Collisions
@@ -25,6 +25,7 @@ _None._
 |---|---|---|---:|---|
 | `AGENTS.md` | `AGENTS.md` | `.md` | false | NT8lab — Bootstrap for new sessions |
 | `_FRAMEWORK/LAYER_ARCHITECTURE.md` | `LAYER_ARCHITECTURE.md` | `.md` | false | Wiki Infrastructure — Layer Architecture |
+| `_FRAMEWORK/MANAGEMENT_PIPELINE.md` | `MANAGEMENT_PIPELINE.md` | `.md` | false | Management Pipeline |
 | `_FRAMEWORK/OPERATIONS.md` | `OPERATIONS.md` | `.md` | false | Operational Notes - How This Project Works (cross-agent) |
 | `_FRAMEWORK/PATTERNS.md` | `PATTERNS.md` | `.md` | false | Research-With-Agents Framework Patterns |
 | `_FRAMEWORK/derived_layer_and_dumb_tool_roadmap.md` | `derived_layer_and_dumb_tool_roadmap.md` | `.md` | false | Derived-Layer & Dumb-Tool Roadmap (Layers 3–4 + the tooling) |

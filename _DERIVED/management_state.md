@@ -1,0 +1,54 @@
+# Management Vault - Current State
+
+Deterministically generated from roadmap statuses and tool-file presence. No hand-written narrative; unavailable facts are `UNSTATED`.
+
+- schema: `management_state_v1`
+- generated_from: roadmap statuses plus tool-file presence; UNSTATED over guessing
+
+## Tool Presence
+
+| id | name | state | source root | path |
+|---|---|---|---|---|
+| bridge | management bridge | BUILT | working | `tools/management_bridge/build_management_vault.py` |
+| auto_sync | management auto-sync | BUILT | working | `tools/management_bridge/management_auto_sync.py` |
+| vault_index | vault index builder | BUILT | management | `tools/wiki_deriver/build_vault_index.py` |
+| link_checker | link reference checker | BUILT | management | `tools/wiki_deriver/link_reference_checker.py` |
+
+## Roadmap Status Groups
+
+### built
+
+| id | name | status |
+|---|---|---|
+| 3.1 | Link / reference integrity checker | BUILT |
+| 3.3 | Orientation digest / ground-truth snapshot | BUILT |
+
+### staged
+
+| id | name | status |
+|---|---|---|
+| 3.2 | Layer 3 deriver — structural index ("the altitude map") | BUILD SOON, STAGED |
+
+### not_built
+
+| id | name | status |
+|---|---|---|
+| 5.1 | Dependency manifest + catalog renderer | NOT BUILT (next) |
+| 5.2 | Offline bundle + Python pinning | NOT BUILT (gated behind 5.1) |
+| 5.3 | Windows bootstrap installer | NOT BUILT (gated behind 5.1, 5.2) |
+| 5.4 | Drift detection + portability stub | NOT BUILT (gated behind 5.1) |
+
+### deferred
+
+| id | name | status |
+|---|---|---|
+| 3.4 | Orphan / staleness reporter | DEFER |
+| 3.5 | Frontmatter / convention linter | DEFER |
+| 3.6 | On-demand summarizer (Layer 4) | DEFER (and gated behind Layer 3) |
+| 3.7 | Housekeeping agent | DEFER (needs the dumb tools to have run first) |
+| 3.8 | Derived-staleness "needs regen" signal | DEFER (pairs with all derived artifacts) |
+
+### unstated
+
+_None._
+

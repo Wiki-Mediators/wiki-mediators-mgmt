@@ -1,6 +1,23 @@
 {
   "schema": "management_digest_v1",
   "generated_from": "the staged management vault (NOT the working vault)",
+  "bootstrap_files": [
+    {
+      "path": "AGENTS.md",
+      "title": "NT8lab \u2014 Bootstrap for new sessions",
+      "exists": true
+    },
+    {
+      "path": "ninja-traitorate-methodology-reference.md",
+      "title": "Ninja Traitorate \u2014 Methodology Reference",
+      "exists": true
+    },
+    {
+      "path": "_PROJECT_ALTITUDE_MAP.md",
+      "title": "Project Altitude Map",
+      "exists": true
+    }
+  ],
   "roadmap_entries": [
     {
       "id": "3.1",
@@ -9,13 +26,13 @@
     },
     {
       "id": "3.2",
-      "name": "Layer 3 deriver",
-      "status": "structural index (\"the altitude map\") \u2014 BUILD SOON, STAGED"
+      "name": "Layer 3 deriver \u2014 structural index (\"the altitude map\")",
+      "status": "BUILD SOON, STAGED"
     },
     {
       "id": "3.3",
-      "name": "Orientation digest / ground-truth snapshot -- BUILT",
-      "status": "**Job:** generate a compact, deterministic ground-truth snapshot of the"
+      "name": "Orientation digest / ground-truth snapshot",
+      "status": "BUILT"
     },
     {
       "id": "3.4",
@@ -44,23 +61,23 @@
     },
     {
       "id": "5.1",
-      "name": "Dependency manifest + catalog renderer -- NOT BUILT (next)",
-      "status": "**Job:** create a machine-readable `dependencies.yaml` as the portable"
+      "name": "Dependency manifest + catalog renderer",
+      "status": "NOT BUILT (next)"
     },
     {
       "id": "5.2",
-      "name": "Offline bundle + Python pinning -- NOT BUILT (gated behind 5.1)",
-      "status": "**Job:** move the relevant installers out of the Downloads graveyard into a"
+      "name": "Offline bundle + Python pinning",
+      "status": "NOT BUILT (gated behind 5.1)"
     },
     {
       "id": "5.3",
-      "name": "Windows bootstrap installer -- NOT BUILT (gated behind 5.1, 5.2)",
-      "status": "**Job:** build a Windows `bootstrap.ps1` where the user picks a working"
+      "name": "Windows bootstrap installer",
+      "status": "NOT BUILT (gated behind 5.1, 5.2)"
     },
     {
       "id": "5.4",
-      "name": "Drift detection + portability stub -- NOT BUILT (gated behind 5.1)",
-      "status": "**Job:** add a `check_drift.py` that runs each manifest verify command,"
+      "name": "Drift detection + portability stub",
+      "status": "NOT BUILT (gated behind 5.1)"
     }
   ],
   "framework_notes": [
@@ -71,6 +88,10 @@
     {
       "path": "_FRAMEWORK/LAYER_ARCHITECTURE.md",
       "title": "Wiki Infrastructure \u2014 Layer Architecture"
+    },
+    {
+      "path": "_FRAMEWORK/MANAGEMENT_PIPELINE.md",
+      "title": "Management Pipeline"
     },
     {
       "path": "_FRAMEWORK/OPERATIONS.md",
@@ -89,12 +110,117 @@
       "title": "Wiki Architecture Current/Future Visual Note"
     }
   ],
+  "management_state": {
+    "schema": "management_state_v1",
+    "generated_from": "roadmap statuses plus tool-file presence; UNSTATED over guessing",
+    "roadmap_status_groups": {
+      "built": [
+        {
+          "id": "3.1",
+          "name": "Link / reference integrity checker",
+          "status": "BUILT"
+        },
+        {
+          "id": "3.3",
+          "name": "Orientation digest / ground-truth snapshot",
+          "status": "BUILT"
+        }
+      ],
+      "staged": [
+        {
+          "id": "3.2",
+          "name": "Layer 3 deriver \u2014 structural index (\"the altitude map\")",
+          "status": "BUILD SOON, STAGED"
+        }
+      ],
+      "not_built": [
+        {
+          "id": "5.1",
+          "name": "Dependency manifest + catalog renderer",
+          "status": "NOT BUILT (next)"
+        },
+        {
+          "id": "5.2",
+          "name": "Offline bundle + Python pinning",
+          "status": "NOT BUILT (gated behind 5.1)"
+        },
+        {
+          "id": "5.3",
+          "name": "Windows bootstrap installer",
+          "status": "NOT BUILT (gated behind 5.1, 5.2)"
+        },
+        {
+          "id": "5.4",
+          "name": "Drift detection + portability stub",
+          "status": "NOT BUILT (gated behind 5.1)"
+        }
+      ],
+      "deferred": [
+        {
+          "id": "3.4",
+          "name": "Orphan / staleness reporter",
+          "status": "DEFER"
+        },
+        {
+          "id": "3.5",
+          "name": "Frontmatter / convention linter",
+          "status": "DEFER"
+        },
+        {
+          "id": "3.6",
+          "name": "On-demand summarizer (Layer 4)",
+          "status": "DEFER (and gated behind Layer 3)"
+        },
+        {
+          "id": "3.7",
+          "name": "Housekeeping agent",
+          "status": "DEFER (needs the dumb tools to have run first)"
+        },
+        {
+          "id": "3.8",
+          "name": "Derived-staleness \"needs regen\" signal",
+          "status": "DEFER (pairs with all derived artifacts)"
+        }
+      ],
+      "unstated": []
+    },
+    "tool_presence": [
+      {
+        "id": "bridge",
+        "name": "management bridge",
+        "path": "tools/management_bridge/build_management_vault.py",
+        "source_root": "working",
+        "state": "BUILT"
+      },
+      {
+        "id": "auto_sync",
+        "name": "management auto-sync",
+        "path": "tools/management_bridge/management_auto_sync.py",
+        "source_root": "working",
+        "state": "BUILT"
+      },
+      {
+        "id": "vault_index",
+        "name": "vault index builder",
+        "path": "tools/wiki_deriver/build_vault_index.py",
+        "source_root": "management",
+        "state": "BUILT"
+      },
+      {
+        "id": "link_checker",
+        "name": "link reference checker",
+        "path": "tools/wiki_deriver/link_reference_checker.py",
+        "source_root": "management",
+        "state": "BUILT"
+      }
+    ]
+  },
   "staged_summary": {
-    "total_files": 16,
+    "total_files": 17,
     "by_directory": {
       "(root)": 3,
       "_DERIVED": 2,
-      "_FRAMEWORK": 6,
+      "_FRAMEWORK": 7,
       "_worker_reports": 1,
       "tools": 4
     }
