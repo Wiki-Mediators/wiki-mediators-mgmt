@@ -80,3 +80,6 @@ Do not name or taxonomize the system too early. Let the name and category
 structure emerge from what the Layer 3 tools surface.
 
 <!-- management-auto-sync-test: change-push 2026-06-30 -->
+<!-- management-auto-sync-test: debounce-reset A 2026-06-30 -->
+<!-- management-auto-sync-test: debounce-reset B 2026-06-30 -->
+<!-- management-auto-sync-test: debounce-reset C 2026-06-30 -->
