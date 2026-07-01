@@ -25,6 +25,7 @@ Deterministically generated from the staged management tree by `tools/management
 | 3.6 | On-demand summarizer (Layer 4) | DEFER (and gated behind Layer 3) |
 | 3.7 | Housekeeping agent | DEFER (needs the dumb tools to have run first) |
 | 3.8 | Derived-staleness "needs regen" signal | DEFER (pairs with all derived artifacts) |
+| 3.9 | Statistical substrate + legible shutter | BOOKED CANDIDATE (trigger not fired) |
 | 5.1 | Dependency manifest + catalog renderer | NOT BUILT (next) |
 | 5.2 | Offline bundle + Python pinning | NOT BUILT (gated behind 5.1) |
 | 5.3 | Windows bootstrap installer | NOT BUILT (gated behind 5.1, 5.2) |
@@ -51,7 +52,7 @@ Derived from roadmap statuses and tool-file presence.
 | staged | 1 |
 | not_built | 4 |
 | deferred | 5 |
-| unstated | 0 |
+| unstated | 1 |
 
 ## Framework notes (titles parsed from staged tree)
 

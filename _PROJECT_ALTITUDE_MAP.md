@@ -350,6 +350,35 @@ Reference:
   section `2A. Transcript Intake: Contraction, Liquidity Events, And
   Trade Management`
 
+The 2026-06-30 external mean-reversion backtest video intake was
+captured as context, not as a transferable MNQ finding. The source
+study/video claim is daily-bar, cross-asset mean reversion; this
+project is intraday MNQ with fixed per-trade friction and microstructure
+effects. Disposition: the video supports process discipline and layered
+framing only. Any MNQ-RTH mean-reversion idea must be converted into an
+objective predicate and clear the Section 15B mechanism-class screen
+before build.
+
+Reference:
+
+- `nb_lib/strategy_specs/source_artifacts/external_meanrev_video_intake_20260630.md`
+
+The 2026-06-30 "sneaky pivot" transcript was captured as a candidate
+seed, not as evidence. Its useful structure is objective-level response:
+prior-session range high/low plus adjacent outer swing levels, a 15m
+probe/rejection candle sequence, and target back toward the opposing
+level. It has been distilled into a screen-required MNQ candidate,
+`sneaky_pivot_15m_level_reversal.md`. Because the transcript includes
+discretionary language such as "close enough," the first research step
+must be a mechanical screen with fixed level tolerance, structural stop,
+and targetability; do not promote it or use it as a rescue overlay before
+that screen.
+
+Reference:
+
+- `nb_lib/strategy_specs/source_artifacts/sneaky_pivot_transcript_20260630.md`
+- `nb_lib/strategy_specs/candidates/sneaky_pivot_15m_level_reversal.md`
+
 ## 7. Guardrails
 
 - Preserve OOS. Do not touch `2026-02-01+` data for a new policy family

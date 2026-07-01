@@ -21,6 +21,9 @@ before doing any work:
 5. **`_FRAMEWORK/OPERATIONS.md`** — cross-agent operational notes (how
    the wiki_logger and shared-vs-private memory work). Read once per
    session.
+   Deferred derived-layer tooling candidates live in
+   `_FRAMEWORK/derived_layer_and_dumb_tool_roadmap.md`; route there
+   rather than expanding the bootstrap door.
 6. **`file_inventory.md`** — index of available context: what scripts
    live where, what data is in `databento/`, what bucket-usage trackers
    exist, what's in `session_history/downloads_archive/`.

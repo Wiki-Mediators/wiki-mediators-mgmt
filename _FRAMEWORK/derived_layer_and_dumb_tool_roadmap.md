@@ -246,6 +246,46 @@ fixing-with-judgment is the housekeeping agent's job (last entry).
   close to met now, but build when staleness actually bites.
 - **Status:** deferred; small, pairs with the derived layer.
 
+### 3.9 Statistical substrate + legible shutter -- BOOKED CANDIDATE (trigger not fired)
+- **Job:** book, but do not yet build, a future computed-relationship
+  substrate plus a visibility lens. The statistical substrate computes
+  relationships over vault files (similarity, near-duplicates,
+  co-occurrence, staleness, churn/coupling, outliers). The shutter/lens
+  then controls which files are visible for a task or dimension, without
+  deleting or rewriting anything.
+- **Why it earns its place later:** this turns "remember to ignore the
+  other domain" into structure. A task scoped to a dimension sees the files
+  that dimension admits, while other files are masked. The agent no longer
+  carries the whole scoping rule in its head. The statistics prepare Layer
+  4's inputs mechanically; the housekeeper later makes only the judgment
+  the statistics cannot make.
+- **Not a new layer:** the four layers remain write / record / derive /
+  distill. The shutter is a cross-cutting visibility mechanism in front of
+  what an agent reads; it is a lens/aperture/scope, not "Layer 5."
+- **Implementation note:** vector storage such as pgvector is only one
+  possible implementation if lexical/indexed retrieval measurably fails.
+  The concept is the computed relationship substrate, not a database choice.
+- **Safety rule A:** housekeeping does only what statistics cannot. If a
+  decision is mechanically derivable, it belongs in the dumb tool. The agent
+  only decides irreducible maintenance judgments such as supersede, merge,
+  archive, or route.
+- **Safety rule B:** the shutter must be legible, never opaque. It must mask
+  by transparent, computable criteria the agent can know about (dimension
+  tag, directory, recency, explicit allow-list). Every shuttered run must
+  emit a scope receipt: included roots/tags, excluded roots/tags, counts,
+  and the config/command that produced the aperture. A visible shutter is a
+  tool; an invisible one is a trap.
+- **Sequencing corollary:** build crisp shutters first (dimension,
+  directory, recency, explicit allow-list). Similarity-based shuttering is
+  later and riskier because fuzzy relevance is exactly where an agent least
+  knows what was excluded.
+- **Trigger:** not fired. Build only when all four are true: (1) at least
+  two real domains/dimensions exist; (2) the indexed corpus/history is deep
+  enough for clusters to mean something; (3) lexical/index tools or human
+  navigation show measured failure; and (4) agents demonstrably risk mixing
+  domains or tasks without structural scoping.
+- **Status:** booked candidate, trigger not fired. Do not build yet.
+
 ## 4. Build order (the honest sequence)
 
 1. **Link/reference integrity checker (3.1)** — built (TASK_017, upgraded
@@ -276,8 +316,8 @@ fixing-with-judgment is the housekeeping agent's job (last entry).
 12. **Windows bootstrap installer (5.3)** -- after the manifest and offline
     bundle exist.
 
-*Candidates 3.4a / 3.5a / 3.5b / 3.8 are deferred with their parents and
-build when their drift recurs.*
+*Candidates 3.4a / 3.5a / 3.5b / 3.8 / 3.9 are deferred with their parents
+or explicit triggers and build only when their drift/scope conditions recur.*
 
 ## 5. Environment reconstitution -- dependency catalog & bootstrap installer
 

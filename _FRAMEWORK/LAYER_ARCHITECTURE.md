@@ -78,6 +78,10 @@ rule-bearer; the reason the rules exist. When a rule is ambiguous, resolve it fo
 Layer 4 reads later with distance — never the same context window) and *smart vs. dumb* (agents
 think; the logger and deriver do not).
 
+Booked visibility note: the future shutter/lens candidate in
+`_FRAMEWORK/derived_layer_and_dumb_tool_roadmap.md` is a scope/visibility
+mechanism in front of what an agent reads, not a fifth layer.
+
 ## 4. Forensics come after (deliberate deferral)
 
 Repo growth, chronology, biggest-files, cadence — all of it is **derivable from Git history at

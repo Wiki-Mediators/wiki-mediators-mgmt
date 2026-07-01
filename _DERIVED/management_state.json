@@ -70,7 +70,13 @@
         "status": "DEFER (pairs with all derived artifacts)"
       }
     ],
-    "unstated": []
+    "unstated": [
+      {
+        "id": "3.9",
+        "name": "Statistical substrate + legible shutter",
+        "status": "BOOKED CANDIDATE (trigger not fired)"
+      }
+    ]
   },
   "tool_presence": [
     {

@@ -60,6 +60,11 @@
       "status": "DEFER (pairs with all derived artifacts)"
     },
     {
+      "id": "3.9",
+      "name": "Statistical substrate + legible shutter",
+      "status": "BOOKED CANDIDATE (trigger not fired)"
+    },
+    {
       "id": "5.1",
       "name": "Dependency manifest + catalog renderer",
       "status": "NOT BUILT (next)"
@@ -182,7 +187,13 @@
           "status": "DEFER (pairs with all derived artifacts)"
         }
       ],
-      "unstated": []
+      "unstated": [
+        {
+          "id": "3.9",
+          "name": "Statistical substrate + legible shutter",
+          "status": "BOOKED CANDIDATE (trigger not fired)"
+        }
+      ]
     },
     "tool_presence": [
       {

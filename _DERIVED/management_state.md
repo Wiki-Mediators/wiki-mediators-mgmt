@@ -50,5 +50,7 @@ Deterministically generated from roadmap statuses and tool-file presence. No han
 
 ### unstated
 
-_None._
+| id | name | status |
+|---|---|---|
+| 3.9 | Statistical substrate + legible shutter | BOOKED CANDIDATE (trigger not fired) |
 
