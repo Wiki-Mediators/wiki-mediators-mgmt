@@ -230,7 +230,7 @@ fixing-with-judgment is the housekeeping agent's job (last entry).
   Building a housekeeper for a clean vault is the over-build trap.
 - **Status:** deferred, last.
 
-### 3.8 Derived-staleness "needs regen" signal — DEFER (pairs with all derived artifacts)
+### 3.8 Derived-staleness "needs regen" signal -- BUILT
 - **Job:** flag any `_DERIVED/` artifact whose source files are newer than
   the artifact itself — i.e. "regen me."
 - **Why it earns its place:** after the roadmap edit this session, the
@@ -241,10 +241,12 @@ fixing-with-judgment is the housekeeping agent's job (last entry).
   dependency catalog to installed reality); this compares derived artifacts
   to their vault sources. Flags only; it triggers a regen, it does not regen
   or fix.
-- **Trigger:** meaningful once there are several derived artifacts that can
-  fall out of sync (vault index, orientation digest, dependency catalog) —
-  close to met now, but build when staleness actually bites.
-- **Status:** deferred; small, pairs with the derived layer.
+- **Trigger:** fired. The vault now has several derived artifacts that can
+  fall out of sync, and this session repeatedly needed manual "remember to
+  regenerate / re-sync" checks after source edits.
+- **Status:** built as `tools/wiki_deriver/derived_staleness_signal.py`.
+  It writes `_DERIVED/derived_staleness.md` and `.json`, exits non-zero when
+  stale artifacts are flagged, and never regenerates or fixes anything.
 
 ### 3.9 Statistical substrate + legible shutter -- BOOKED CANDIDATE (trigger not fired)
 - **Job:** book, but do not yet build, a future computed-relationship
@@ -262,6 +264,29 @@ fixing-with-judgment is the housekeeping agent's job (last entry).
 - **Not a new layer:** the four layers remain write / record / derive /
   distill. The shutter is a cross-cutting visibility mechanism in front of
   what an agent reads; it is a lens/aperture/scope, not "Layer 5."
+- **Infra-core aperture design:** the shutter is not simply "show one
+  dimension, hide the rest." Its aperture is:
+  `visible_set = always_visible_infra_core + current_dimension_content -
+  other_dimensions_content`. Infrastructure -- how to manage the wiki -- is
+  dimension-agnostic and always visible; domain content is dimension-scoped
+  and masked when out of scope. The `always_visible` core must be a positive,
+  human-curated config allow-list, never an exclusion rule such as
+  "everything outside `_DIMENSIONS/`." This vault has trading content and
+  sensitive/local-only material scattered across root files, `nb_lib/`,
+  outputs, archives, and `session_history/`, so a negative rule would expose
+  too much during another dimension's task. Declaring what is infrastructure
+  versus dimension content is a one-time human config judgment; after that
+  the tool applies it dumbly: read config, compute the visible set, mask the
+  rest, emit a receipt. Every shuttered run must report `always_visible`,
+  `current_dimension`, `masked_dimensions`, `deny_always`, counts, config
+  path/hash, and the command that produced the aperture. Known-mixed roots
+  such as `_worker_reports/`, `_DERIVED/`, `tools/`, `deps/`, and root files
+  need per-path classification at build time; broad roots are not a
+  substitute for classification. The current directory structure is the
+  crude first shutter: for now, a health-lifestyle task can be pointed at the
+  shared bootstrap/framework material plus `_DIMENSIONS/health-lifestyle/`.
+  The tool automates a config-backed aperture later, when manual pointing
+  becomes error-prone.
 - **Implementation note:** vector storage such as pgvector is only one
   possible implementation if lexical/indexed retrieval measurably fails.
   The concept is the computed relationship substrate, not a database choice.
@@ -284,6 +309,10 @@ fixing-with-judgment is the housekeeping agent's job (last entry).
   enough for clusters to mean something; (3) lexical/index tools or human
   navigation show measured failure; and (4) agents demonstrably risk mixing
   domains or tasks without structural scoping.
+- **Seed evidence:** `_DIMENSIONS/health-lifestyle/health_lifestyle_dimension_seed_20260630.md`
+  is the first concrete second-domain seed. It satisfies trigger condition
+  (1) only; the corpus is not yet deep enough, lexical/index failure has not
+  been measured, and no cross-domain mixing failure has recurred.
 - **Status:** booked candidate, trigger not fired. Do not build yet.
 
 ## 4. Build order (the honest sequence)

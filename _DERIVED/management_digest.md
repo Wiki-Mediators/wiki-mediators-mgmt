@@ -24,7 +24,7 @@ Deterministically generated from the staged management tree by `tools/management
 | 3.5 | Frontmatter / convention linter | DEFER |
 | 3.6 | On-demand summarizer (Layer 4) | DEFER (and gated behind Layer 3) |
 | 3.7 | Housekeeping agent | DEFER (needs the dumb tools to have run first) |
-| 3.8 | Derived-staleness "needs regen" signal | DEFER (pairs with all derived artifacts) |
+| 3.8 | Derived-staleness "needs regen" signal | BUILT |
 | 3.9 | Statistical substrate + legible shutter | BOOKED CANDIDATE (trigger not fired) |
 | 5.1 | Dependency manifest + catalog renderer | NOT BUILT (next) |
 | 5.2 | Offline bundle + Python pinning | NOT BUILT (gated behind 5.1) |
@@ -43,15 +43,16 @@ Derived from roadmap statuses and tool-file presence.
 | auto_sync | BUILT | working | `tools/management_bridge/management_auto_sync.py` |
 | vault_index | BUILT | management | `tools/wiki_deriver/build_vault_index.py` |
 | link_checker | BUILT | management | `tools/wiki_deriver/link_reference_checker.py` |
+| derived_staleness | BUILT | management | `tools/wiki_deriver/derived_staleness_signal.py` |
 
 ### Roadmap counts
 
 | group | count |
 |---|---:|
-| built | 2 |
+| built | 3 |
 | staged | 1 |
 | not_built | 4 |
-| deferred | 5 |
+| deferred | 4 |
 | unstated | 1 |
 
 ## Framework notes (titles parsed from staged tree)
@@ -68,7 +69,7 @@ Derived from roadmap statuses and tool-file presence.
 
 ## Staged summary
 
-- total_files: **17**
+- total_files: **18**
 
 | directory | files |
 |---|---:|
@@ -76,5 +77,5 @@ Derived from roadmap statuses and tool-file presence.
 | `_DERIVED` | 2 |
 | `_FRAMEWORK` | 7 |
 | `_worker_reports` | 1 |
-| `tools` | 4 |
+| `tools` | 5 |
 

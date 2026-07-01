@@ -13,6 +13,7 @@ Deterministically generated from roadmap statuses and tool-file presence. No han
 | auto_sync | management auto-sync | BUILT | working | `tools/management_bridge/management_auto_sync.py` |
 | vault_index | vault index builder | BUILT | management | `tools/wiki_deriver/build_vault_index.py` |
 | link_checker | link reference checker | BUILT | management | `tools/wiki_deriver/link_reference_checker.py` |
+| derived_staleness | derived staleness signal | BUILT | management | `tools/wiki_deriver/derived_staleness_signal.py` |
 
 ## Roadmap Status Groups
 
@@ -22,6 +23,7 @@ Deterministically generated from roadmap statuses and tool-file presence. No han
 |---|---|---|
 | 3.1 | Link / reference integrity checker | BUILT |
 | 3.3 | Orientation digest / ground-truth snapshot | BUILT |
+| 3.8 | Derived-staleness "needs regen" signal | BUILT |
 
 ### staged
 
@@ -46,7 +48,6 @@ Deterministically generated from roadmap statuses and tool-file presence. No han
 | 3.5 | Frontmatter / convention linter | DEFER |
 | 3.6 | On-demand summarizer (Layer 4) | DEFER (and gated behind Layer 3) |
 | 3.7 | Housekeeping agent | DEFER (needs the dumb tools to have run first) |
-| 3.8 | Derived-staleness "needs regen" signal | DEFER (pairs with all derived artifacts) |
 
 ### unstated
 

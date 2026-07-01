@@ -4,7 +4,7 @@ Deterministic all-file index generated from `_DERIVED/vault_index.json`.
 
 ## Summary
 
-- Entries: 14
+- Entries: 15
 - Basename collisions: 0
 
 ## Counts By Extension
@@ -13,7 +13,7 @@ Deterministic all-file index generated from `_DERIVED/vault_index.json`.
 |---|---:|
 | `.json` | 1 |
 | `.md` | 10 |
-| `.py` | 3 |
+| `.py` | 4 |
 
 ## Basename Collisions
 
@@ -35,5 +35,6 @@ _None._
 | `ninja-traitorate-methodology-reference.md` | `ninja-traitorate-methodology-reference.md` | `.md` | false | Ninja Traitorate — Methodology Reference |
 | `tools/wiki_deriver/build_orientation_digest.py` | `build_orientation_digest.py` | `.py` | false | Build the Layer 3.3 orientation digest derived artifact. |
 | `tools/wiki_deriver/build_vault_index.py` | `build_vault_index.py` | `.py` | false | Build the Layer 3 vault index derived artifact. |
+| `tools/wiki_deriver/derived_staleness_signal.py` | `derived_staleness_signal.py` | `.py` | false | Flag stale _DERIVED artifacts without regenerating them. |
 | `tools/wiki_deriver/link_reference_checker.config.json` | `link_reference_checker.config.json` | `.json` | false | .json file in tools/wiki_deriver |
 | `tools/wiki_deriver/link_reference_checker.py` | `link_reference_checker.py` | `.py` | false | Link / reference integrity checker — Layer 3 dumb tool #1. |
