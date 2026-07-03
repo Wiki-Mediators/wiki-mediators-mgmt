@@ -38,6 +38,10 @@ or quarantine the offending path instead of retrying every debounce cycle.
 Trigger: the guard-refused loop on 2026-07-02 12:44-12:56, caused by a large
 scratch extract under `codex_tmp/`.
 
+**Bridge v-next candidate -- BOOKED, NOT BUILT:** `--force` must not destroy
+the management vault `.git`; remote config persists in a config file.
+Trigger: the 2026-07-03 management-history reset.
+
 ## 2. The retrieval decisions (what the research settled)
 
 Full evidence: `_RESEARCH/two_tier_retrieval_2026.md`. The decisions that
