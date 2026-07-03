@@ -1,0 +1,168 @@
+{
+  "schema": "management_state_v1",
+  "generated_from": "roadmap statuses plus tool-file presence; UNSTATED over guessing",
+  "roadmap_status_groups": {
+    "built": [
+      {
+        "id": "3.1",
+        "name": "Link / reference integrity checker",
+        "status": "BUILT"
+      },
+      {
+        "id": "3.3",
+        "name": "Orientation digest / ground-truth snapshot",
+        "status": "BUILT"
+      },
+      {
+        "id": "3.8",
+        "name": "Derived-staleness \"needs regen\" signal",
+        "status": "BUILT"
+      }
+    ],
+    "staged": [
+      {
+        "id": "3.2",
+        "name": "Layer 3 deriver \u2014 structural index (\"the altitude map\")",
+        "status": "BUILD SOON, STAGED"
+      }
+    ],
+    "not_built": [
+      {
+        "id": "5.1",
+        "name": "Dependency manifest + catalog renderer",
+        "status": "NOT BUILT (next)"
+      },
+      {
+        "id": "5.2",
+        "name": "Offline bundle + Python pinning",
+        "status": "NOT BUILT (gated behind 5.1)"
+      },
+      {
+        "id": "5.3",
+        "name": "Windows bootstrap installer",
+        "status": "NOT BUILT (gated behind 5.1, 5.2)"
+      },
+      {
+        "id": "5.4",
+        "name": "Drift detection + portability stub",
+        "status": "NOT BUILT (gated behind 5.1)"
+      },
+      {
+        "id": "6.1",
+        "name": "Watch registry + sweeper",
+        "status": "BOOKED, NOT BUILT"
+      },
+      {
+        "id": "6.2",
+        "name": "Second logger instance",
+        "status": "BOOKED, NOT BUILT"
+      },
+      {
+        "id": "6.3",
+        "name": "Session-index deriver",
+        "status": "BOOKED, NOT BUILT"
+      },
+      {
+        "id": "6.4",
+        "name": "Unified cross-vault timeline",
+        "status": "BOOKED, NOT BUILT"
+      },
+      {
+        "id": "6.5",
+        "name": "Session-to-commit crosswalk",
+        "status": "BOOKED, NOT BUILT"
+      },
+      {
+        "id": "6.6",
+        "name": "Cross-vault search wrapper",
+        "status": "BOOKED, NOT BUILT"
+      },
+      {
+        "id": "6.7",
+        "name": "Vault spawner + profiles",
+        "status": "BOOKED, NOT BUILT"
+      },
+      {
+        "id": "6.8",
+        "name": "Archive-to-wiki distiller",
+        "status": "BOOKED, NOT BUILT"
+      },
+      {
+        "id": "6.9",
+        "name": "SQLite ingestion",
+        "status": "BOOKED, NOT BUILT"
+      },
+      {
+        "id": "6.10",
+        "name": "Commit-noise auditor",
+        "status": "BOOKED, NOT BUILT"
+      }
+    ],
+    "deferred": [
+      {
+        "id": "3.4",
+        "name": "Orphan / staleness reporter",
+        "status": "DEFER"
+      },
+      {
+        "id": "3.5",
+        "name": "Frontmatter / convention linter",
+        "status": "DEFER"
+      },
+      {
+        "id": "3.6",
+        "name": "On-demand summarizer (Layer 4)",
+        "status": "DEFER (and gated behind Layer 3)"
+      },
+      {
+        "id": "3.7",
+        "name": "Housekeeping agent",
+        "status": "DEFER (needs the dumb tools to have run first)"
+      }
+    ],
+    "unstated": [
+      {
+        "id": "3.9",
+        "name": "Statistical substrate + legible shutter",
+        "status": "BOOKED CANDIDATE (trigger not fired)"
+      }
+    ]
+  },
+  "tool_presence": [
+    {
+      "id": "bridge",
+      "name": "management bridge",
+      "path": "tools/management_bridge/build_management_vault.py",
+      "source_root": "working",
+      "state": "BUILT"
+    },
+    {
+      "id": "auto_sync",
+      "name": "management auto-sync",
+      "path": "tools/management_bridge/management_auto_sync.py",
+      "source_root": "working",
+      "state": "BUILT"
+    },
+    {
+      "id": "vault_index",
+      "name": "vault index builder",
+      "path": "tools/wiki_deriver/build_vault_index.py",
+      "source_root": "management",
+      "state": "BUILT"
+    },
+    {
+      "id": "link_checker",
+      "name": "link reference checker",
+      "path": "tools/wiki_deriver/link_reference_checker.py",
+      "source_root": "management",
+      "state": "BUILT"
+    },
+    {
+      "id": "derived_staleness",
+      "name": "derived staleness signal",
+      "path": "tools/wiki_deriver/derived_staleness_signal.py",
+      "source_root": "management",
+      "state": "BUILT"
+    }
+  ]
+}
