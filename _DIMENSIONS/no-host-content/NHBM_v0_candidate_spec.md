@@ -61,7 +61,7 @@ pass and the operator separately decides the build trigger has fired.
    (CSS-animated SVG or standalone HTML map) is a NEW candidate, not a
    rescue. No rescue-by-plugin.
 2. ENGAGEMENT RED: over one month of real review sessions after any
-   build, if the operator opens the map fewer than N = ____ times when
+   build, if the operator opens the map fewer than N = 10 times when
    the roadmap/digest was the alternative → `candidate-failed-engagement`.
    Shelf without shame. (Operator MUST fill in N before running G1;
    pre-commitment is void if N is set after testing begins.)
@@ -89,4 +89,4 @@ non-Obsidian surface) is a new counted candidate.
 
 | Date | Status | Note |
 |---|---|---|
-| 2026-07-03 | candidate-screen-pending | Spec locked. G1–G3 defined. N unset — operator to commit N before G1. Demo SVG banked in prototypes/. |
+| 2026-07-03 | candidate-screen-pending | Spec locked. G1–G3 defined. N = 10 unprompted opens in weeks 2–5 after build. Demo SVG banked in prototypes/. |

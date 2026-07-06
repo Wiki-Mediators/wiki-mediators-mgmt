@@ -12,18 +12,25 @@ Built the standalone all-file vault index artifacts for Tool 2.
 
 ## Counts
 
-- Entries indexed: 21
-- Basename collisions: 0
+- Entries indexed: 160
+- Basename collisions: 6
 
 | Extension | Count |
 |---|---:|
 | `.json` | 1 |
-| `.md` | 16 |
+| `.md` | 155 |
 | `.py` | 4 |
 
 ## Collision List
 
-_None._
+| Basename | Count | Paths |
+|---|---:|---|
+| `AGENTS.md` | 2 | `AGENTS.md`<br>`_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/AGENTS.md` |
+| `README.md` | 4 | `_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/README.md`<br>`_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/README.md`<br>`_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/composition_nodes/README.md`<br>`_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/source_artifacts/README.md` |
+| `_PROJECT_ALTITUDE_MAP.md` | 2 | `_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/_PROJECT_ALTITUDE_MAP.md`<br>`_PROJECT_ALTITUDE_MAP.md` |
+| `atr_regime_pullback_continuation.md` | 2 | `_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/atr_regime_pullback_continuation.md`<br>`_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/canonical/atr_regime_pullback_continuation.md` |
+| `atr_regime_pullback_tight_target.md` | 2 | `_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/atr_regime_pullback_tight_target.md`<br>`_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/canonical/atr_regime_pullback_tight_target.md` |
+| `ninja-traitorate-methodology-reference.md` | 2 | `_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/ninja-traitorate-methodology-reference.md`<br>`ninja-traitorate-methodology-reference.md` |
 
 ## Link Checker Resolver Win Estimate
 

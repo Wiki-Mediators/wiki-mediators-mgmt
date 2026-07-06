@@ -1,16 +1,43 @@
 {
-  "basename_collision_count": 0,
-  "basename_collisions": {},
+  "basename_collision_count": 6,
+  "basename_collisions": {
+    "AGENTS.md": [
+      "AGENTS.md",
+      "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/AGENTS.md"
+    ],
+    "README.md": [
+      "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/README.md",
+      "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/README.md",
+      "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/composition_nodes/README.md",
+      "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/source_artifacts/README.md"
+    ],
+    "_PROJECT_ALTITUDE_MAP.md": [
+      "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/_PROJECT_ALTITUDE_MAP.md",
+      "_PROJECT_ALTITUDE_MAP.md"
+    ],
+    "atr_regime_pullback_continuation.md": [
+      "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/atr_regime_pullback_continuation.md",
+      "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/canonical/atr_regime_pullback_continuation.md"
+    ],
+    "atr_regime_pullback_tight_target.md": [
+      "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/atr_regime_pullback_tight_target.md",
+      "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/canonical/atr_regime_pullback_tight_target.md"
+    ],
+    "ninja-traitorate-methodology-reference.md": [
+      "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/ninja-traitorate-methodology-reference.md",
+      "ninja-traitorate-methodology-reference.md"
+    ]
+  },
   "config_path": "tools/wiki_deriver/link_reference_checker.config.json",
   "counts_by_extension": {
     ".json": 1,
-    ".md": 16,
+    ".md": 155,
     ".py": 4
   },
   "entries": [
     {
       "basename": "AGENTS.md",
-      "basename_collision": false,
+      "basename_collision": true,
       "descriptor": "NT8lab \u2014 Bootstrap for new sessions",
       "extension": ".md",
       "path": "AGENTS.md"
@@ -93,15 +120,988 @@
       "path": "_FRAMEWORK/wiki_architecture_flow.md"
     },
     {
-      "basename": "_PROJECT_ALTITUDE_MAP.md",
+      "basename": "AGENTS.md",
+      "basename_collision": true,
+      "descriptor": "NT8lab \u2014 Bootstrap for new sessions",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/AGENTS.md"
+    },
+    {
+      "basename": "README_MODEL_HANDOFF.md",
       "basename_collision": false,
+      "descriptor": "How to read",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/README_MODEL_HANDOFF.md"
+    },
+    {
+      "basename": "_PROJECT_ALTITUDE_MAP.md",
+      "basename_collision": true,
+      "descriptor": "Project Altitude Map",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/_PROJECT_ALTITUDE_MAP.md"
+    },
+    {
+      "basename": "README.md",
+      "basename_collision": true,
+      "descriptor": "nb_lib strategy specs",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/README.md"
+    },
+    {
+      "basename": "Untitled.md",
+      "basename_collision": false,
+      "descriptor": "Test",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/Untitled.md"
+    },
+    {
+      "basename": "_EXTERNAL_METHOD_REFERENCES.md",
+      "basename_collision": false,
+      "descriptor": "Verified external references for management geometry, synthetic-path threshold work, stop policy evidence, and overfit discipline.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/_EXTERNAL_METHOD_REFERENCES.md"
+    },
+    {
+      "basename": "_METHODOLOGY_INTUITION.md",
+      "basename_collision": false,
+      "descriptor": "The connective tissue behind the gates, registry, composition nodes, and repeated strategy failures.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/_METHODOLOGY_INTUITION.md"
+    },
+    {
+      "basename": "_R1_EVIDENCE_DIAGNOSTIC_CONVENTION.md",
+      "basename_collision": false,
+      "descriptor": "R1 Evidence Diagnostic Convention",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/_R1_EVIDENCE_DIAGNOSTIC_CONVENTION.md"
+    },
+    {
+      "basename": "_R2_VARIANCE_PROBE_CONVENTION.md",
+      "basename_collision": false,
+      "descriptor": "R2 Variance Preflight Convention",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/_R2_VARIANCE_PROBE_CONVENTION.md"
+    },
+    {
+      "basename": "_R4_PROBE_CONVENTION.md",
+      "basename_collision": false,
+      "descriptor": "R4 Signal-Frequency Probe Convention",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/_R4_PROBE_CONVENTION.md"
+    },
+    {
+      "basename": "_REGIME_CONDITIONED_MANAGEMENT_WORKFLOW.md",
+      "basename_collision": false,
+      "descriptor": "Regime-Conditioned Management Workflow",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/_REGIME_CONDITIONED_MANAGEMENT_WORKFLOW.md"
+    },
+    {
+      "basename": "_TEMPLATE_v2_admissibility_ready.md",
+      "basename_collision": false,
+      "descriptor": "<one-line tagline>",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/_TEMPLATE_v2_admissibility_ready.md"
+    },
+    {
+      "basename": "_V1_4_EDGE_STABILITY_REGIME_GATE.md",
+      "basename_collision": false,
+      "descriptor": "v1.4 Edge-Stability + Regime-Conditional Gate",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/_V1_4_EDGE_STABILITY_REGIME_GATE.md"
+    },
+    {
+      "basename": "CANDIDATE_TEMPLATE.md",
+      "basename_collision": false,
+      "descriptor": "One-sentence summary that captures the edge thesis",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/CANDIDATE_TEMPLATE.md"
+    },
+    {
+      "basename": "README.md",
+      "basename_collision": true,
+      "descriptor": "Strategy Candidates Wiki",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/README.md"
+    },
+    {
+      "basename": "_EXAMPLE_atr_scaled_brackets.md",
+      "basename_collision": false,
+      "descriptor": "Replace PRJ_3's fixed-point stops/targets with ATR-scaled brackets to make them volatility-adaptive",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/_EXAMPLE_atr_scaled_brackets.md"
+    },
+    {
+      "basename": "_MARGINAL_STRATEGIES_REGISTRY.md",
+      "basename_collision": false,
+      "descriptor": "Foundational registry for tiny-edge strategies that may later become inputs to a probabilistic composition system.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/_MARGINAL_STRATEGIES_REGISTRY.md"
+    },
+    {
+      "basename": "_METHODOLOGY_data_store.md",
+      "basename_collision": false,
+      "descriptor": "nb_lib Data Store Reference (Working Draft v1)",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/_METHODOLOGY_data_store.md"
+    },
+    {
+      "basename": "_METHODOLOGY_repertoire.md",
+      "basename_collision": false,
+      "descriptor": "Strategy Design Repertoire (Working Draft v1)",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/_METHODOLOGY_repertoire.md"
+    },
+    {
+      "basename": "atr_compression_squeeze_break.md",
+      "basename_collision": false,
+      "descriptor": "When 30-min rolling range compresses below 0.35x ADR(20) for 15+ minutes, trade the directional break out of the compression box; target...",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/atr_compression_squeeze_break.md"
+    },
+    {
+      "basename": "atr_percentile_trend_day_hold.md",
+      "basename_collision": false,
+      "descriptor": "Trade only when the day has enough volatility to sustain continuation.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/atr_percentile_trend_day_hold.md"
+    },
+    {
+      "basename": "atr_ratio_expansion_scalp.md",
+      "basename_collision": false,
+      "descriptor": "Trade short bursts only when short-term volatility expands faster than baseline volatility.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/atr_ratio_expansion_scalp.md"
+    },
+    {
+      "basename": "atr_regime_pullback_continuation.md",
+      "basename_collision": true,
+      "descriptor": "Only trade pullbacks when volatility regime supports continuation.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/atr_regime_pullback_continuation.md"
+    },
+    {
+      "basename": "atr_regime_pullback_tight_target.md",
+      "basename_collision": true,
+      "descriptor": "Same regime-filtered pullback entry as the rejected parent, but a single 1.5xATR target with no partial, no BE arm, no runner \u2014 isolates...",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/atr_regime_pullback_tight_target.md"
+    },
+    {
+      "basename": "c2_midmorning_targetability_mean_reversion_screen.md",
+      "basename_collision": false,
+      "descriptor": "C2 VWAP stretch-reclaim trades only during 10:30-12:00 ET when target/risk is not compressed.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/c2_midmorning_targetability_mean_reversion_screen.md"
+    },
+    {
+      "basename": "candidate_f_late_day_momentum_screen.md",
+      "basename_collision": false,
+      "descriptor": "Follow a strong first-hour move at 15:00 only when midday realized range sits in its trailing middle tercile.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/candidate_f_late_day_momentum_screen.md"
+    },
+    {
+      "basename": "choppiness_impulse_fade.md",
+      "basename_collision": false,
+      "descriptor": "Fade short impulse moves back toward a rotational range mean when the market is explicitly choppy.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/choppiness_impulse_fade.md"
+    },
+    {
+      "basename": "closing_imbalance_drift_proxy.md",
+      "basename_collision": false,
+      "descriptor": "Capture late-day continuation when institutions press into the close.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/closing_imbalance_drift_proxy.md"
+    },
+    {
+      "basename": "developing_swing_trail_vol_cap.md",
+      "basename_collision": false,
+      "descriptor": "Use developing swings for exits, but only in a bounded volatility regime.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/developing_swing_trail_vol_cap.md"
+    },
+    {
+      "basename": "ema_trend_canonical_alpha_SUPERSEDED.md",
+      "basename_collision": false,
+      "descriptor": ".md file in _HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/ema_trend_canonical_alpha_SUPERSEDED.md"
+    },
+    {
+      "basename": "ema_vwap_micro_pullback_scalp.md",
+      "basename_collision": false,
+      "descriptor": "Frequency-first intraday continuation scalp using EMA20/VWAP alignment and micro-pullback reclaim.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/ema_vwap_micro_pullback_scalp.md"
+    },
+    {
+      "basename": "es_leads_nq_divergence_reversion.md",
+      "basename_collision": false,
+      "descriptor": "Fade NQ when it overreacts relative to ES.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/es_leads_nq_divergence_reversion.md"
+    },
+    {
+      "basename": "failed_orb_fade.md",
+      "basename_collision": false,
+      "descriptor": "Trade the trap after the first breakout fails.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/failed_orb_fade.md"
+    },
+    {
+      "basename": "first_hour_momentum_acceptance_base_hit.md",
+      "basename_collision": false,
+      "descriptor": "Trade a large first-30-minute RTH push only if price is still accepted outside the opening range at 10:30, using a simple fixed base-hit...",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/first_hour_momentum_acceptance_base_hit.md"
+    },
+    {
+      "basename": "first_hour_range_expansion_breakout.md",
+      "basename_collision": false,
+      "descriptor": "Trade the resolution of the morning balance only when the break arrives with range expansion.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/first_hour_range_expansion_breakout.md"
+    },
+    {
+      "basename": "first_loss_reversal_day.md",
+      "basename_collision": false,
+      "descriptor": "Trade reversal after early directional failure and volatility exhaustion.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/first_loss_reversal_day.md"
+    },
+    {
+      "basename": "footprint_confirmed_supply_demand_reaction.md",
+      "basename_collision": false,
+      "descriptor": "Trade structure-first supply/demand bounces only when footprint confirms the response.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/footprint_confirmed_supply_demand_reaction.md"
+    },
+    {
+      "basename": "footprint_orderflow_reference.md",
+      "basename_collision": false,
+      "descriptor": "Reference note for delta, imbalance, stacked imbalance, and absorption concepts as strategy filters.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/footprint_orderflow_reference.md"
+    },
+    {
+      "basename": "g2_canonical_alpha_SUPERSEDED.md",
+      "basename_collision": false,
+      "descriptor": ".md file in _HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/g2_canonical_alpha_SUPERSEDED.md"
+    },
+    {
+      "basename": "gap_fill_pressure.md",
+      "basename_collision": false,
+      "descriptor": "Fade overnight gaps when RTH fails to confirm them.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/gap_fill_pressure.md"
+    },
+    {
+      "basename": "gold_vs_nq_risk_off_rotation.md",
+      "basename_collision": false,
+      "descriptor": "Trade NQ only when gold confirms risk-off or risk-on pressure.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/gold_vs_nq_risk_off_rotation.md"
+    },
+    {
+      "basename": "htf_vwap_stretch_ltf_reclaim_mean_reversion_screen.md",
+      "basename_collision": false,
+      "descriptor": "Use 30-minute VWAP-band extension as structure, 1-minute reclaim as execution.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/htf_vwap_stretch_ltf_reclaim_mean_reversion_screen.md"
+    },
+    {
+      "basename": "initial_balance_midpoint_rotation.md",
+      "basename_collision": false,
+      "descriptor": "Fade failed one-hour range extension back toward the initial balance midpoint.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/initial_balance_midpoint_rotation.md"
+    },
+    {
+      "basename": "intraday_momentum_continuation_base_hit.md",
+      "basename_collision": false,
+      "descriptor": "Trade the documented first-move-predicts-later-move momentum effect, but deliver it through a variance-controlled base-hit bracket instea...",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/intraday_momentum_continuation_base_hit.md"
+    },
+    {
+      "basename": "liquidity_zone_rejection_router.md",
+      "basename_collision": false,
+      "descriptor": "Trade rejection only at objective zones that beat distance-matched controls; use acceptance as the devil's-advocate stand-down.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/liquidity_zone_rejection_router.md"
+    },
+    {
+      "basename": "loose_vwap_sneaky_level_hybrid.md",
+      "basename_collision": false,
+      "descriptor": "Broaden C2 VWAP reclaim, then require the setup probe to occur near a prior-day or opening-15m objective level.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/loose_vwap_sneaky_level_hybrid.md"
+    },
+    {
+      "basename": "lunch_compression_break.md",
+      "basename_collision": false,
+      "descriptor": "Trade post-lunch expansion after volatility compresses.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/lunch_compression_break.md"
+    },
+    {
+      "basename": "market_intraday_momentum_close_auction.md",
+      "basename_collision": false,
+      "descriptor": "Once-daily hold-into-close market intraday momentum candidate: prior-close-to-10:00 return predicts the 15:30-15:58:30 closing-window move.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/market_intraday_momentum_close_auction.md"
+    },
+    {
+      "basename": "mnq_news_like_impulse_pullback.md",
+      "basename_collision": false,
+      "descriptor": "Trade the first controlled pullback after a mechanically detected MNQ impulse surge.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/mnq_news_like_impulse_pullback.md"
+    },
+    {
+      "basename": "momentum_high_water_trail_post_1030.md",
+      "basename_collision": false,
+      "descriptor": "Ride morning momentum past the typical 10:30 ET exhaustion by trailing from the high-water mark.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/momentum_high_water_trail_post_1030.md"
+    },
+    {
+      "basename": "needle_drop_adaptive_management_classifier.md",
+      "basename_collision": false,
+      "descriptor": "Default-bracket entry that adapts in-flight brackets by deterministic classification against wiki strategy references.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/needle_drop_adaptive_management_classifier.md"
+    },
+    {
+      "basename": "news_first_pullback_momentum.md",
+      "basename_collision": false,
+      "descriptor": "Buy the first pullback after a news-driven momentum squeeze once price proves it can hold above the 50% retracement.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/news_first_pullback_momentum.md"
+    },
+    {
+      "basename": "noise_area_intraday_momentum.md",
+      "basename_collision": false,
+      "descriptor": "Time-of-day noise-band breakout with VWAP confirmation and half-hour grid exits.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/noise_area_intraday_momentum.md"
+    },
+    {
+      "basename": "noise_brk_canonical_alpha_SUPERSEDED.md",
+      "basename_collision": false,
+      "descriptor": ".md file in _HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/noise_brk_canonical_alpha_SUPERSEDED.md"
+    },
+    {
+      "basename": "noise_brk_thirds_partial_geometry.md",
+      "basename_collision": false,
+      "descriptor": "noise_brk with a 5/5/5 thirds partial-take at +30/+50/runner instead of the live TP1+10/TP2+80 split; tests whether middle-distance trims...",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/noise_brk_thirds_partial_geometry.md"
+    },
+    {
+      "basename": "objective_level_liquidity_sweep_reversal_family.md",
+      "basename_collision": false,
+      "descriptor": "One sweep/reclaim mechanism applied to PDH/PDL, opening range, and round/VWAP levels with per-level attribution.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/objective_level_liquidity_sweep_reversal_family.md"
+    },
+    {
+      "basename": "ofrt_v0_overnight_fade_rth_tilt.md",
+      "basename_collision": false,
+      "descriptor": "Fade the overnight return on RTH: enter at 09:30 open in the direction opposite the Globex 18:00->09:30 close-open change, hold-to-close...",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/ofrt_v0_overnight_fade_rth_tilt.md"
+    },
+    {
+      "basename": "opening_range_failure_continuation_long.md",
+      "basename_collision": false,
+      "descriptor": "Trade the hold, not the break: enter long only when an opening-range breakout pulls back and the level defends.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/opening_range_failure_continuation_long.md"
+    },
+    {
+      "basename": "opening_range_liquidity_sweep_reversal.md",
+      "basename_collision": false,
+      "descriptor": "Fade failed sweeps of the opening range after reclaim/rejection with volume expansion.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/opening_range_liquidity_sweep_reversal.md"
+    },
+    {
+      "basename": "opening_range_response_tree.md",
+      "basename_collision": false,
+      "descriptor": "One opening-range level, three branched responses (reversal / continuation / breakout), each tagged for per-branch attribution.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/opening_range_response_tree.md"
+    },
+    {
+      "basename": "opening_range_width_switch.md",
+      "basename_collision": false,
+      "descriptor": "Fade failed breakouts of the 15-minute opening range when OR is meaningfully wide.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/opening_range_width_switch.md"
+    },
+    {
+      "basename": "opening_range_width_switch_v2_base_hit.md",
+      "basename_collision": false,
+      "descriptor": "Fade failed 15-minute opening-range breaks, but exit at the midpoint and reduce Apex variance.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/opening_range_width_switch_v2_base_hit.md"
+    },
+    {
+      "basename": "pdh_pdl_liquidity_sweep_reversal.md",
+      "basename_collision": false,
+      "descriptor": "Fade previous-day high/low stop sweeps only after reclaim/rejection with volume expansion.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/pdh_pdl_liquidity_sweep_reversal.md"
+    },
+    {
+      "basename": "premium_discount_sweep_shift_continuation.md",
+      "basename_collision": false,
+      "descriptor": "Trade with higher-timeframe bias only after price reaches premium/discount location, sweeps liquidity, then shifts lower-timeframe struct...",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/premium_discount_sweep_shift_continuation.md"
+    },
+    {
+      "basename": "prior_close_magnet_vol_filter.md",
+      "basename_collision": false,
+      "descriptor": "Trade intraday rotation toward the prior RTH close only in low-to-moderate volatility.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/prior_close_magnet_vol_filter.md"
+    },
+    {
+      "basename": "prior_day_close_rejection_fade.md",
+      "basename_collision": false,
+      "descriptor": "Fade the test of yesterday's RTH close when a completed bar rejects it.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/prior_day_close_rejection_fade.md"
+    },
+    {
+      "basename": "prior_day_extreme_acceptance_ladder.md",
+      "basename_collision": false,
+      "descriptor": "Continue only after price accepts beyond yesterday's high or low.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/prior_day_extreme_acceptance_ladder.md"
+    },
+    {
+      "basename": "prior_day_overnight_level_response_continuation.md",
+      "basename_collision": false,
+      "descriptor": "Prior-Day / Overnight Level Response Continuation",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/prior_day_overnight_level_response_continuation.md"
+    },
+    {
+      "basename": "prior_day_value_area_rejection.md",
+      "basename_collision": false,
+      "descriptor": "Trade failed acceptance outside yesterday's value.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/prior_day_value_area_rejection.md"
+    },
+    {
+      "basename": "prior_session_level_fade_aged.md",
+      "basename_collision": false,
+      "descriptor": "Fade yesterday's RTH high/low when tagged >4h into the level's life (afternoon tests).",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/prior_session_level_fade_aged.md"
+    },
+    {
+      "basename": "prj3_canonical_alpha_SUPERSEDED.md",
+      "basename_collision": false,
+      "descriptor": ".md file in _HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/prj3_canonical_alpha_SUPERSEDED.md"
+    },
+    {
+      "basename": "regime_time_gated_mtf_pullback_continuation.md",
+      "basename_collision": false,
+      "descriptor": "Trade MNQ trend continuation only when 30-minute trend, 10-minute ADX, time-of-day, and 5-minute pullback-resumption align.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/regime_time_gated_mtf_pullback_continuation.md"
+    },
+    {
+      "basename": "round_number_rejection_microfade.md",
+      "basename_collision": false,
+      "descriptor": "Fade failed 1-bar sweeps of 50/100-point psychological levels with short, level-anchored targets.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/round_number_rejection_microfade.md"
+    },
+    {
+      "basename": "round_number_vwap_liquidity_sweep_reversal.md",
+      "basename_collision": false,
+      "descriptor": "Fade round-number sweeps only when VWAP context and volume-confirmed rejection align.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/round_number_vwap_liquidity_sweep_reversal.md"
+    },
+    {
+      "basename": "savor_wilson_v2a_canonical_alpha_SUPERSEDED.md",
+      "basename_collision": false,
+      "descriptor": ".md file in _HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/savor_wilson_v2a_canonical_alpha_SUPERSEDED.md"
+    },
+    {
+      "basename": "sneaky_pivot_15m_level_reversal.md",
+      "basename_collision": false,
+      "descriptor": "Use prior-session range and outer swing levels as objective reversal anchors, then enter on a 15m rejection-confirmation break.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/sneaky_pivot_15m_level_reversal.md"
+    },
+    {
+      "basename": "stacked_imbalance_zone_retest.md",
+      "basename_collision": false,
+      "descriptor": "Create supply/demand zones from stacked footprint imbalances and trade later retests.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/stacked_imbalance_zone_retest.md"
+    },
+    {
+      "basename": "ten_fifteen_opening_drive_state_router.md",
+      "basename_collision": false,
+      "descriptor": "At 10:15 ET, route the first-30-minute opening drive as accepted continuation or VWAP rejection reversal.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/ten_fifteen_opening_drive_state_router.md"
+    },
+    {
+      "basename": "ten_fifteen_vwap_acceptance_pullback.md",
+      "basename_collision": false,
+      "descriptor": "After the first 30-minute drive, wait for VWAP acceptance and the first pullback after 10:15.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/ten_fifteen_vwap_acceptance_pullback.md"
+    },
+    {
+      "basename": "tight_open_breakout_long.md",
+      "basename_collision": false,
+      "descriptor": "Buy a first 2-minute RTH breakout when SMA20 and SMA200 are compressed.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/tight_open_breakout_long.md"
+    },
+    {
+      "basename": "tight_open_breakout_orderflow_confirmed.md",
+      "basename_collision": false,
+      "descriptor": "Use footprint delta and imbalance confirmation as a filter on tight-state opening breakouts.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/tight_open_breakout_orderflow_confirmed.md"
+    },
+    {
+      "basename": "tight_open_breakout_short.md",
+      "basename_collision": false,
+      "descriptor": "Short a first 2-minute RTH breakdown when SMA20 and SMA200 are compressed.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/tight_open_breakout_short.md"
+    },
+    {
+      "basename": "tight_opening_window_breakout_long.md",
+      "basename_collision": false,
+      "descriptor": "Buy tight-state continuation triggers across the first RTH hour instead of only bar one.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/tight_opening_window_breakout_long.md"
+    },
+    {
+      "basename": "tight_opening_window_breakout_short.md",
+      "basename_collision": false,
+      "descriptor": "Short tight-state continuation triggers across the first RTH hour instead of only bar one.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/tight_opening_window_breakout_short.md"
+    },
+    {
+      "basename": "tight_problem_bar_removal_long.md",
+      "basename_collision": false,
+      "descriptor": "Delay a long continuation entry until a wrong-color first bar is removed.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/tight_problem_bar_removal_long.md"
+    },
+    {
+      "basename": "tight_problem_bar_removal_short.md",
+      "basename_collision": false,
+      "descriptor": "Delay a short continuation entry until a wrong-color first bar is removed.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/tight_problem_bar_removal_short.md"
+    },
+    {
+      "basename": "true_zone_liquidity_sweep_reference.md",
+      "basename_collision": false,
+      "descriptor": "Reference note for zone quality, stop sweeps, reclaim, and volume-confirmed reversal logic.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/true_zone_liquidity_sweep_reference.md"
+    },
+    {
+      "basename": "variant_1_lifecycle.md",
+      "basename_collision": false,
+      "descriptor": "First nb_lib-native noise-band breakout at 9:36 ET; same signal logic as noise_brk Canonical Alpha",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/variant_1_lifecycle.md"
+    },
+    {
+      "basename": "vwap_acceptance_first_pullback_base_hit.md",
+      "basename_collision": false,
+      "descriptor": "Trade the first accepted VWAP pullback after a morning drive, targeting a return to the impulse extreme.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/vwap_acceptance_first_pullback_base_hit.md"
+    },
+    {
+      "basename": "vwap_band_acceptance_regime.md",
+      "basename_collision": false,
+      "descriptor": "Continue only when price accepts outside a VWAP band in a trending volatility regime.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/vwap_band_acceptance_regime.md"
+    },
+    {
+      "basename": "vwap_stretch_reclaim_mean_reversion_screen.md",
+      "basename_collision": false,
+      "descriptor": "Mean-reversion only after a VWAP stretch fails and closes back inside the band.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/vwap_stretch_reclaim_mean_reversion_screen.md"
+    },
+    {
+      "basename": "vwap_stretch_snapback.md",
+      "basename_collision": false,
+      "descriptor": "Fade statistically stretched moves back toward intraday fair value.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/vwap_stretch_snapback.md"
+    },
+    {
+      "basename": "vwap_zscore_mean_reversion_fade.md",
+      "basename_collision": false,
+      "descriptor": "Fade 2-sigma session VWAP stretches on non-trend RTH days, targeting a snapback to VWAP.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/vwap_zscore_mean_reversion_fade.md"
+    },
+    {
+      "basename": "wide_opening_window_reversal_long.md",
+      "basename_collision": false,
+      "descriptor": "Fade downside-wide first-hour bullish triggers back toward the SMA cluster.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/wide_opening_window_reversal_long.md"
+    },
+    {
+      "basename": "wide_opening_window_reversal_short.md",
+      "basename_collision": false,
+      "descriptor": "Fade upside-wide first-hour bearish triggers back toward the SMA cluster.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/wide_opening_window_reversal_short.md"
+    },
+    {
+      "basename": "wide_reversal_long.md",
+      "basename_collision": false,
+      "descriptor": "Fade a downside wide-state opening trigger back toward the moving-average cluster.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/wide_reversal_long.md"
+    },
+    {
+      "basename": "wide_reversal_short.md",
+      "basename_collision": false,
+      "descriptor": "Fade an upside wide-state opening trigger back toward the moving-average cluster.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/wide_reversal_short.md"
+    },
+    {
+      "basename": "wide_state_absorption_reversal.md",
+      "basename_collision": false,
+      "descriptor": "Fade wide-state extensions when large one-sided delta produces little price progress.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/wide_state_absorption_reversal.md"
+    },
+    {
+      "basename": "wide_state_bvc_proxy_divergence_reversal.md",
+      "basename_collision": false,
+      "descriptor": "Cheap proxy test for wide-state order-flow divergence using OHLCV-derived BVC delta.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/wide_state_bvc_proxy_divergence_reversal.md"
+    },
+    {
+      "basename": "wide_state_delta_divergence_reversal.md",
+      "basename_collision": false,
+      "descriptor": "Fade wide-state extensions when price makes a new extreme without confirming delta.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/wide_state_delta_divergence_reversal.md"
+    },
+    {
+      "basename": "atr_regime_pullback_continuation.md",
+      "basename_collision": true,
+      "descriptor": "ATR Regime Pullback Continuation Canonical Alpha \u2014 Strategy Specification (FINAL)",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/canonical/atr_regime_pullback_continuation.md"
+    },
+    {
+      "basename": "atr_regime_pullback_tight_target.md",
+      "basename_collision": true,
+      "descriptor": "ATR Regime Pullback Tight-Target Canonical Alpha \u2014 Strategy Specification (FINAL)",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/canonical/atr_regime_pullback_tight_target.md"
+    },
+    {
+      "basename": "g2_canonical_alpha.md",
+      "basename_collision": false,
+      "descriptor": "G2 Canonical Alpha - Strategy Specification (FINAL bridge)",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/canonical/g2_canonical_alpha.md"
+    },
+    {
+      "basename": "momentum_high_water_trail_post_1030_spec_FINAL.md",
+      "basename_collision": false,
+      "descriptor": "Momentum High-Water Trail Past 10:30 \u2014 Canonical Strategy Specification (FINAL)",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/canonical/momentum_high_water_trail_post_1030_spec_FINAL.md"
+    },
+    {
+      "basename": "needle_drop_v2_spec_FINAL.md",
+      "basename_collision": false,
+      "descriptor": "Needle Drop V2 - Canonical Strategy Specification (FINAL)",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/canonical/needle_drop_v2_spec_FINAL.md"
+    },
+    {
+      "basename": "objective_level_liquidity_sweep_reversal_family_spec_FINAL.md",
+      "basename_collision": false,
+      "descriptor": "Objective-Level Liquidity Sweep Reversal Family FINAL Spec",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/canonical/objective_level_liquidity_sweep_reversal_family_spec_FINAL.md"
+    },
+    {
+      "basename": "opening_range_failure_continuation_long_spec_FINAL.md",
+      "basename_collision": false,
+      "descriptor": "Opening Range Failure Continuation Long FINAL Spec",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/canonical/opening_range_failure_continuation_long_spec_FINAL.md"
+    },
+    {
+      "basename": "opening_range_response_tree_spec_FINAL.md",
+      "basename_collision": false,
+      "descriptor": "Opening Range Response Tree FINAL Spec",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/canonical/opening_range_response_tree_spec_FINAL.md"
+    },
+    {
+      "basename": "opening_range_width_switch_spec_FINAL.md",
+      "basename_collision": false,
+      "descriptor": "Opening Range Width Switch \u2014 Canonical Strategy Specification (FINAL)",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/canonical/opening_range_width_switch_spec_FINAL.md"
+    },
+    {
+      "basename": "prior_day_value_area_rejection_spec_FINAL.md",
+      "basename_collision": false,
+      "descriptor": "Prior Day Value Area Rejection \u2014 Canonical Strategy Specification (FINAL)",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/canonical/prior_day_value_area_rejection_spec_FINAL.md"
+    },
+    {
+      "basename": "round_number_rejection_microfade_spec_FINAL.md",
+      "basename_collision": false,
+      "descriptor": "Round Number Rejection Microfade \u2014 Canonical Strategy Specification (FINAL)",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/canonical/round_number_rejection_microfade_spec_FINAL.md"
+    },
+    {
+      "basename": "savor_wilson_v2a_canonical_alpha.md",
+      "basename_collision": false,
+      "descriptor": "Savor-Wilson v2a Canonical Alpha - Strategy Specification (FINAL bridge)",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/canonical/savor_wilson_v2a_canonical_alpha.md"
+    },
+    {
+      "basename": "vwap_stretch_snapback_spec_FINAL.md",
+      "basename_collision": false,
+      "descriptor": "VWAP Stretch Snapback Canonical Alpha \u2014 Strategy Specification (FINAL)",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/canonical/vwap_stretch_snapback_spec_FINAL.md"
+    },
+    {
+      "basename": "wide_state_bvc_proxy_divergence_reversal_spec_FINAL.md",
+      "basename_collision": false,
+      "descriptor": "Wide-State BVC-Proxy Divergence Reversal FINAL Spec",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/canonical/wide_state_bvc_proxy_divergence_reversal_spec_FINAL.md"
+    },
+    {
+      "basename": "README.md",
+      "basename_collision": true,
+      "descriptor": "Composition Nodes",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/composition_nodes/README.md"
+    },
+    {
+      "basename": "_CANDIDATE_SUPPORT_STACK.md",
+      "basename_collision": false,
+      "descriptor": "Candidate Support Stack",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/composition_nodes/_CANDIDATE_SUPPORT_STACK.md"
+    },
+    {
+      "basename": "intraday_target_invalidation_packet.md",
+      "basename_collision": false,
+      "descriptor": "Pre-entry and in-trade reward geometry packet: where is the next target, where is the invalidation, and is the trade worth carrying?",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/composition_nodes/intraday_target_invalidation_packet.md"
+    },
+    {
+      "basename": "liquidity_zone_prior_router.md",
+      "basename_collision": false,
+      "descriptor": "Objective OHLCV-derived liquidity-zone labeling layer for the management observer: where price sits relative to likely resting-order pool...",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/composition_nodes/liquidity_zone_prior_router.md"
+    },
+    {
+      "basename": "markov_daily_regime_router.md",
+      "basename_collision": false,
+      "descriptor": "Daily bull/bear/sideways regime classifier that gates and sizes intraday strategies. Not an entry strategy.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/composition_nodes/markov_daily_regime_router.md"
+    },
+    {
+      "basename": "mnq_directional_bias_atlas.md",
+      "basename_collision": false,
+      "descriptor": "MNQ Directional Bias Atlas",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/composition_nodes/mnq_directional_bias_atlas.md"
+    },
+    {
+      "basename": "opening_momentum_acceptance_router.md",
+      "basename_collision": false,
+      "descriptor": "Classify whether early RTH momentum is being accepted or rejected, then use that state to gate or manage existing trade producers.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/composition_nodes/opening_momentum_acceptance_router.md"
+    },
+    {
+      "basename": "opening_range_rejection_state_router.md",
+      "basename_collision": false,
+      "descriptor": "Use robust opening-range failed-break/reversion behavior as a state gate for existing trade producers.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/composition_nodes/opening_range_rejection_state_router.md"
+    },
+    {
+      "basename": "realized_volatility_management_router.md",
+      "basename_collision": false,
+      "descriptor": "Condition stop, target, breakeven, trail, and sizing behavior on causal realized-volatility regime.",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/composition_nodes/realized_volatility_management_router.md"
+    },
+    {
+      "basename": "README.md",
+      "basename_collision": true,
+      "descriptor": "Source Artifacts",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/source_artifacts/README.md"
+    },
+    {
+      "basename": "RESEARCH_dependency_catalog_and_bootstrap_installer_20260629.md",
+      "basename_collision": false,
+      "descriptor": "Building a Maintainable Dependency Wiki and Windows Bootstrap Installer for a Multi-Agent Markdown Vault",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/source_artifacts/RESEARCH_dependency_catalog_and_bootstrap_installer_20260629.md"
+    },
+    {
+      "basename": "compass_carr_lopez_de_prado_reference_list_20260621.md",
+      "basename_collision": false,
+      "descriptor": "Reference List: Carr\u2013L\u00f3pez de Prado \"Optimal Trading Rules Without Backtesting\" and Supporting Works",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/source_artifacts/compass_carr_lopez_de_prado_reference_list_20260621.md"
+    },
+    {
+      "basename": "compass_five_frequency_adequate_mnq_candidates_20260621.md",
+      "basename_collision": false,
+      "descriptor": ".md file in _HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/source_artifacts",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/source_artifacts/compass_five_frequency_adequate_mnq_candidates_20260621.md"
+    },
+    {
+      "basename": "compass_formula_level_menu_intraday_mnq_momentum_20260621.md",
+      "basename_collision": false,
+      "descriptor": "A Formula-Level Menu of Mathematical Tools for Intraday MNQ Momentum Research",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/source_artifacts/compass_formula_level_menu_intraday_mnq_momentum_20260621.md"
+    },
+    {
+      "basename": "compass_futures_prop_firm_deployment_let_it_breathe_20260622.md",
+      "basename_collision": false,
+      "descriptor": "Futures Prop Firm Deployment Guide: MNQ \"Let-It-Breathe\" Strategy (June 2026 Snapshot)",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/source_artifacts/compass_futures_prop_firm_deployment_let_it_breathe_20260622.md"
+    },
+    {
+      "basename": "compass_intraday_trend_continuation_mnq_candidate_menu_20260622.md",
+      "basename_collision": false,
+      "descriptor": "Intraday Trend-Continuation Strategies for MNQ on 5/10/30-Minute Bars: A Buildable, Empirically-Grounded Candidate Menu",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/source_artifacts/compass_intraday_trend_continuation_mnq_candidate_menu_20260622.md"
+    },
+    {
+      "basename": "compass_market_intraday_momentum_mnq_candidate_20260622.md",
+      "basename_collision": false,
+      "descriptor": ".md file in _HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/source_artifacts",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/source_artifacts/compass_market_intraday_momentum_mnq_candidate_20260622.md"
+    },
+    {
+      "basename": "compass_mechanism_class_screening_protocol_20260621.md",
+      "basename_collision": false,
+      "descriptor": "Mechanism-Class Screening Protocol For Intraday Futures Strategies",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/source_artifacts/compass_mechanism_class_screening_protocol_20260621.md"
+    },
+    {
+      "basename": "compass_no_target_no_trade_targetability_gate_mnq_20260622.md",
+      "basename_collision": false,
+      "descriptor": "The \"No Target, No Trade\" Gate: A Look-Ahead-Free Targetability Filter for MNQ Intraday",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/source_artifacts/compass_no_target_no_trade_targetability_gate_mnq_20260622.md"
+    },
+    {
+      "basename": "compass_order_flow_microstructure_nq_mnq_20260622.md",
+      "basename_collision": false,
+      "descriptor": "Order-Flow And Microstructure Intraday Signals For NQ/MNQ",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/source_artifacts/compass_order_flow_microstructure_nq_mnq_20260622.md"
+    },
+    {
+      "basename": "compass_overnight_intraday_directional_bias_mnq_20260628.md",
+      "basename_collision": false,
+      "descriptor": "Under-Explored, Evidence-Grounded Sources of Intraday Daily Directional Bias for MNQ/NQ",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/source_artifacts/compass_overnight_intraday_directional_bias_mnq_20260628.md"
+    },
+    {
+      "basename": "external_meanrev_video_intake_20260630.md",
+      "basename_collision": false,
+      "descriptor": "External Mean-Reversion Backtest Video \u2014 Intake Note",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/source_artifacts/external_meanrev_video_intake_20260630.md"
+    },
+    {
+      "basename": "opus_directional_bias_atlas_guardrails_20260623.md",
+      "basename_collision": false,
+      "descriptor": "Directional Bias Atlas Guardrails",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/source_artifacts/opus_directional_bias_atlas_guardrails_20260623.md"
+    },
+    {
+      "basename": "sneaky_pivot_transcript_20260630.md",
+      "basename_collision": false,
+      "descriptor": ".md file in _HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/source_artifacts",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/source_artifacts/sneaky_pivot_transcript_20260630.md"
+    },
+    {
+      "basename": "ninja-traitorate-methodology-reference.md",
+      "basename_collision": true,
+      "descriptor": "Ninja Traitorate \u2014 Methodology Reference",
+      "extension": ".md",
+      "path": "_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/ninja-traitorate-methodology-reference.md"
+    },
+    {
+      "basename": "_PROJECT_ALTITUDE_MAP.md",
+      "basename_collision": true,
       "descriptor": "Project Altitude Map",
       "extension": ".md",
       "path": "_PROJECT_ALTITUDE_MAP.md"
     },
     {
       "basename": "ninja-traitorate-methodology-reference.md",
-      "basename_collision": false,
+      "basename_collision": true,
       "descriptor": "Ninja Traitorate \u2014 Methodology Reference",
       "extension": ".md",
       "path": "ninja-traitorate-methodology-reference.md"
@@ -156,7 +1156,7 @@
       "path": "tools/wiki_deriver/link_reference_checker.py"
     }
   ],
-  "entry_count": 21,
+  "entry_count": 160,
   "schema_version": 1,
   "tool": "tools/wiki_deriver/build_vault_index.py"
 }
