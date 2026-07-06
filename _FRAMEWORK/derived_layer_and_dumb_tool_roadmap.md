@@ -378,7 +378,7 @@ fixing-with-judgment is the housekeeping agent's job (last entry).
 12. **Windows bootstrap installer (5.3)** -- after the manifest and offline
     bundle exist.
 
-*Candidates 3.4a / 3.5a / 3.5b / 3.8 / 3.9 are deferred with their parents
+*Candidates 3.4a / 3.5a / 3.5b / 3.9 are deferred with their parents
 or explicit triggers and build only when their drift/scope conditions recur.*
 
 ## 5. Environment reconstitution -- dependency catalog & bootstrap installer

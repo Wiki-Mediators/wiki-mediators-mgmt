@@ -356,13 +356,12 @@
     ]
   },
   "staged_summary": {
-    "total_files": 170,
+    "total_files": 31,
     "by_directory": {
       "(root)": 3,
       "_DERIVED": 2,
       "_DIMENSIONS": 3,
       "_FRAMEWORK": 11,
-      "_HANDOFFS": 139,
       "_worker_reports": 2,
       "nb_lib": 3,
       "tools": 7

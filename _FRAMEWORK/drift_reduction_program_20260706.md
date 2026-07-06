@@ -57,8 +57,9 @@ observed failure or observed near-miss; nothing is speculative.
    citing") is a human-attention patch — exactly the kind of rule the
    architecture says should not exist where a tool could do the job.
 3. **Stale derived views.** Digest/index/management-mirror are only as
-   fresh as their last run. Already named on the roadmap (3.8 staleness
-   signal, deferred) and as the cross-vault bridge-run gap.
+   fresh as their last run. Already named on the roadmap as built
+   (`_FRAMEWORK/derived_layer_and_dumb_tool_roadmap.md` §3.8, as of
+   2026-07-06) and as the cross-vault bridge-run gap.
 4. **Prose restating structure.** Narrative files (altitude map, READMEs)
    repeat statuses and numbers that also live in spec frontmatter. The
    narration is valuable; the bare copy is the drift seed.
@@ -131,10 +132,11 @@ is a real boundary).
 
 ## 5. Explicitly NOT actioned (and why)
 
-- **3.8 staleness stamp:** stays booked. Today's evidence is consistent
-  with its rationale but no new failure occurred; promoting it now would
-  be tidiness, not measurement. Revisit when a stale derived view causes
-  an actual wrong decision.
+- **3.8 staleness signal:** already built as
+  `tools/wiki_deriver/derived_staleness_signal.py`
+  (`_FRAMEWORK/derived_layer_and_dumb_tool_roadmap.md` §3.8, as of
+  2026-07-06). It flags stale `_DERIVED/` artifacts and never regenerates
+  or fixes them.
 - **3.5 convention linter:** stays deferred. Frontmatter-vs-body
   divergence has produced no observed failure yet.
 - **A quote-staleness checker:** deliberately unbooked (see §3). Rule A
@@ -151,3 +153,4 @@ is a real boundary).
 | Date | Status | Notes |
 |---|---|---|
 | 2026-07-06 | banked-program-note | Created from operator direction to keep working drift down. Banks Rules A/B into the writer contract; amends roadmap 3.2 with the README-table projection and records its trigger as FIRED citing the two 2026-07-06 dual-update events; explicitly declines to promote 3.8/3.5 or book a quote-checker absent observed failures. |
+| 2026-07-06 | correction | Corrected the 3.8 status copy: derived-staleness is built per `_FRAMEWORK/derived_layer_and_dumb_tool_roadmap.md` §3.8 (as of 2026-07-06), and `tools/wiki_deriver/derived_staleness_signal.py` exists and runs. |
