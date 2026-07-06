@@ -125,6 +125,11 @@
         "id": "3.9",
         "name": "Statistical substrate + legible shutter",
         "status": "BOOKED CANDIDATE (trigger not fired)"
+      },
+      {
+        "id": "3.10",
+        "name": "Newsroom wiki architecture candidate",
+        "status": "BOOKED CANDIDATE (trigger not fired)"
       }
     ]
   },

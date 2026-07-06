@@ -55,6 +55,14 @@ itself.
   Extracts and scratch go in `codex_tmp/` (untracked), never as new
   tracked vault files.
 
+## Layer 1 writer conventions
+
+- Quantitative claims copied from source artifacts need an anchor: source
+  path, section if useful, and as-of date.
+- Point to statuses/verdicts/numbers instead of restating them; if prose
+  must restate one, anchor it. Structured fields and report headers are
+  the source; prose is a projection.
+
 ## Runtime / Environment
 
 Before any DBN load, bridge replay, or data-load test, verify the real

@@ -65,6 +65,11 @@
       "status": "BOOKED CANDIDATE (trigger not fired)"
     },
     {
+      "id": "3.10",
+      "name": "Newsroom wiki architecture candidate",
+      "status": "BOOKED CANDIDATE (trigger not fired)"
+    },
+    {
       "id": "5.1",
       "name": "Dependency manifest + catalog renderer",
       "status": "NOT BUILT (next)"
@@ -141,12 +146,20 @@
       "title": "Derived-Layer & Dumb-Tool Roadmap (Layers 3\u20134 + the tooling)"
     },
     {
+      "path": "_FRAMEWORK/drift_reduction_program_20260706.md",
+      "title": "Drift Reduction Program \u2014 Observed Species and the Computed-Copy Rule"
+    },
+    {
       "path": "_FRAMEWORK/LAYER_ARCHITECTURE.md",
       "title": "Wiki Infrastructure \u2014 Layer Architecture"
     },
     {
       "path": "_FRAMEWORK/MANAGEMENT_PIPELINE.md",
       "title": "Management Pipeline"
+    },
+    {
+      "path": "_FRAMEWORK/newsroom_wiki_architecture_candidate_20260706.md",
+      "title": "Newsroom Wiki \u2014 Architecture Candidate"
     },
     {
       "path": "_FRAMEWORK/OPERATIONS.md",
@@ -296,6 +309,11 @@
           "id": "3.9",
           "name": "Statistical substrate + legible shutter",
           "status": "BOOKED CANDIDATE (trigger not fired)"
+        },
+        {
+          "id": "3.10",
+          "name": "Newsroom wiki architecture candidate",
+          "status": "BOOKED CANDIDATE (trigger not fired)"
         }
       ]
     },
@@ -338,14 +356,15 @@
     ]
   },
   "staged_summary": {
-    "total_files": 164,
+    "total_files": 170,
     "by_directory": {
       "(root)": 3,
       "_DERIVED": 2,
       "_DIMENSIONS": 3,
-      "_FRAMEWORK": 9,
+      "_FRAMEWORK": 11,
       "_HANDOFFS": 139,
-      "_worker_reports": 1,
+      "_worker_reports": 2,
+      "nb_lib": 3,
       "tools": 7
     }
   }

@@ -26,6 +26,7 @@ Deterministically generated from the staged management tree by `tools/management
 | 3.7 | Housekeeping agent | DEFER (needs the dumb tools to have run first) |
 | 3.8 | Derived-staleness "needs regen" signal | BUILT |
 | 3.9 | Statistical substrate + legible shutter | BOOKED CANDIDATE (trigger not fired) |
+| 3.10 | Newsroom wiki architecture candidate | BOOKED CANDIDATE (trigger not fired) |
 | 5.1 | Dependency manifest + catalog renderer | NOT BUILT (next) |
 | 5.2 | Offline bundle + Python pinning | NOT BUILT (gated behind 5.1) |
 | 5.3 | Windows bootstrap installer | NOT BUILT (gated behind 5.1, 5.2) |
@@ -63,15 +64,17 @@ Derived from roadmap statuses and tool-file presence.
 | staged | 1 |
 | not_built | 14 |
 | deferred | 4 |
-| unstated | 1 |
+| unstated | 2 |
 
 ## Framework notes (titles parsed from staged tree)
 
 | path | title |
 |---|---|
 | `_FRAMEWORK/derived_layer_and_dumb_tool_roadmap.md` | Derived-Layer & Dumb-Tool Roadmap (Layers 3–4 + the tooling) |
+| `_FRAMEWORK/drift_reduction_program_20260706.md` | Drift Reduction Program — Observed Species and the Computed-Copy Rule |
 | `_FRAMEWORK/LAYER_ARCHITECTURE.md` | Wiki Infrastructure — Layer Architecture |
 | `_FRAMEWORK/MANAGEMENT_PIPELINE.md` | Management Pipeline |
+| `_FRAMEWORK/newsroom_wiki_architecture_candidate_20260706.md` | Newsroom Wiki — Architecture Candidate |
 | `_FRAMEWORK/OPERATIONS.md` | Operational Notes - How This Project Works (cross-agent) |
 | `_FRAMEWORK/PATTERNS.md` | Research-With-Agents Framework Patterns |
 | `_FRAMEWORK/two_vault_architecture_prebuild_plan.md` | Two-Vault Architecture — Pre-Build Plan |
@@ -80,15 +83,16 @@ Derived from roadmap statuses and tool-file presence.
 
 ## Staged summary
 
-- total_files: **164**
+- total_files: **170**
 
 | directory | files |
 |---|---:|
 | `(root)` | 3 |
 | `_DERIVED` | 2 |
 | `_DIMENSIONS` | 3 |
-| `_FRAMEWORK` | 9 |
+| `_FRAMEWORK` | 11 |
 | `_HANDOFFS` | 139 |
-| `_worker_reports` | 1 |
+| `_worker_reports` | 2 |
+| `nb_lib` | 3 |
 | `tools` | 7 |
 

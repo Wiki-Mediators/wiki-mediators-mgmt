@@ -64,4 +64,5 @@ Deterministically generated from roadmap statuses and tool-file presence. No han
 | id | name | status |
 |---|---|---|
 | 3.9 | Statistical substrate + legible shutter | BOOKED CANDIDATE (trigger not fired) |
+| 3.10 | Newsroom wiki architecture candidate | BOOKED CANDIDATE (trigger not fired) |
 

@@ -97,6 +97,12 @@ fixing-with-judgment is the housekeeping agent's job (last entry).
   open-threads, recent-findings-index, artifact-index) and Git-history
   signals (per-note churn, recency, temporal-coupling clusters, backlink
   centrality).
+- **Job addition (2026-07-06 drift-reduction trigger):** generate the
+  status tables currently hand-maintained in README files. First target:
+  the composition-nodes README table, a pure projection of node specs'
+  frontmatter plus one-line descriptions. The README keeps its prose; the
+  table body becomes generated output, or the README points at the
+  derived table. The hand-typed duplicate row dies either way.
 - **Why it earns its place:** it replaces hand-maintained lists (which drift)
   with computed-from-source views (which can't). It surfaces structure a
   human would otherwise miss — what's load-bearing, what's stale, what
@@ -116,6 +122,13 @@ fixing-with-judgment is the housekeeping agent's job (last entry).
   (coupling needs the 5-shared-revisions minimum). So build the content
   views now if wanted; defer the churn/coupling signals until commit history
   is deep enough.
+- **Table-projection trigger — fired, recorded only:** 2026-07-06 produced
+  two dual-update events in one session: regime-attribution-panel
+  completion required updating both the spec frontmatter and the
+  composition-nodes README row; newsroom-candidate booking required both
+  the candidate note and a roadmap pointer. This records the measured
+  drift seed for a future 3.2 content-view build; it does not build the
+  deriver extension.
 - **Status:** staged. The first lookup slice is built: the vault index
   (`tools/wiki_deriver/build_vault_index.py`, `_DERIVED/vault_index.json`,
   `_DERIVED/vault_index.md`) landed as TASK_018. The broader content-derived
@@ -326,6 +339,14 @@ fixing-with-judgment is the housekeeping agent's job (last entry).
   lexical/index failure has not been measured, and no cross-domain mixing
   failure has recurred.
 - **Status:** booked candidate, trigger not fired. Do not build yet.
+
+### 3.10 Newsroom wiki architecture candidate -- BOOKED CANDIDATE (trigger not fired)
+- **Pointer:** `_FRAMEWORK/newsroom_wiki_architecture_candidate_20260706.md`
+  books a candidate architecture pattern: current spine plus structural
+  provenance in Layer 1 and a future derived, scoped, decaying trust ledger
+  over external sources. It is not a replacement architecture and not a
+  build authorization; run only the candidate's own source-volume /
+  trust-event screen when its trigger fires.
 
 ## 4. Build order (the honest sequence)
 

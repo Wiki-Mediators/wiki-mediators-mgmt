@@ -104,6 +104,18 @@ ready for manual replay / trade CSV inspection and 1m/5m/30m snapshots;
 many source DBN segments are cold. Longer findings are in
 `_worker_reports/TOOL_INVENTORY_2026-07-02.md`.
 
+**Handoff cold-review housekeeping (2026-07-06):** an external-model
+review of the candidate snapshot flagged a useful tension in this map:
+generic management-as-return-source is closed for the existing MNQ family
+panel by the O-U characterization, while management remains open as
+substrate-conditional geometry, variance/tail shaping, and deployment
+containment. It also promoted the old scratch-file "fourth hypothesis" to
+a named composition-node spec:
+`nb_lib/strategy_specs/composition_nodes/regime_attribution_panel.md`.
+That node asks whether some graveyard candidates were tested
+unconditionally in regimes where they should have been routed. Status:
+booked diagnostic, not evidence and not a resurrection pass.
+
 ## 2. Current Fronts
 
 ### Front A: Deployment / Fleet Reality
@@ -419,7 +431,10 @@ Reference:
 After reading the bootstrap files, read this map to understand the
 current altitude:
 
-1. Management structure is now the main research axis.
+1. Management structure remains a main research axis for geometry,
+   variance/tail shaping, and deployment containment; generic
+   management-as-return-source is closed for the current MNQ family
+   panel unless a fresh family-specific pre-commitment reopens it.
 2. The viable current replay substrate is `G2 3c + v2a 15c`, not the
    old PRJ_3/G2/v2a fleet.
 3. Poor-entry triage is validated as observation, not as an action.

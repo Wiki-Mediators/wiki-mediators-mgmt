@@ -4,7 +4,7 @@ Deterministic all-file index generated from `_DERIVED/vault_index.json`.
 
 ## Summary
 
-- Entries: 160
+- Entries: 166
 - Basename collisions: 6
 
 ## Counts By Extension
@@ -12,7 +12,7 @@ Deterministic all-file index generated from `_DERIVED/vault_index.json`.
 | Extension | Count |
 |---|---:|
 | `.json` | 1 |
-| `.md` | 155 |
+| `.md` | 161 |
 | `.py` | 4 |
 
 ## Basename Collisions
@@ -20,7 +20,7 @@ Deterministic all-file index generated from `_DERIVED/vault_index.json`.
 | Basename | Count | Paths |
 |---|---:|---|
 | `AGENTS.md` | 2 | `AGENTS.md`<br>`_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/AGENTS.md` |
-| `README.md` | 4 | `_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/README.md`<br>`_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/README.md`<br>`_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/composition_nodes/README.md`<br>`_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/source_artifacts/README.md` |
+| `README.md` | 5 | `_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/README.md`<br>`_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/README.md`<br>`_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/composition_nodes/README.md`<br>`_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/source_artifacts/README.md`<br>`nb_lib/strategy_specs/composition_nodes/README.md` |
 | `_PROJECT_ALTITUDE_MAP.md` | 2 | `_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/_PROJECT_ALTITUDE_MAP.md`<br>`_PROJECT_ALTITUDE_MAP.md` |
 | `atr_regime_pullback_continuation.md` | 2 | `_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/atr_regime_pullback_continuation.md`<br>`_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/canonical/atr_regime_pullback_continuation.md` |
 | `atr_regime_pullback_tight_target.md` | 2 | `_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/candidates/atr_regime_pullback_tight_target.md`<br>`_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/canonical/atr_regime_pullback_tight_target.md` |
@@ -39,6 +39,8 @@ Deterministic all-file index generated from `_DERIVED/vault_index.json`.
 | `_FRAMEWORK/OPERATIONS.md` | `OPERATIONS.md` | `.md` | false | Operational Notes - How This Project Works (cross-agent) |
 | `_FRAMEWORK/PATTERNS.md` | `PATTERNS.md` | `.md` | false | Research-With-Agents Framework Patterns |
 | `_FRAMEWORK/derived_layer_and_dumb_tool_roadmap.md` | `derived_layer_and_dumb_tool_roadmap.md` | `.md` | false | Derived-Layer & Dumb-Tool Roadmap (Layers 3–4 + the tooling) |
+| `_FRAMEWORK/drift_reduction_program_20260706.md` | `drift_reduction_program_20260706.md` | `.md` | false | Drift Reduction Program — Observed Species and the Computed-Copy Rule |
+| `_FRAMEWORK/newsroom_wiki_architecture_candidate_20260706.md` | `newsroom_wiki_architecture_candidate_20260706.md` | `.md` | false | Newsroom Wiki — Architecture Candidate |
 | `_FRAMEWORK/two_vault_architecture_prebuild_plan.md` | `two_vault_architecture_prebuild_plan.md` | `.md` | false | Two-Vault Architecture — Pre-Build Plan |
 | `_FRAMEWORK/wiki_architecture_current_future_visual_note_20260628.md` | `wiki_architecture_current_future_visual_note_20260628.md` | `.md` | false | Wiki Architecture Current/Future Visual Note |
 | `_FRAMEWORK/wiki_architecture_flow.md` | `wiki_architecture_flow.md` | `.md` | false | Wiki Architecture Flow Map |
@@ -182,6 +184,10 @@ Deterministic all-file index generated from `_DERIVED/vault_index.json`.
 | `_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/source_artifacts/sneaky_pivot_transcript_20260630.md` | `sneaky_pivot_transcript_20260630.md` | `.md` | false | .md file in _HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/nb_lib/strategy_specs/source_artifacts |
 | `_HANDOFFS/model_candidate_context_snapshot_20260706_github_safe/ninja-traitorate-methodology-reference.md` | `ninja-traitorate-methodology-reference.md` | `.md` | true | Ninja Traitorate — Methodology Reference |
 | `_PROJECT_ALTITUDE_MAP.md` | `_PROJECT_ALTITUDE_MAP.md` | `.md` | true | Project Altitude Map |
+| `_worker_reports/TASK_regime_attribution_panel_20260706.md` | `TASK_regime_attribution_panel_20260706.md` | `.md` | false | TASK — Implement and Run the Regime Attribution Panel |
+| `nb_lib/probe_results/regime_attribution_panel_report.md` | `regime_attribution_panel_report.md` | `.md` | false | Regime Attribution Panel Report |
+| `nb_lib/strategy_specs/composition_nodes/README.md` | `README.md` | `.md` | true | Composition Nodes |
+| `nb_lib/strategy_specs/composition_nodes/regime_attribution_panel.md` | `regime_attribution_panel.md` | `.md` | false | Retroactively tag closed candidate trades by causal day-state to test whether failed strategies were tested unconditionally in regimes wh... |
 | `ninja-traitorate-methodology-reference.md` | `ninja-traitorate-methodology-reference.md` | `.md` | true | Ninja Traitorate — Methodology Reference |
 | `tools/mnq_replay_viewer/BUILD_ROADMAP.md` | `BUILD_ROADMAP.md` | `.md` | false | MNQ Replay Viewer - Build Roadmap |
 | `tools/mnq_replay_viewer/STRATEGY_OVERLAY_ADAPTER_SPEC.md` | `STRATEGY_OVERLAY_ADAPTER_SPEC.md` | `.md` | false | MNQ Replay Viewer - Strategy Overlay Adapter Spec |
