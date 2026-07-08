@@ -270,7 +270,7 @@ fixing-with-judgment is the housekeeping agent's job (last entry).
   It writes `_DERIVED/derived_staleness.md` and `.json`, exits non-zero when
   stale artifacts are flagged, and never regenerates or fixes anything.
 
-### 3.9 Statistical substrate + legible shutter -- BOOKED CANDIDATE (trigger not fired)
+### 3.9 Statistical substrate + legible shutter -- BOOKED CANDIDATE (trigger evidence measured)
 - **Job:** book, but do not yet build, a future computed-relationship
   substrate plus a visibility lens. The statistical substrate computes
   relationships over vault files (similarity, near-duplicates,
@@ -312,6 +312,109 @@ fixing-with-judgment is the housekeeping agent's job (last entry).
 - **Implementation note:** vector storage such as pgvector is only one
   possible implementation if lexical/indexed retrieval measurably fails.
   The concept is the computed relationship substrate, not a database choice.
+- **Trigger measurement:** lexical/indexed retrieval failure is now
+  machine-checkable via `tools/wiki_deriver/missed_retrieval_detector.py`
+  and `_DERIVED/retrieval_detector.md`. The committed paraphrase query set
+  lives at `tools/wiki_deriver/retrieval_test_queries.json`; threshold:
+  miss rate > 10% on that query set is trigger evidence. The detector
+  reports only; it never fires builds.
+- **Retrieval improvement ladder (booked, not built):** do not jump straight
+  from lexical misses to a model-backed vector store. Treat the committed
+  missed-retrieval query set as the benchmark, and climb only while the
+  measured miss rate remains above the 10% bar. Rung 1 is corpus-derived term
+  co-occurrence: build a deterministic table of meaningful terms and their
+  document/paragraph overlap partners (Jaccard-style Venn intersections) from
+  committed Markdown, then use it for mechanical query expansion. This is the
+  dumbest possible semantic bridge: no model, no judgment, stdlib-compatible,
+  regenerated into `_DERIVED/`, and disposable. Rung 2 is LSA over the
+  term-document matrix: deterministic linear algebra, no neural model, only if
+  co-occurrence under-delivers. Rung 3 is a pinned local embedding model
+  (MiniLM-class or similar) used as a fixed function, with vectors stored in a
+  gitignored disposable cache and lexical fallback when absent. Rung 3 is
+  allowed only after the counting/LSA rungs fail the same detector benchmark,
+  because it adds a model binary/runtime dependency even if it remains
+  non-generative and deterministic.
+- **Rung 1 v1 result (2026-07-08):** built and measured, not shipped. The
+  pinned paragraph/Jaccard co-occurrence expansion worsened the benchmark from
+  9/28 misses (0.321) to 15/28 misses (0.536), recovered no baseline misses,
+  and regressed six baseline hits. The tool remains a probe artifact and is
+  not routed through `AGENTS.md`; ladder advancement returns to the operator
+  before any LSA or embedding work.
+- **Rung 1 v3 result (2026-07-08):** lexical-first retrieval plus
+  co-occurrence recall suggestions plus link-neighbor suggestions improved the
+  benchmark from 9/28 misses (0.321) to 4/28 misses (0.143). It recovered
+  five baseline misses and regressed none. Because the link-neighbor assist
+  was added after the v1 failure diagnosis rather than in the original pinned
+  brief, treat this as a strong ship candidate pending operator approval, not
+  an automatic `AGENTS.md` routing change. The 10% ladder bar is still not
+  cleared.
+- **Rung 1 v4 result (2026-07-08):** adding driverless structural aliases
+  derived only from authored structure (path words, selected frontmatter
+  fields, headings) improved the benchmark to 26/28 hits, 2/28 misses, miss
+  rate 0.071. It cleared the 10% detector bar without hand-authored synonym
+  pairs. Remaining misses: machine migration and regime attribution. Because
+  v4 was developed after inspecting v1/v3 failures, treat it as successful
+  engineering evidence that deserves cold review/research before routing as
+  the default search door.
+- **Rung 1 v4 adoption note (2026-07-08):** operator approved documenting v4
+  for agent use as the current wiki/vault topic-search door. This is not the
+  same as building the full 3.9 statistical substrate or shutter. The tool path
+  is `tools/wiki_deriver/vault_search.py`; docs live at
+  `tools/wiki_deriver/README.md`; recommended flags are
+  `--recall-assist --link-neighbor-assist --structural-assist`. Supplemental
+  confirmation: on a fresh Markdown-only 60-query challenge, v4 hit 57/60
+  (miss rate 0.050), while an `rg` mechanical baseline hit 9/60 (miss rate
+  0.850). A broader `.md/.py/.json` search remains scratch-only and is not the
+  default contract.
+- **Rung 1 v5 build plan (2026-07-08, plan-only):** next build is a
+  config-owned two-lane search door, not another agent convention. The agent
+  supplies only the query. The tool owns: `vault_root`, `periphery_roots`,
+  `deny_roots`, allowed extensions, max file size, lane labels, and a scope
+  receipt. Output must always separate `VAULT` (durable workspace memory) from
+  `PERIPHERY` (read-only intake context, not banked, not canon, not promoted).
+  Promotion/import is a separate explicit tool/action and never a side effect
+  of search. Initial periphery root: `C:\Users\meme\Downloads`; default deny
+  roots include the working vault, management vaults, sync stage, `_HANDOFFS`,
+  `codex_tmp/`, runtime/cache folders, and conversation archive until that
+  larger corpus gets its own mode. Feasibility probes:
+  `codex_tmp/two_lane_search_probe.py` and
+  `codex_tmp/two_lane_search_configured_probe.py`; the configured probe proved
+  the tool can skip a bad periphery root (`C:\VMShare\NT8lab`) with a receipt
+  instead of relying on an agent to remember the rule.
+- **Rung 1 v5 built (2026-07-08):** shipped the config-owned two-lane search
+  as `tools/wiki_deriver/two_lane_search.py`, integrated through
+  `tools/wiki_deriver/vault_search.py --two-lane`, with config at
+  `tools/wiki_deriver/vault_search_config.json` and generated outputs at
+  `_DERIVED/two_lane_search_last.json` / `.md`. Step test: happy path scanned
+  740 vault Markdown docs and 343 Downloads `.md/.txt` periphery docs; bad
+  periphery root `C:\VMShare\NT8lab` was skipped with a scope receipt and zero
+  periphery docs. Periphery remains read-only intake; search never promotes,
+  copies, moves, or imports.
+- **Rung 1 v5.1 acceleration plan (2026-07-08, plan-only):** if v5's Python
+  scan is too slow for broader periphery, build a disposable SQLite FTS5 index.
+  The active bundled Python already has SQLite FTS5 available (verified
+  2026-07-08; SQLite 3.50.4). The index is a cache, not truth: rebuilt from
+  source files, safe to delete, local-only, no service, no installer, stdlib
+  `sqlite3` only. Store lane, root, relative path, absolute path for periphery,
+  extension, mtime, size, and text. Query output still uses the same two lanes
+  and scope receipt. This does not replace v4 structural search; it is the
+  speed layer for the same lane contract.
+- **If fired -- backend options, decided at build time, deliberation banked
+  2026-07-07:** (a) use the existing local pgvector instance already
+  installed/operated for the operator's open-brain project -- lower build
+  cost and mature at scale, but it adds the vault's first running-service
+  dependency and a `needs-machine-setup` migration row; if chosen, isolate
+  via a dedicated schema, and keep the DB plus connection strings inside the
+  local-only boundary, never bridge-eligible; or (b) use a `sqlite-vec`
+  single-file index living gitignored inside the vault -- zero services and
+  clone-is-migration portability, adequate at the current ~4K-file corpus
+  scale. Either way the index is a disposable cache computed from committed
+  source, rebuilt on demand, never a source of truth, and every consumer must
+  degrade to lexical rather than fail when the index is absent. Current
+  architecture preference: default to `sqlite-vec` unless a later build spec
+  proves pgvector is necessary, because clone portability and zero running
+  services match the migration doctrine better than adding a machine-local
+  service dependency.
 - **Safety rule A:** housekeeping does only what statistics cannot. If a
   decision is mechanically derivable, it belongs in the dumb tool. The agent
   only decides irreducible maintenance judgments such as supersede, merge,
@@ -338,7 +441,9 @@ fixing-with-judgment is the housekeeping agent's job (last entry).
   condition (1) more concrete; the corpus is still not deep enough,
   lexical/index failure has not been measured, and no cross-domain mixing
   failure has recurred.
-- **Status:** booked candidate, trigger not fired. Do not build yet.
+- **Status:** booked candidate for the full substrate/shutter; v4 Markdown
+  vault search is documented for agent use, but broader text search, recency
+  reranking, LSA, embeddings, and shutters remain unbuilt.
 
 ### 3.10 Newsroom wiki architecture candidate -- BOOKED CANDIDATE (trigger not fired)
 - **Pointer:** `_FRAMEWORK/newsroom_wiki_architecture_candidate_20260706.md`
@@ -347,6 +452,49 @@ fixing-with-judgment is the housekeeping agent's job (last entry).
   over external sources. It is not a replacement architecture and not a
   build authorization; run only the candidate's own source-volume /
   trust-event screen when its trigger fires.
+
+### 3.11 Source census -- BUILT
+- **Job:** count external source/intake notes and their trust-relevant
+  events, emitting `_DERIVED/source_census.md` and `.json` with n beside
+  every count and `UNSTATED` where frontmatter lacks scope/source fields.
+- **Why it earns its place:** this is the newsroom architecture
+  candidate's §6 screen as a dumb tool. It measures the source-volume /
+  event-count trigger without building the trust ledger.
+- **Status:** built as `tools/wiki_deriver/source_census.py` on
+  2026-07-06. v2 run: 5 distinct external origins, median 0 explicit
+  trust-relevant events/source, screen verdict `DO-NOT-BUILD-YET`.
+
+### 3.12 Trigger watcher -- BUILT
+- **Job:** parse the roadmap and newsroom candidate for booked triggers,
+  classify each as `FIRED`, `NOT-FIRED`, or `NOT-MACHINE-CHECKABLE`, and
+  emit `_DERIVED/trigger_status.md` and `.json`. The watcher reports only;
+  it never fires builds.
+- **Why it earns its place:** a fired trigger in 3.2 was previously noticed
+  only by a cold external review. This removes the "remember to reread the
+  roadmap" tax while preserving operator control over build decisions.
+- **Status:** built as `tools/wiki_deriver/trigger_watcher.py` on
+  2026-07-06. v2 run: 1 fired entry, 2 not-fired entries, and 22
+  not-machine-checkable entries.
+
+### 3.13 Flags aggregator -- BOOKED, NOT BUILT
+- **Job:** merge dumb-tool flag outputs into one
+  `_DERIVED/maintenance_queue.md` view.
+- **Why it earns its place later:** once enough flag emitters exist, a
+  single maintenance queue will make 3.7 housekeeper input legible without
+  turning any tool into a fixer.
+- **Trigger:** a third flag-emitting tool exists, or 3.7's housekeeping
+  trigger nears.
+- **Status:** booked, not built.
+
+### 3.14 External URL-rot checker -- BOOKED, NOT BUILT
+- **Job:** check external URLs referenced by vault notes and flag dead or
+  unstable links without fixing them.
+- **Why it earns its place later:** external source links are weaker than
+  vault paths and can rot outside the Git substrate, but this should wait
+  for enough external URL volume or an observed dead-link failure.
+- **Trigger:** external-URL count grows materially or a dead link causes an
+  observed failure.
+- **Status:** booked, not built.
 
 ## 4. Build order (the honest sequence)
 
@@ -371,15 +519,19 @@ fixing-with-judgment is the housekeeping agent's job (last entry).
 9. **Housekeeping agent (3.7)** — last, once the dumb tools have produced a
    pile of flags worth resolving.
 
-10. **Dependency manifest + catalog renderer (5.1)** -- next concrete
-    environment-reconstitution build.
+10. **Dependency manifest + catalog renderer (5.1)** -- built (TASK_021).
 11. **Offline bundle + Python pinning (5.2)** and **drift detection +
     portability stub (5.4)** -- after the manifest exists.
 12. **Windows bootstrap installer (5.3)** -- after the manifest and offline
     bundle exist.
+13. **Maintenance queue (3.13)** -- after a third flag-emitting tool exists
+    or 3.7's housekeeping trigger nears.
+14. **External URL-rot checker (3.14)** -- when external URL volume grows
+    materially or a dead external link causes an observed failure.
 
-*Candidates 3.4a / 3.5a / 3.5b / 3.9 are deferred with their parents
-or explicit triggers and build only when their drift/scope conditions recur.*
+*Candidates 3.4a / 3.5a / 3.5b / 3.9 / 3.13 / 3.14 are deferred with
+their parents or explicit triggers and build only when their drift/scope
+conditions recur.*
 
 ## 5. Environment reconstitution -- dependency catalog & bootstrap installer
 
@@ -393,7 +545,7 @@ Full detail lives in
 `nb_lib/strategy_specs/source_artifacts/RESEARCH_dependency_catalog_and_bootstrap_installer_20260629.md`
 and `_worker_reports/DEPENDENCY_INVENTORY_20260629_findings.md`.
 
-### 5.1 Dependency manifest + catalog renderer -- NOT BUILT (next)
+### 5.1 Dependency manifest + catalog renderer -- BUILT
 - **Job:** create a machine-readable `dependencies.yaml` as the portable
   truth for dependency name, kind, purpose, version, source, and verify
   command, plus a stdlib `render_catalog.py` that generates human/agent-readable
@@ -405,7 +557,9 @@ and `_worker_reports/DEPENDENCY_INVENTORY_20260629_findings.md`.
 - **Trigger:** met now. The 2026-06-29 inventory provides real input: Git
   2.53.0, Python 3.12.10, NinjaTrader 8.1.6.3, Bookmap 7.5.0, the logger and
   dumb tools as internal dependencies, and archived installers in Downloads.
-- **Status:** not built; this is the next build in this section.
+- **Status:** built as TASK_021. Artifacts: `deps/dependencies.yaml`,
+  `deps/tools/render_catalog.py`, `deps/catalog.md`, and
+  `_worker_reports/TASK_021_dependency_manifest_build_findings.md`.
 
 ### 5.2 Offline bundle + Python pinning -- NOT BUILT (gated behind 5.1)
 - **Job:** move the relevant installers out of the Downloads graveyard into a
@@ -418,7 +572,8 @@ and `_worker_reports/DEPENDENCY_INVENTORY_20260629_findings.md`.
   agent shell, so the design cannot assume a package manager is present; the
   offline bundle is the primary path, not a fallback.
 - **Trigger:** after 5.1's manifest exists to drive what belongs in the bundle.
-- **Status:** not built; gated behind 5.1.
+- **Status:** not built; manifest prerequisite met, no build authorization in
+  this rehearsal.
 
 ### 5.3 Windows bootstrap installer -- NOT BUILT (gated behind 5.1, 5.2)
 - **Job:** build a Windows `bootstrap.ps1` where the user picks a working
@@ -430,6 +585,11 @@ and `_worker_reports/DEPENDENCY_INVENTORY_20260629_findings.md`.
   operational payoff of the whole effort.
 - **Trigger:** after 5.1 (manifest) and 5.2 (bundle) exist for it to read from
   and install from.
+- **Measured trigger evidence:** the 2026-07-07 migration rehearsal needed
+  `git -c core.longpaths=true clone` to check out the working vault on
+  Windows and needed explicit clone-root/config overrides so dumb tools and
+  bridge staging did not silently use machine-local absolute paths. This is
+  evidence for the bootstrap-installer need, not a build authorization.
 - **Status:** not built; gated behind 5.1 and 5.2.
 
 ### 5.4 Drift detection + portability stub -- NOT BUILT (gated behind 5.1)
@@ -442,7 +602,15 @@ and `_worker_reports/DEPENDENCY_INVENTORY_20260629_findings.md`.
   "principle is portable, recipe is platform-specific" split real: Windows
   now, Ubuntu later in principle.
 - **Trigger:** after 5.1's manifest exists to diff against.
-- **Status:** not built; gated behind 5.1.
+- **Measured trigger evidence:** the 2026-07-07 migration rehearsal found
+  clone portability depends on separate machine state and path configuration:
+  the conversation archive lives outside the repo, the management bridge and
+  auto-sync configs carry absolute paths, `databento/` and installer artifacts
+  are correctly absent/heavy, and derived-staleness reported 3 stale artifacts
+  in the scratch clone. This records the drift/portability need; it does not
+  build 5.4.
+- **Status:** not built; manifest prerequisite met, trigger evidence recorded,
+  no build authorization in this rehearsal.
 
 ## 6. The one rule under all of it
 
@@ -486,14 +654,20 @@ contaminate the working wiki substrate.
 - **Trigger:** same trigger as the sweeper; they ship together.
 - **Status:** booked, not built.
 
-### 6.3 Session-index deriver -- BOOKED, NOT BUILT
-- **Job:** derive a table of session to agent, time, project, turn count, and
-  files touched.
+### 6.3 Session-index deriver -- BUILT
+- **Job:** derive a metadata-only table joining archived session transcripts,
+  worker-report frontmatter `session_ref` values, and git/file timestamps
+  into `_DERIVED/session_index.md` and `_DERIVED/session_index.json`.
 - **Why it earns its place:** browsing raw folders stops scaling once enough
-  tape exists.
-- **Trigger:** enough tape accumulates that finding a session by folder
-  browsing gets annoying.
-- **Status:** booked, not built.
+  tape exists, and task notes need a stated/inferred session bridge without
+  quoting transcript content.
+- **Trigger:** fired by the conversation-archive rescue and follow-on
+  session-link convention work.
+- **Status:** built as `tools/wiki_deriver/session_link_index.py` on
+  2026-07-07 from `_worker_reports/TASK_session_link_index_20260707.md`.
+  First run: 7 archived sessions, 0 stated links before the findings report,
+  131 inferred links, 5 orphan sessions, and 1 copied task brief missing
+  `session_ref` after the convention date.
 
 ### 6.4 Unified cross-vault timeline -- BOOKED, NOT BUILT
 - **Job:** merge-sort git logs from all vaults into one chronological

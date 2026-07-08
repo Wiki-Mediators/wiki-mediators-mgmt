@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "vault_root": "C:\\VMShare\\NT8lab",
+  "periphery_roots": [
+    "C:\\Users\\meme\\Downloads"
+  ],
+  "deny_roots": [
+    "C:\\VMShare\\NT8lab",
+    "C:\\VMShare\\NT8lab_mgmt",
+    "C:\\VMShare\\NT8lab_mgmt_runtime",
+    "C:\\VMShare\\NT8lab_mgmt_sync_stage",
+    "C:\\VMShare\\conversation_archive",
+    "C:\\VMShare\\NT8lab\\_HANDOFFS",
+    "C:\\VMShare\\NT8lab\\codex_tmp"
+  ],
+  "periphery_extensions": [
+    ".md",
+    ".txt"
+  ],
+  "max_file_bytes": 500000,
+  "lane_contract": {
+    "VAULT": "durable workspace memory",
+    "PERIPHERY": "read-only intake context; not banked, not canon, not promoted"
+  }
+}

@@ -24,6 +24,10 @@ Deterministically generated from roadmap statuses and tool-file presence. No han
 | 3.1 | Link / reference integrity checker | BUILT |
 | 3.3 | Orientation digest / ground-truth snapshot | BUILT |
 | 3.8 | Derived-staleness "needs regen" signal | BUILT |
+| 3.11 | Source census | BUILT |
+| 3.12 | Trigger watcher | BUILT |
+| 5.1 | Dependency manifest + catalog renderer | BUILT |
+| 6.3 | Session-index deriver | BUILT |
 
 ### staged
 
@@ -35,13 +39,13 @@ Deterministically generated from roadmap statuses and tool-file presence. No han
 
 | id | name | status |
 |---|---|---|
-| 5.1 | Dependency manifest + catalog renderer | NOT BUILT (next) |
+| 3.13 | Flags aggregator | BOOKED, NOT BUILT |
+| 3.14 | External URL-rot checker | BOOKED, NOT BUILT |
 | 5.2 | Offline bundle + Python pinning | NOT BUILT (gated behind 5.1) |
 | 5.3 | Windows bootstrap installer | NOT BUILT (gated behind 5.1, 5.2) |
 | 5.4 | Drift detection + portability stub | NOT BUILT (gated behind 5.1) |
 | 6.1 | Watch registry + sweeper | BOOKED, NOT BUILT |
 | 6.2 | Second logger instance | BOOKED, NOT BUILT |
-| 6.3 | Session-index deriver | BOOKED, NOT BUILT |
 | 6.4 | Unified cross-vault timeline | BOOKED, NOT BUILT |
 | 6.5 | Session-to-commit crosswalk | BOOKED, NOT BUILT |
 | 6.6 | Cross-vault search wrapper | BOOKED, NOT BUILT |
@@ -63,6 +67,6 @@ Deterministically generated from roadmap statuses and tool-file presence. No han
 
 | id | name | status |
 |---|---|---|
-| 3.9 | Statistical substrate + legible shutter | BOOKED CANDIDATE (trigger not fired) |
+| 3.9 | Statistical substrate + legible shutter | BOOKED CANDIDATE (trigger evidence measured) |
 | 3.10 | Newsroom wiki architecture candidate | BOOKED CANDIDATE (trigger not fired) |
 

@@ -25,15 +25,19 @@ Deterministically generated from the staged management tree by `tools/management
 | 3.6 | On-demand summarizer (Layer 4) | DEFER (and gated behind Layer 3) |
 | 3.7 | Housekeeping agent | DEFER (needs the dumb tools to have run first) |
 | 3.8 | Derived-staleness "needs regen" signal | BUILT |
-| 3.9 | Statistical substrate + legible shutter | BOOKED CANDIDATE (trigger not fired) |
+| 3.9 | Statistical substrate + legible shutter | BOOKED CANDIDATE (trigger evidence measured) |
 | 3.10 | Newsroom wiki architecture candidate | BOOKED CANDIDATE (trigger not fired) |
-| 5.1 | Dependency manifest + catalog renderer | NOT BUILT (next) |
+| 3.11 | Source census | BUILT |
+| 3.12 | Trigger watcher | BUILT |
+| 3.13 | Flags aggregator | BOOKED, NOT BUILT |
+| 3.14 | External URL-rot checker | BOOKED, NOT BUILT |
+| 5.1 | Dependency manifest + catalog renderer | BUILT |
 | 5.2 | Offline bundle + Python pinning | NOT BUILT (gated behind 5.1) |
 | 5.3 | Windows bootstrap installer | NOT BUILT (gated behind 5.1, 5.2) |
 | 5.4 | Drift detection + portability stub | NOT BUILT (gated behind 5.1) |
 | 6.1 | Watch registry + sweeper | BOOKED, NOT BUILT |
 | 6.2 | Second logger instance | BOOKED, NOT BUILT |
-| 6.3 | Session-index deriver | BOOKED, NOT BUILT |
+| 6.3 | Session-index deriver | BUILT |
 | 6.4 | Unified cross-vault timeline | BOOKED, NOT BUILT |
 | 6.5 | Session-to-commit crosswalk | BOOKED, NOT BUILT |
 | 6.6 | Cross-vault search wrapper | BOOKED, NOT BUILT |
@@ -60,7 +64,7 @@ Derived from roadmap statuses and tool-file presence.
 
 | group | count |
 |---|---:|
-| built | 3 |
+| built | 7 |
 | staged | 1 |
 | not_built | 14 |
 | deferred | 4 |
@@ -83,7 +87,7 @@ Derived from roadmap statuses and tool-file presence.
 
 ## Staged summary
 
-- total_files: **31**
+- total_files: **37**
 
 | directory | files |
 |---|---:|
@@ -91,7 +95,7 @@ Derived from roadmap statuses and tool-file presence.
 | `_DERIVED` | 2 |
 | `_DIMENSIONS` | 3 |
 | `_FRAMEWORK` | 11 |
-| `_worker_reports` | 2 |
+| `_worker_reports` | 4 |
 | `nb_lib` | 3 |
-| `tools` | 7 |
+| `tools` | 11 |
 

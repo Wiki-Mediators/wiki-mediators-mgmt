@@ -12,22 +12,24 @@ Built the standalone all-file vault index artifacts for Tool 2.
 
 ## Counts
 
-- Entries indexed: 27
-- Basename collisions: 0
+- Entries indexed: 33
+- Basename collisions: 1
 
 | Extension | Count |
 |---|---:|
-| `.json` | 1 |
-| `.md` | 22 |
-| `.py` | 4 |
+| `.json` | 2 |
+| `.md` | 25 |
+| `.py` | 6 |
 
 ## Collision List
 
-_None._
+| Basename | Count | Paths |
+|---|---:|---|
+| `README.md` | 2 | `nb_lib/strategy_specs/composition_nodes/README.md`<br>`tools/wiki_deriver/README.md` |
 
 ## Link Checker Resolver Win Estimate
 
-- Broken rows that would resolve via all-file basename index: 0
+- Broken rows that would resolve via all-file basename index: 3
 - Additional line/symbol suffix rows that would resolve after index: 0
 - Broken rows that would become honest ambiguity: 0
 

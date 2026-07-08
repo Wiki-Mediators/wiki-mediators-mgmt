@@ -4,6 +4,11 @@ This directory holds the live trading research workspace. New Codex
 sessions should self-orient by reading the core bootstrap files in order
 before doing any work:
 
+The wiki infrastructure -- layers, dumb tools, conventions, and bridge --
+is named **Wiki Mediators**; NT8lab is the first vault running on it.
+Every component mediates: logger, derivers, bridge, and cold review each
+sit between working minds and durable memory.
+
 1. **`AGENTS.md`** (this file) — pointers and read-order
 2. **`ninja-traitorate-methodology-reference.md`** — framework authority
    for the project (see the file itself for its current length and
@@ -35,6 +40,8 @@ recent dated checkpoint, plus **`session_history/downloads_archive/`**
 for the historical archive (see `file_inventory.md` for the session-by-
 session index).
 
+`CLAUDE.md` (vault root) is the Claude Code bootstrap shim pointing back at this file; the two front doors reference each other so Claude Code's auto-read of `CLAUDE.md` lands here.
+
 ## Authority
 
 `ninja-traitorate-methodology-reference.md` is the framework authority for
@@ -62,6 +69,9 @@ itself.
 - Point to statuses/verdicts/numbers instead of restating them; if prose
   must restate one, anchor it. Structured fields and report headers are
   the source; prose is a projection.
+- Task findings and worker reports carry `session_ref: <session id>` in
+  frontmatter. Agent name, dates, and resume commands are derived, not
+  written.
 
 ## Runtime / Environment
 
@@ -138,6 +148,7 @@ to it.
 | ATR history data file | `C:\VMShare\NT8lab\atr_history.csv` | Project-root copy is what `prj_realsim_v2.py` reads (`ATR_HISTORY_PATH` constant). The Sentinel folder also has its own `atr_history.csv` for the live system; keep the two consistent if you regenerate. |
 | 1-second OHLCV store | `C:\VMShare\NT8lab\databento\MNQ\ohlcv-1s\` | The `Sentinel\data\MNQ\ohlcv-1m\` store is 1-MINUTE data for the live ATR sentinel — different schema, different purpose. |
 | Databento import preflight | `C:\VMShare\NT8lab\tools\env_check\databento_preflight.py` | Run before DBN loads, bridge replays, replay viewer work, or snapshot batches. It catches the local `databento\` data-folder namespace-shadowing trap before `DBNStore` calls fail. |
+| Wiki/vault search door | `C:\VMShare\NT8lab\tools\wiki_deriver\vault_search.py` | Current default topic-search helper for the vault. Use v4 mode (`--recall-assist --link-neighbor-assist --structural-assist`) when exact path/name lookup is not enough; use `--two-lane` only when asked to search vault plus configured periphery/intake roots. Docs live at `tools\wiki_deriver\README.md`. |
 | MNQ replay viewer server | `C:\VMShare\NT8lab\tools\mnq_replay_viewer\app\server.py` | Local stdlib HTTP server for forward-only manual replay and snapshot data APIs from the 1-second DBN store. Use with `tools\mnq_replay_viewer\start_replay_viewer.ps1`; docs live at `tools\mnq_replay_viewer\README.md` and `nb_lib\strategy_specs\tools\mnq_replay_viewer.md`. |
 | MNQ batch snapshot exporter | `C:\VMShare\NT8lab\tools\mnq_replay_viewer\batch_snapshot.py` | Playwright exporter for strategy trade CSV review images (`1m`, `5m`, `30m`, `4h`), sidecar JSON, and `_run_summary.json`. Defaults skip OOS rows dated 2026-02-01 or later unless `--allow-oos` is deliberately set. |
 | Mechanism-class screen | `C:\VMShare\NT8lab\nb_lib\screening.py` | Lightweight pre-build gate for proxy trade lists: skew/concentration, cost-distance, frequency-power, regime concentration, and cross-correlation. Use before spending build effort on new entry mechanisms. |

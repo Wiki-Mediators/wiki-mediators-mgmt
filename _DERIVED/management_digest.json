@@ -62,7 +62,7 @@
     {
       "id": "3.9",
       "name": "Statistical substrate + legible shutter",
-      "status": "BOOKED CANDIDATE (trigger not fired)"
+      "status": "BOOKED CANDIDATE (trigger evidence measured)"
     },
     {
       "id": "3.10",
@@ -70,9 +70,29 @@
       "status": "BOOKED CANDIDATE (trigger not fired)"
     },
     {
+      "id": "3.11",
+      "name": "Source census",
+      "status": "BUILT"
+    },
+    {
+      "id": "3.12",
+      "name": "Trigger watcher",
+      "status": "BUILT"
+    },
+    {
+      "id": "3.13",
+      "name": "Flags aggregator",
+      "status": "BOOKED, NOT BUILT"
+    },
+    {
+      "id": "3.14",
+      "name": "External URL-rot checker",
+      "status": "BOOKED, NOT BUILT"
+    },
+    {
       "id": "5.1",
       "name": "Dependency manifest + catalog renderer",
-      "status": "NOT BUILT (next)"
+      "status": "BUILT"
     },
     {
       "id": "5.2",
@@ -102,7 +122,7 @@
     {
       "id": "6.3",
       "name": "Session-index deriver",
-      "status": "BOOKED, NOT BUILT"
+      "status": "BUILT"
     },
     {
       "id": "6.4",
@@ -201,6 +221,26 @@
           "id": "3.8",
           "name": "Derived-staleness \"needs regen\" signal",
           "status": "BUILT"
+        },
+        {
+          "id": "3.11",
+          "name": "Source census",
+          "status": "BUILT"
+        },
+        {
+          "id": "3.12",
+          "name": "Trigger watcher",
+          "status": "BUILT"
+        },
+        {
+          "id": "5.1",
+          "name": "Dependency manifest + catalog renderer",
+          "status": "BUILT"
+        },
+        {
+          "id": "6.3",
+          "name": "Session-index deriver",
+          "status": "BUILT"
         }
       ],
       "staged": [
@@ -212,9 +252,14 @@
       ],
       "not_built": [
         {
-          "id": "5.1",
-          "name": "Dependency manifest + catalog renderer",
-          "status": "NOT BUILT (next)"
+          "id": "3.13",
+          "name": "Flags aggregator",
+          "status": "BOOKED, NOT BUILT"
+        },
+        {
+          "id": "3.14",
+          "name": "External URL-rot checker",
+          "status": "BOOKED, NOT BUILT"
         },
         {
           "id": "5.2",
@@ -239,11 +284,6 @@
         {
           "id": "6.2",
           "name": "Second logger instance",
-          "status": "BOOKED, NOT BUILT"
-        },
-        {
-          "id": "6.3",
-          "name": "Session-index deriver",
           "status": "BOOKED, NOT BUILT"
         },
         {
@@ -308,7 +348,7 @@
         {
           "id": "3.9",
           "name": "Statistical substrate + legible shutter",
-          "status": "BOOKED CANDIDATE (trigger not fired)"
+          "status": "BOOKED CANDIDATE (trigger evidence measured)"
         },
         {
           "id": "3.10",
@@ -356,15 +396,15 @@
     ]
   },
   "staged_summary": {
-    "total_files": 31,
+    "total_files": 37,
     "by_directory": {
       "(root)": 3,
       "_DERIVED": 2,
       "_DIMENSIONS": 3,
       "_FRAMEWORK": 11,
-      "_worker_reports": 2,
+      "_worker_reports": 4,
       "nb_lib": 3,
-      "tools": 7
+      "tools": 11
     }
   }
 }
