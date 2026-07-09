@@ -42,6 +42,21 @@ session index).
 
 `CLAUDE.md` (vault root) is the Claude Code bootstrap shim pointing back at this file; the two front doors reference each other so Claude Code's auto-read of `CLAUDE.md` lands here.
 
+## Topic search
+
+To find notes by TOPIC or CONCEPT, your first action is:
+
+```powershell
+.\tools\wiki_deriver\vault_search.ps1 "<question>" --recall-assist --link-neighbor-assist --structural-assist
+```
+
+Do NOT use grep/ripgrep for topic or concept search: it matches literal
+strings and silently returns plausible-but-wrong results, missing paraphrases
+(measured: ripgrep 9/60 vs vault_search 57/60 on the paraphrase benchmark).
+Grep/ripgrep remain correct for exact strings, filenames, error text,
+literal-token searches, and code identifiers. Use `--two-lane` only when asked
+to search the vault plus configured periphery/intake roots.
+
 ## Authority
 
 `ninja-traitorate-methodology-reference.md` is the framework authority for
@@ -148,7 +163,6 @@ to it.
 | ATR history data file | `C:\VMShare\NT8lab\atr_history.csv` | Project-root copy is what `prj_realsim_v2.py` reads (`ATR_HISTORY_PATH` constant). The Sentinel folder also has its own `atr_history.csv` for the live system; keep the two consistent if you regenerate. |
 | 1-second OHLCV store | `C:\VMShare\NT8lab\databento\MNQ\ohlcv-1s\` | The `Sentinel\data\MNQ\ohlcv-1m\` store is 1-MINUTE data for the live ATR sentinel — different schema, different purpose. |
 | Databento import preflight | `C:\VMShare\NT8lab\tools\env_check\databento_preflight.py` | Run before DBN loads, bridge replays, replay viewer work, or snapshot batches. It catches the local `databento\` data-folder namespace-shadowing trap before `DBNStore` calls fail. |
-| Wiki/vault search door | `C:\VMShare\NT8lab\tools\wiki_deriver\vault_search.py` | Current default topic-search helper for the vault. Use v4 mode (`--recall-assist --link-neighbor-assist --structural-assist`) when exact path/name lookup is not enough; use `--two-lane` only when asked to search vault plus configured periphery/intake roots. Docs live at `tools\wiki_deriver\README.md`. |
 | MNQ replay viewer server | `C:\VMShare\NT8lab\tools\mnq_replay_viewer\app\server.py` | Local stdlib HTTP server for forward-only manual replay and snapshot data APIs from the 1-second DBN store. Use with `tools\mnq_replay_viewer\start_replay_viewer.ps1`; docs live at `tools\mnq_replay_viewer\README.md` and `nb_lib\strategy_specs\tools\mnq_replay_viewer.md`. |
 | MNQ batch snapshot exporter | `C:\VMShare\NT8lab\tools\mnq_replay_viewer\batch_snapshot.py` | Playwright exporter for strategy trade CSV review images (`1m`, `5m`, `30m`, `4h`), sidecar JSON, and `_run_summary.json`. Defaults skip OOS rows dated 2026-02-01 or later unless `--allow-oos` is deliberately set. |
 | Mechanism-class screen | `C:\VMShare\NT8lab\nb_lib\screening.py` | Lightweight pre-build gate for proxy trade lists: skew/concentration, cost-distance, frequency-power, regime concentration, and cross-correlation. Use before spending build effort on new entry mechanisms. |

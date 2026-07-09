@@ -12,8 +12,12 @@ retrieval questions.
 Recommended command shape:
 
 ```powershell
-python tools\wiki_deriver\vault_search.py "your topic or question" --recall-assist --link-neighbor-assist --structural-assist
+.\tools\wiki_deriver\vault_search.ps1 "your topic or question" --recall-assist --link-neighbor-assist --structural-assist
 ```
+
+Use the `.ps1` doorway from the vault root for agent-facing calls. It resolves
+the bundled Codex Python runtime before falling back to PATH, then forwards all
+arguments to `vault_search.py`.
 
 What this mode does:
 
@@ -61,7 +65,7 @@ Use two-lane mode when the operator asks to search both the organized vault and
 loose intake/periphery files, such as Downloads. The command shape is:
 
 ```powershell
-python tools\wiki_deriver\vault_search.py "your topic or question" --two-lane
+.\tools\wiki_deriver\vault_search.ps1 "your topic or question" --two-lane
 ```
 
 This mode is config-owned:

@@ -4,7 +4,7 @@ Deterministic all-file index generated from `_DERIVED/vault_index.json`.
 
 ## Summary
 
-- Entries: 33
+- Entries: 35
 - Basename collisions: 1
 
 ## Counts By Extension
@@ -12,7 +12,8 @@ Deterministic all-file index generated from `_DERIVED/vault_index.json`.
 | Extension | Count |
 |---|---:|
 | `.json` | 2 |
-| `.md` | 25 |
+| `.md` | 26 |
+| `.ps1` | 1 |
 | `.py` | 6 |
 
 ## Basename Collisions
@@ -41,6 +42,7 @@ Deterministic all-file index generated from `_DERIVED/vault_index.json`.
 | `_FRAMEWORK/wiki_architecture_flow.md` | `wiki_architecture_flow.md` | `.md` | false | Wiki Architecture Flow Map |
 | `_PROJECT_ALTITUDE_MAP.md` | `_PROJECT_ALTITUDE_MAP.md` | `.md` | false | Project Altitude Map |
 | `_worker_reports/RECENT_WORK_HANDOFF_20260708.md` | `RECENT_WORK_HANDOFF_20260708.md` | `.md` | false | Recent Work Handoff — Wiki Mediators Retrieval + Two-Lane Search |
+| `_worker_reports/TASK_agents_search_routing_edit_20260708.md` | `TASK_agents_search_routing_edit_20260708.md` | `.md` | false | TASK — AGENTS.md Search-Routing Edit |
 | `_worker_reports/TASK_regime_attribution_panel_20260706.md` | `TASK_regime_attribution_panel_20260706.md` | `.md` | false | TASK — Implement and Run the Regime Attribution Panel |
 | `_worker_reports/TASK_rung1_vault_search_findings_20260708.md` | `TASK_rung1_vault_search_findings_20260708.md` | `.md` | false | Rung 1 Vault Search Findings |
 | `nb_lib/probe_results/regime_attribution_panel_report.md` | `regime_attribution_panel_report.md` | `.md` | false | Regime Attribution Panel Report |
@@ -56,5 +58,6 @@ Deterministic all-file index generated from `_DERIVED/vault_index.json`.
 | `tools/wiki_deriver/link_reference_checker.config.json` | `link_reference_checker.config.json` | `.json` | false | .json file in tools/wiki_deriver |
 | `tools/wiki_deriver/link_reference_checker.py` | `link_reference_checker.py` | `.py` | false | Link / reference integrity checker — Layer 3 dumb tool #1. |
 | `tools/wiki_deriver/two_lane_search.py` | `two_lane_search.py` | `.py` | false | Config-owned two-lane vault/periphery search. |
+| `tools/wiki_deriver/vault_search.ps1` | `vault_search.ps1` | `.ps1` | false | .ps1 file in tools/wiki_deriver |
 | `tools/wiki_deriver/vault_search.py` | `vault_search.py` | `.py` | false | Search the vault with optional corpus-derived query expansion. |
 | `tools/wiki_deriver/vault_search_config.json` | `vault_search_config.json` | `.json` | false | .json file in tools/wiki_deriver |

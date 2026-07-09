@@ -396,15 +396,15 @@
     ]
   },
   "staged_summary": {
-    "total_files": 37,
+    "total_files": 39,
     "by_directory": {
       "(root)": 3,
       "_DERIVED": 2,
       "_DIMENSIONS": 3,
       "_FRAMEWORK": 11,
-      "_worker_reports": 4,
+      "_worker_reports": 5,
       "nb_lib": 3,
-      "tools": 11
+      "tools": 12
     }
   }
 }

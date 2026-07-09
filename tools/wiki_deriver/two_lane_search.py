@@ -40,6 +40,10 @@ VAULT_SKIP_DIRS = {
     "tools/wiki_logger/runtime",
 }
 
+VAULT_SKIP_FILES = {
+    "_DERIVED/two_lane_search_last.md",
+}
+
 
 def norm(path: pathlib.Path) -> str:
     return str(path.resolve()).rstrip("\\/").lower()
@@ -80,6 +84,8 @@ def read_text(path: pathlib.Path) -> str:
 
 def should_skip_vault(vault_root: pathlib.Path, path: pathlib.Path) -> bool:
     rel = path.relative_to(vault_root).as_posix()
+    if rel in VAULT_SKIP_FILES:
+        return True
     return any(rel == d or rel.startswith(d.rstrip("/") + "/") for d in VAULT_SKIP_DIRS)
 
 

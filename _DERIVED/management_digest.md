@@ -87,7 +87,7 @@ Derived from roadmap statuses and tool-file presence.
 
 ## Staged summary
 
-- total_files: **37**
+- total_files: **39**
 
 | directory | files |
 |---|---:|
@@ -95,7 +95,7 @@ Derived from roadmap statuses and tool-file presence.
 | `_DERIVED` | 2 |
 | `_DIMENSIONS` | 3 |
 | `_FRAMEWORK` | 11 |
-| `_worker_reports` | 4 |
+| `_worker_reports` | 5 |
 | `nb_lib` | 3 |
-| `tools` | 11 |
+| `tools` | 12 |
 

@@ -399,6 +399,29 @@ fixing-with-judgment is the housekeeping agent's job (last entry).
   extension, mtime, size, and text. Query output still uses the same two lanes
   and scope receipt. This does not replace v4 structural search; it is the
   speed layer for the same lane contract.
+- **Search-routing interceptor candidate (2026-07-08, booked only):** do not
+  build a grep wrapper, pre-search hook, tool interceptor, or redirector now.
+  Trigger: the reworded AGENTS.md topic-search imperative plus measured-distrust
+  line are tested in a fresh no-hints session and the agent still greps a topic
+  query blind. Until then, keep routing as wording plus documented tool use.
+- **Vault-search doorway fix (2026-07-09):** added
+  `tools/wiki_deriver/vault_search.ps1` so the AGENTS.md topic-search command
+  resolves the bundled Python runtime itself instead of depending on `python`
+  being on PATH. This is a tool-doorway fix, not a prompt workaround.
+- **Blind OOS holdout result (2026-07-09):** first true out-of-sample test of
+  v4. Query set (15 items) was authored by Claude in chat blind to the tool's
+  scorer, co-occurrence table, and favored notes; targets were assigned by
+  human judgment AFTER queries were frozen. Recall miss@10 on 13 real-target
+  queries: rg 1.000 (13/13), v4 0.308 (4/13), two-lane vault-lane 0.385
+  (5/13). Precision on 2 NO_TARGET queries: both v4 and two-lane returned
+  confident-looking top-3 answers on both (2/2 FP); rg clean. Periphery lane
+  integrity in two-lane: clean, no leaks. Verdict per pre-committed rule:
+  **PARTIAL** (0.20 < 0.308 < 0.33) — some of the prior 5% in-sample gain was
+  in-sample. The 10% ladder bar is not cleared on this unseen set. Do not add
+  features to chase this without a dev/holdout split. Findings and per-query
+  outputs: `_worker_reports/TASK_blind_holdout_eval_findings_20260709.md`;
+  frozen query set: `codex_tmp/holdout_blind_v1.json`; raw per-query outputs:
+  `codex_tmp/holdout_run_20260709/`.
 - **If fired -- backend options, decided at build time, deliberation banked
   2026-07-07:** (a) use the existing local pgvector instance already
   installed/operated for the operator's open-brain project -- lower build

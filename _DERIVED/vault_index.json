@@ -9,7 +9,8 @@
   "config_path": "tools/wiki_deriver/link_reference_checker.config.json",
   "counts_by_extension": {
     ".json": 2,
-    ".md": 25,
+    ".md": 26,
+    ".ps1": 1,
     ".py": 6
   },
   "entries": [
@@ -126,6 +127,13 @@
       "path": "_worker_reports/RECENT_WORK_HANDOFF_20260708.md"
     },
     {
+      "basename": "TASK_agents_search_routing_edit_20260708.md",
+      "basename_collision": false,
+      "descriptor": "TASK \u2014 AGENTS.md Search-Routing Edit",
+      "extension": ".md",
+      "path": "_worker_reports/TASK_agents_search_routing_edit_20260708.md"
+    },
+    {
       "basename": "TASK_regime_attribution_panel_20260706.md",
       "basename_collision": false,
       "descriptor": "TASK \u2014 Implement and Run the Regime Attribution Panel",
@@ -231,6 +239,13 @@
       "path": "tools/wiki_deriver/two_lane_search.py"
     },
     {
+      "basename": "vault_search.ps1",
+      "basename_collision": false,
+      "descriptor": ".ps1 file in tools/wiki_deriver",
+      "extension": ".ps1",
+      "path": "tools/wiki_deriver/vault_search.ps1"
+    },
+    {
       "basename": "vault_search.py",
       "basename_collision": false,
       "descriptor": "Search the vault with optional corpus-derived query expansion.",
@@ -245,7 +260,7 @@
       "path": "tools/wiki_deriver/vault_search_config.json"
     }
   ],
-  "entry_count": 33,
+  "entry_count": 35,
   "schema_version": 1,
   "tool": "tools/wiki_deriver/build_vault_index.py"
 }
