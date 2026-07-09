@@ -176,6 +176,8 @@ fixing-with-judgment is the housekeeping agent's job (last entry).
   Right now everything is recent and linked — nothing to report.
 - **Status:** deferred. (Could fold into 3.2 as another derived view when its
   trigger fires.)
+- **Corroboration note (2026-07-09):** independently corroborated by external
+  research intake; trigger unchanged.
 
 **3.4a — Title / role collision checker (CANDIDATE).**
 - Job: group files by frontmatter `title:` (or a declared role / `home:`);
@@ -185,6 +187,8 @@ fixing-with-judgment is the housekeeping agent's job (last entry).
   files instantly, before they diverge. Flags only.
 - Trigger: build if duplicate-identity files recur.
 - Status: candidate, deferred with 3.4.
+- Corroboration note (2026-07-09): independently corroborated by external
+  research intake; trigger unchanged.
 
 ### 3.5 Frontmatter / convention linter — DEFER
 - **Job:** check notes carry the fields they should (a date, a status where
@@ -219,6 +223,10 @@ fixing-with-judgment is the housekeeping agent's job (last entry).
   semantic rule. Flags only; the dedupe judgment stays human (3.7).
 - Trigger: build if canonical/candidate contradiction recurs.
 - Status: candidate, deferred with 3.5.
+- Possible future extension (2026-07-09): structural contradiction /
+  supersession flagging across durable notes is adjacent to this checker, not a
+  new peer tool yet. Keep the same trigger shape: book only if a real durable
+  contradiction is observed and costs a session.
 
 ### 3.6 On-demand summarizer (Layer 4) — DEFER (and gated behind Layer 3)
 - **Job:** when called, read a cluster of first-order artifacts (the ones the
@@ -528,6 +536,8 @@ fixing-with-judgment is the housekeeping agent's job (last entry).
 - **Trigger:** external-URL count grows materially or a dead link causes an
   observed failure.
 - **Status:** booked, not built.
+- **Corroboration note (2026-07-09):** independently corroborated by external
+  research intake; trigger unchanged.
 
 ## 4. Build order (the honest sequence)
 

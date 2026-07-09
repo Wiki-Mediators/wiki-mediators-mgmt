@@ -35,7 +35,7 @@ flowchart TD
     L1["Layer 1: write / work<br/>operator + agents<br/>strategy notes, reports, specs"] --> WV["Working vault<br/>C:/VMShare/NT8lab"]
     WV --> L2["Layer 2: record<br/>tools/wiki_logger/wiki_logger.py<br/>config: tools/wiki_logger/wiki_logger.config.json"]
     L2 --> GIT["Git substrate<br/>complete byte history"]
-    GIT --> L3["Layer 3: derive<br/>tools/wiki_deriver/*.py<br/>11 built dumb-tool capabilities<br/>flags, search, indexes, receipts"]
+    GIT --> L3["Layer 3: derive<br/>tools/wiki_deriver/*.py<br/>12 built dumb-tool capabilities<br/>flags, search, indexes, receipts, dashboards"]
     L3 --> DER["_DERIVED/<br/>vault_index, broken_links, orientation_digest,<br/>search views, trigger/status views, capture integrity"]
     DER --> L4["Layer 4: distill<br/>cold occasional agent pass<br/>writes settled notes back"]
     L4 --> WV
@@ -69,6 +69,7 @@ flowchart LR
     GIT --> STALE["tools/wiki_deriver/derived_staleness_signal.py"]
     GIT --> RET["tools/wiki_deriver/vault_search.py<br/>build_term_cooccurrence.py<br/>missed_retrieval_detector.py<br/>two_lane_search.py"]
     GIT --> GOV["tools/wiki_deriver/source_census.py<br/>trigger_watcher.py<br/>session_link_index.py<br/>capture_integrity_checker.py"]
+    GIT --> RUN["tools/wiki_deriver/run_derivers.py<br/>session-start dashboard runner"]
 
     IDX --> VI["_DERIVED/vault_index.json/md"]
     LINK --> BL["_DERIVED/broken_links.md"]
@@ -76,6 +77,7 @@ flowchart LR
     STALE --> DS["_DERIVED/derived_staleness.json/md"]
     RET --> RS["_DERIVED/term_cooccurrence<br/>retrieval_detector<br/>two_lane_search_last"]
     GOV --> GS["_DERIVED/source_census<br/>trigger_status<br/>session_index<br/>capture_integrity"]
+    RUN --> DR["_DERIVED/derivers_last_run.json/md"]
 
     VI --> LINK
     VI --> DIG
@@ -142,6 +144,7 @@ Built dumb-tool capabilities:
 9. `tools/wiki_deriver/missed_retrieval_detector.py` - retrieval benchmark / miss detector.
 10. `tools/wiki_deriver/vault_search.py` with `two_lane_search.py` and `vault_search.ps1` - agent search door over vault and periphery lanes.
 11. `tools/wiki_deriver/capture_integrity_checker.py` - provenance/capture-gap flagger.
+12. `tools/wiki_deriver/run_derivers.py` with `run_derivers.ps1` - session-start runner / flag dashboard.
 
 Support files not counted as separate capabilities:
 
@@ -167,6 +170,7 @@ Outputs:
 - `_DERIVED/term_cooccurrence.json/md`
 - `_DERIVED/two_lane_search_last.json/md`
 - `_DERIVED/capture_integrity.json/md`
+- `_DERIVED/derivers_last_run.json/md`
 
 Role:
 
