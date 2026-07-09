@@ -12,6 +12,7 @@ Authority: TASK_017, _FRAMEWORK/derived_layer_and_dumb_tool_roadmap.md §3.1.
 from __future__ import annotations
 
 import argparse
+import datetime as dt
 import fnmatch
 import json
 import os
@@ -23,6 +24,8 @@ import tempfile
 import traceback
 from collections import Counter, defaultdict
 from urllib.parse import unquote
+
+from capture_integrity_checker import frontmatter, note_can_be_loud, starts_with_prefix
 
 
 # ----- Defaults (config can override) ----------------------------------------
@@ -186,6 +189,32 @@ def load_config(path: pathlib.Path) -> dict:
         print(f"config not found: {path}", file=sys.stderr)
         sys.exit(2)
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def source_role(source_rel: str, fm: dict[str, str], severity_config: dict) -> str:
+    """Classify source role with the capture-integrity role/status doctrine."""
+    if starts_with_prefix(source_rel, severity_config.get("informational_path_prefixes", [])):
+        return "informational"
+    if starts_with_prefix(source_rel, severity_config.get("loud_path_prefixes", [])):
+        return "loud_path"
+    loud_statuses = {s.lower() for s in severity_config.get("loud_statuses", [])}
+    note_status = fm.get("status", "").lower()
+    note_type = fm.get("type", "").lower()
+    if note_status in loud_statuses or any(
+        s in note_type for s in ("verdict", "decision", "canonical", "living")
+    ):
+        return "status_loud"
+    return "regular"
+
+
+def row_severity(status: str, source_rel: str, fm: dict[str, str], severity_config: dict) -> str:
+    if status == "suppressed":
+        return "INFO"
+    if status == "external_local_documented":
+        return "INFO"
+    if status in {"broken", "external_local_missing"} and note_can_be_loud(source_rel, fm, severity_config):
+        return "LOUD"
+    return "PLAIN"
 
 
 def iter_scan_files(vault_root: pathlib.Path, ignore_globs, include_txt: bool):
@@ -584,17 +613,19 @@ def render_report(rows, vault_root: pathlib.Path, report_path: pathlib.Path,
     suppressed.sort(key=keyfn)
 
     suppressed_counts = Counter(r["suppression_category"] for r in suppressed)
+    severity_counts = Counter(r.get("severity", "PLAIN") for r in rows)
 
     def header():
         return [
-            "| source note | line | kind | raw target | normalized target | reason |",
-            "|---|---:|---|---|---|---|",
+            "| severity | role | source note | line | kind | raw target | normalized target | reason |",
+            "|---|---|---|---:|---|---|---|---|",
         ]
 
     def row_line(r):
         src_md = md_link_to(r["source_path"], vault_root, report_path)
         src_label = r["source_rel"]
-        return (f"| [{src_label}]({src_md}) | {r['line']} | {r['kind']} | "
+        return (f"| `{r.get('severity', '')}` | `{r.get('source_role', '')}` | "
+                f"[{src_label}]({src_md}) | {r['line']} | {r['kind']} | "
                 f"`{r['raw_target_escaped']}` | `{r['normalized_target_escaped']}` | "
                 f"{r['reason']} |")
 
@@ -610,9 +641,11 @@ def render_report(rows, vault_root: pathlib.Path, report_path: pathlib.Path,
     out.append(f"- Scanned files: {files_scanned}")
     out.append(f"- References extracted: {refs_total}")
     out.append(f"- Actionable broken: {len(actionable)}")
+    out.append(f"- LOUD actionable broken: {sum(1 for r in actionable if r.get('severity') == 'LOUD')}")
     out.append(f"- Ambiguous references: {len(ambiguous)}")
     out.append(f"- External-local documented: {len(external_documented)}")
     out.append(f"- Suppressed by config: {len(suppressed)}")
+    out.append(f"- Severity counts: {dict(sorted(severity_counts.items()))}")
     out.append(f"- Baseline broken references before Tool 3: {BASELINE_BROKEN_REFERENCES}")
     out.append(f"- Actionable drop from baseline: {BASELINE_BROKEN_REFERENCES - len(actionable)}")
     out.append("")
@@ -679,6 +712,69 @@ def render_report(rows, vault_root: pathlib.Path, report_path: pathlib.Path,
     return "\n".join(out) + "\n"
 
 
+def render_json_summary(rows, vault_root: pathlib.Path, markdown_path: pathlib.Path,
+                        files_scanned: int, refs_total: int, stats: dict,
+                        severity_config_path: pathlib.Path) -> dict:
+    items = []
+    for r in sorted(rows, key=lambda row: (
+        row["source_rel"], row["line"], row["kind"], row["raw_target"], row["status"]
+    )):
+        items.append({
+            "severity": r.get("severity", "PLAIN"),
+            "source_role": r.get("source_role", "regular"),
+            "source_status": r.get("source_status", ""),
+            "source_type": r.get("source_type", ""),
+            "source": r["source_rel"],
+            "line": r["line"],
+            "kind": r["kind"],
+            "status": r["status"],
+            "raw_target": r["raw_target"],
+            "normalized_target": strip_locator_suffix(r.get("target", "")),
+            "reason": r["reason"],
+            "suppression_category": r.get("suppression_category", ""),
+        })
+    by_severity = Counter(item["severity"] for item in items)
+    by_role = Counter(item["source_role"] for item in items)
+    by_status = Counter(item["status"] for item in items)
+    actionable = [
+        item for item in items
+        if item["status"] in {"broken", "external_local_missing"}
+    ]
+    loud_items = [item for item in actionable if item["severity"] == "LOUD"]
+    try:
+        markdown_rel = markdown_path.relative_to(vault_root).as_posix()
+    except ValueError:
+        markdown_rel = str(markdown_path)
+    try:
+        severity_config_rel = severity_config_path.relative_to(vault_root).as_posix()
+    except ValueError:
+        severity_config_rel = str(severity_config_path)
+    return {
+        "schema_version": 1,
+        "tool": "tools/wiki_deriver/link_reference_checker.py",
+        "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
+        "vault_root": str(vault_root),
+        "source_markdown": markdown_rel,
+        "severity_policy_config": severity_config_rel,
+        "counts": {
+            "files_scanned": files_scanned,
+            "references_extracted": refs_total,
+            "total": len(items),
+            "actionable_broken": len(actionable),
+            "loud_actionable_broken": len(loud_items),
+            "ambiguous_references": by_status.get("ambiguous_reference", 0),
+            "external_local_documented": by_status.get("external_local_documented", 0),
+            "suppressed": by_status.get("suppressed", 0),
+            "by_severity": dict(sorted(by_severity.items())),
+            "by_role": dict(sorted(by_role.items())),
+            "by_status": dict(sorted(by_status.items())),
+        },
+        "resolver_stats": stats,
+        "items": items,
+        "loud_items": loud_items,
+    }
+
+
 # ----- Escaping helpers for Markdown table cells ----------------------------
 
 def escape_for_cell(s: str) -> str:
@@ -703,6 +799,20 @@ def run_scan(config: dict, *, vault_root_override: pathlib.Path | None = None,
         return 3
     output_rel = config.get("output_path", "_DERIVED/broken_links.md")
     output_path = (output_override or (vault_root / output_rel)).resolve()
+    json_rel = config.get("output_json")
+    if json_rel:
+        output_json_path = (vault_root / json_rel).resolve()
+    else:
+        output_json_path = output_path.with_suffix(".json")
+    severity_config_rel = config.get(
+        "severity_policy_config",
+        "tools/wiki_deriver/capture_integrity_checker.config.json",
+    )
+    severity_config_path = (vault_root / severity_config_rel).resolve()
+    try:
+        severity_config = load_config(severity_config_path)
+    except SystemExit:
+        return 4
     configured_worker_report_rel = config.get("worker_report_path")
     configured_worker_report_path = (
         (vault_root / configured_worker_report_rel).resolve()
@@ -722,11 +832,12 @@ def run_scan(config: dict, *, vault_root_override: pathlib.Path | None = None,
     # file) in source notes resolve consistently from the first run onward,
     # regardless of whether they pre-existed.
     output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_json_path.parent.mkdir(parents=True, exist_ok=True)
     if not output_path.exists():
         output_path.write_text("", encoding="utf-8", newline="\n")
 
     files = iter_scan_files(vault_root, ignore_globs, include_txt)
-    skip_outputs = {output_path}
+    skip_outputs = {output_path, output_json_path}
     if configured_worker_report_path is not None:
         skip_outputs.add(configured_worker_report_path)
     files = [f for f in files if f.resolve() not in skip_outputs]
@@ -746,18 +857,23 @@ def run_scan(config: dict, *, vault_root_override: pathlib.Path | None = None,
         "unreadable_sources": [],
     }
 
-    def add_row(f, src_rel, hit, status, reason, suppression_category=""):
+    def add_row(f, src_rel, hit, status, reason, source_fm, suppression_category=""):
         rows.append({
             "source_path": f,
             "source_rel": src_rel,
             "line": hit["line"],
             "kind": hit["kind"],
             "raw_target": hit["raw_target"],
+            "target": strip_locator_suffix(hit["target"]),
             "raw_target_escaped": escape_for_cell(hit["raw_target"]),
             "normalized_target_escaped": escape_for_cell(strip_locator_suffix(hit["target"])),
             "status": status,
             "reason": reason,
             "suppression_category": suppression_category,
+            "source_status": source_fm.get("status", ""),
+            "source_type": source_fm.get("type", ""),
+            "source_role": source_role(src_rel, source_fm, severity_config),
+            "severity": row_severity(status, src_rel, source_fm, severity_config),
         })
 
     for f in files:
@@ -773,6 +889,7 @@ def run_scan(config: dict, *, vault_root_override: pathlib.Path | None = None,
             src_rel = f.relative_to(vault_root).as_posix()
         except ValueError:
             src_rel = f.as_posix()
+        source_fm = frontmatter(text)
         fence_ranges = fenced_code_ranges(text)
         hits = extract_all(text)
         for hit in hits:
@@ -799,17 +916,17 @@ def run_scan(config: dict, *, vault_root_override: pathlib.Path | None = None,
             early_category, early_reason = suppression_reason(
                 hit, src_rel, text, config, fence_ranges, target_regexes, context_regexes)
             if early_category in {"example_fence", "ignored_source_glob"}:
-                add_row(f, src_rel, hit, "suppressed", early_reason, early_category)
+                add_row(f, src_rel, hit, "suppressed", early_reason, source_fm, early_category)
                 continue
 
             if status == "ambiguous_reference":
-                add_row(f, src_rel, hit, status, reason)
+                add_row(f, src_rel, hit, status, reason, source_fm)
                 continue
 
             normalized = strip_locator_suffix(normalize_target(hit["target"]))
             if (is_windows_absolute(normalized) or normalized.startswith("/")) and starts_with_any(normalized, allowed_external_prefixes):
                 add_row(f, src_rel, hit, "external_local_documented",
-                        "matched allowed_external_prefixes")
+                        "matched allowed_external_prefixes", source_fm)
                 continue
 
             category, suppress_reason = (
@@ -819,12 +936,12 @@ def run_scan(config: dict, *, vault_root_override: pathlib.Path | None = None,
                     hit, src_rel, text, config, fence_ranges, target_regexes, context_regexes)
             )
             if category:
-                add_row(f, src_rel, hit, "suppressed", suppress_reason, category)
+                add_row(f, src_rel, hit, "suppressed", suppress_reason, source_fm, category)
                 continue
 
             if status in ("resolved", "skipped_anchor", "external_local_resolved"):
                 continue
-            add_row(f, src_rel, hit, status, reason)
+            add_row(f, src_rel, hit, status, reason, source_fm)
 
     report = render_report(rows, vault_root, output_path,
                             files_scanned=len(files), refs_total=refs_total,
@@ -832,6 +949,15 @@ def run_scan(config: dict, *, vault_root_override: pathlib.Path | None = None,
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(report, encoding="utf-8", newline="\n")
+    summary = render_json_summary(
+        rows, vault_root, output_path,
+        files_scanned=len(files), refs_total=refs_total, stats=stats,
+        severity_config_path=severity_config_path,
+    )
+    output_json_path.write_text(
+        json.dumps(summary, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8", newline="\n",
+    )
     if worker_report_path is not None:
         worker_report_path.parent.mkdir(parents=True, exist_ok=True)
         worker_report_path.write_text(report, encoding="utf-8", newline="\n")
@@ -887,6 +1013,8 @@ def run_tests() -> int:
         config = {
             "vault_root": str(root),
             "output_path": "_DERIVED/broken_links.md",
+            "output_json": "_DERIVED/broken_links.json",
+            "severity_policy_config": str(DEFAULT_CONFIG_PATH.parent / "capture_integrity_checker.config.json"),
             "vault_index_path": "_DERIVED/vault_index.json",
             "include_txt": False,
             "ignore_globs": [

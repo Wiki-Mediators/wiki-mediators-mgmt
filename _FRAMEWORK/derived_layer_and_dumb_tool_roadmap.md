@@ -90,6 +90,9 @@ fixing-with-judgment is the housekeeping agent's job (last entry).
   `_DERIVED/vault_index.json`, strips line/symbol suffixes before resolving,
   separates actionable broken / ambiguous / external-local documented /
   suppressed-by-config rows, and keeps suppression auditable.
+  The 2026-07-09 JSON-summary upgrade is BUILT: it emits
+  `_DERIVED/broken_links.json` with role-aware severity counts and the deriver
+  runner consumes that JSON instead of scraping Markdown.
 
 ### 3.2 Layer 3 deriver — structural index ("the altitude map") — BUILD SOON, STAGED
 - **Job:** regenerate, from source, a set of `_DERIVED/` views over the

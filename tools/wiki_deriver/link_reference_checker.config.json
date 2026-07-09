@@ -2,8 +2,10 @@
   "_about": "Layer 3 dumb tool #1 — link/reference integrity checker. vault_root, output_path, and ignore_globs are load-bearing; this is a derived view, regenerated each run from vault source.",
   "vault_root": "C:\\VMShare\\NT8lab",
   "output_path": "_DERIVED/broken_links.md",
+  "output_json": "_DERIVED/broken_links.json",
   "worker_report_path": "_worker_reports/TASK_019_link_validator_upgrade.md",
   "vault_index_path": "_DERIVED/vault_index.json",
+  "severity_policy_config": "tools/wiki_deriver/capture_integrity_checker.config.json",
   "include_txt": false,
   "ignore_globs": [
     ".git",
