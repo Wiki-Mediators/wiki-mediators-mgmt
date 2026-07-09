@@ -694,7 +694,8 @@ def escape_for_cell(s: str) -> str:
 # ----- Main driver -----------------------------------------------------------
 
 def run_scan(config: dict, *, vault_root_override: pathlib.Path | None = None,
-              output_override: pathlib.Path | None = None) -> int:
+              output_override: pathlib.Path | None = None,
+              suppress_worker_report: bool = False) -> int:
     vault_root = (vault_root_override or
                    pathlib.Path(config["vault_root"])).resolve()
     if not vault_root.is_dir():
@@ -702,8 +703,12 @@ def run_scan(config: dict, *, vault_root_override: pathlib.Path | None = None,
         return 3
     output_rel = config.get("output_path", "_DERIVED/broken_links.md")
     output_path = (output_override or (vault_root / output_rel)).resolve()
-    worker_report_rel = config.get("worker_report_path")
-    worker_report_path = (vault_root / worker_report_rel).resolve() if worker_report_rel else None
+    configured_worker_report_rel = config.get("worker_report_path")
+    configured_worker_report_path = (
+        (vault_root / configured_worker_report_rel).resolve()
+        if configured_worker_report_rel else None
+    )
+    worker_report_path = None if suppress_worker_report else configured_worker_report_path
     vault_index_rel = config.get("vault_index_path", "_DERIVED/vault_index.json")
     ignore_globs = config.get("ignore_globs", [])
     include_txt = bool(config.get("include_txt", False))
@@ -722,8 +727,8 @@ def run_scan(config: dict, *, vault_root_override: pathlib.Path | None = None,
 
     files = iter_scan_files(vault_root, ignore_globs, include_txt)
     skip_outputs = {output_path}
-    if worker_report_path is not None:
-        skip_outputs.add(worker_report_path)
+    if configured_worker_report_path is not None:
+        skip_outputs.add(configured_worker_report_path)
     files = [f for f in files if f.resolve() not in skip_outputs]
     markdown_basename_index = build_basename_index(files)
     try:
@@ -997,6 +1002,8 @@ def main(argv=None):
                           help="Override vault_root from config.")
     parser.add_argument("--output", default=None,
                           help="Override output_path from config.")
+    parser.add_argument("--no-worker-report", action="store_true",
+                          help="Do not mirror output to worker_report_path from config.")
     args = parser.parse_args(argv)
 
     if args.test:
@@ -1005,7 +1012,12 @@ def main(argv=None):
     cfg = load_config(pathlib.Path(args.config))
     vroot = pathlib.Path(args.vault_root) if args.vault_root else None
     outpath = pathlib.Path(args.output) if args.output else None
-    return run_scan(cfg, vault_root_override=vroot, output_override=outpath)
+    return run_scan(
+        cfg,
+        vault_root_override=vroot,
+        output_override=outpath,
+        suppress_worker_report=args.no_worker_report,
+    )
 
 
 if __name__ == "__main__":

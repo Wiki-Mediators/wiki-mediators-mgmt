@@ -499,15 +499,25 @@ fixing-with-judgment is the housekeeping agent's job (last entry).
   2026-07-06. v2 run: 1 fired entry, 2 not-fired entries, and 22
   not-machine-checkable entries.
 
-### 3.13 Flags aggregator -- BOOKED, NOT BUILT
-- **Job:** merge dumb-tool flag outputs into one
-  `_DERIVED/maintenance_queue.md` view.
-- **Why it earns its place later:** once enough flag emitters exist, a
-  single maintenance queue will make 3.7 housekeeper input legible without
-  turning any tool into a fixer.
-- **Trigger:** a third flag-emitting tool exists, or 3.7's housekeeping
-  trigger nears.
-- **Status:** booked, not built.
+### 3.13 Deriver runner / flags aggregator -- BUILT
+- **Job:** run the existing Layer 3 dumb derivers in config-owned order,
+  collect exit classes and flag counts, and emit one session-start dashboard
+  at `_DERIVED/derivers_last_run.md` / `.json`.
+- **Why it earns its place:** the vault now has enough separate flag emitters
+  that "remember which deriver to run" is itself head-load. The runner
+  sequences them without merging their logic: each tool stays dumb and
+  independent; the runner only invokes, times out, records, and points at the
+  source report. It never fixes anything and is not a daemon.
+- **Trigger:** fired. More than three flag-emitting tools exist
+  (link checker, trigger watcher, staleness, capture integrity, retrieval
+  detector, session index), and the session-start ritual needed one dashboard
+  instead of many commands.
+- **Status:** built as `tools/wiki_deriver/run_derivers.py` with config at
+  `tools/wiki_deriver/run_derivers.config.json` and doorway
+  `tools/wiki_deriver/run_derivers.ps1` on 2026-07-09. Retrieval detector is
+  config-present but disabled by default; staleness runs last; timeouts are
+  killed and recorded as tool failures; `_DERIVED/derivers_last_run.md/.json`
+  are excluded from staleness self-reference pressure.
 
 ### 3.14 External URL-rot checker -- BOOKED, NOT BUILT
 - **Job:** check external URLs referenced by vault notes and flag dead or
@@ -547,12 +557,12 @@ fixing-with-judgment is the housekeeping agent's job (last entry).
     portability stub (5.4)** -- after the manifest exists.
 12. **Windows bootstrap installer (5.3)** -- after the manifest and offline
     bundle exist.
-13. **Maintenance queue (3.13)** -- after a third flag-emitting tool exists
-    or 3.7's housekeeping trigger nears.
+13. **Deriver runner / flags aggregator (3.13)** -- built. One session-start
+    doorway runs the existing derivers and writes `_DERIVED/derivers_last_run.*`.
 14. **External URL-rot checker (3.14)** -- when external URL volume grows
     materially or a dead external link causes an observed failure.
 
-*Candidates 3.4a / 3.5a / 3.5b / 3.9 / 3.13 / 3.14 are deferred with
+*Candidates 3.4a / 3.5a / 3.5b / 3.9 / 3.14 are deferred with
 their parents or explicit triggers and build only when their drift/scope
 conditions recur.*
 

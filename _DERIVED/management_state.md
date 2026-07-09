@@ -26,6 +26,7 @@ Deterministically generated from roadmap statuses and tool-file presence. No han
 | 3.8 | Derived-staleness "needs regen" signal | BUILT |
 | 3.11 | Source census | BUILT |
 | 3.12 | Trigger watcher | BUILT |
+| 3.13 | Deriver runner / flags aggregator | BUILT |
 | 5.1 | Dependency manifest + catalog renderer | BUILT |
 | 6.3 | Session-index deriver | BUILT |
 
@@ -39,7 +40,6 @@ Deterministically generated from roadmap statuses and tool-file presence. No han
 
 | id | name | status |
 |---|---|---|
-| 3.13 | Flags aggregator | BOOKED, NOT BUILT |
 | 3.14 | External URL-rot checker | BOOKED, NOT BUILT |
 | 5.2 | Offline bundle + Python pinning | NOT BUILT (gated behind 5.1) |
 | 5.3 | Windows bootstrap installer | NOT BUILT (gated behind 5.1, 5.2) |

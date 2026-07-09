@@ -29,7 +29,7 @@ Deterministically generated from the staged management tree by `tools/management
 | 3.10 | Newsroom wiki architecture candidate | BOOKED CANDIDATE (trigger not fired) |
 | 3.11 | Source census | BUILT |
 | 3.12 | Trigger watcher | BUILT |
-| 3.13 | Flags aggregator | BOOKED, NOT BUILT |
+| 3.13 | Deriver runner / flags aggregator | BUILT |
 | 3.14 | External URL-rot checker | BOOKED, NOT BUILT |
 | 5.1 | Dependency manifest + catalog renderer | BUILT |
 | 5.2 | Offline bundle + Python pinning | NOT BUILT (gated behind 5.1) |
@@ -64,9 +64,9 @@ Derived from roadmap statuses and tool-file presence.
 
 | group | count |
 |---|---:|
-| built | 7 |
+| built | 8 |
 | staged | 1 |
-| not_built | 14 |
+| not_built | 13 |
 | deferred | 4 |
 | unstated | 2 |
 

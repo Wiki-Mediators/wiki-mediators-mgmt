@@ -81,8 +81,8 @@
     },
     {
       "id": "3.13",
-      "name": "Flags aggregator",
-      "status": "BOOKED, NOT BUILT"
+      "name": "Deriver runner / flags aggregator",
+      "status": "BUILT"
     },
     {
       "id": "3.14",
@@ -233,6 +233,11 @@
           "status": "BUILT"
         },
         {
+          "id": "3.13",
+          "name": "Deriver runner / flags aggregator",
+          "status": "BUILT"
+        },
+        {
           "id": "5.1",
           "name": "Dependency manifest + catalog renderer",
           "status": "BUILT"
@@ -251,11 +256,6 @@
         }
       ],
       "not_built": [
-        {
-          "id": "3.13",
-          "name": "Flags aggregator",
-          "status": "BOOKED, NOT BUILT"
-        },
         {
           "id": "3.14",
           "name": "External URL-rot checker",

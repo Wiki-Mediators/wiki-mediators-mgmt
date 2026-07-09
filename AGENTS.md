@@ -42,6 +42,13 @@ session index).
 
 `CLAUDE.md` (vault root) is the Claude Code bootstrap shim pointing back at this file; the two front doors reference each other so Claude Code's auto-read of `CLAUDE.md` lands here.
 
+## Session-start derived maintenance
+
+Run `.\tools\wiki_deriver\run_derivers.ps1` once near session start and
+glance at `_DERIVED/derivers_last_run.md`. Exit `1` means LOUD flags exist;
+exit `2` means at least one deriver failed or timed out. The runner never
+fixes anything.
+
 ## Topic search
 
 To find notes by TOPIC or CONCEPT, your first action is:

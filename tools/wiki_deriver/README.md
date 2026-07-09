@@ -33,6 +33,17 @@ degrades to lexical search and prints the reason.
 
 ## Maintenance
 
+Run the session-start deriver dashboard:
+
+```powershell
+.\tools\wiki_deriver\run_derivers.ps1
+```
+
+It runs the configured Layer 3 derivers in order, continues after individual
+tool failures/timeouts, and writes `_DERIVED/derivers_last_run.md` plus JSON.
+Exit `0` means no LOUD flags, `1` means LOUD flags exist, and `2` means at
+least one deriver failed or timed out. It never fixes anything.
+
 Regenerate the co-occurrence artifact after source-note changes when v4 search
 matters:
 

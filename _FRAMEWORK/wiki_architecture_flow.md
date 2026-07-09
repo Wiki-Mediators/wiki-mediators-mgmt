@@ -35,8 +35,8 @@ flowchart TD
     L1["Layer 1: write / work<br/>operator + agents<br/>strategy notes, reports, specs"] --> WV["Working vault<br/>C:/VMShare/NT8lab"]
     WV --> L2["Layer 2: record<br/>tools/wiki_logger/wiki_logger.py<br/>config: tools/wiki_logger/wiki_logger.config.json"]
     L2 --> GIT["Git substrate<br/>complete byte history"]
-    GIT --> L3["Layer 3: derive<br/>tools/wiki_deriver/*.py<br/>dumb tools: flags and computed views"]
-    L3 --> DER["_DERIVED/<br/>vault_index, broken_links,<br/>orientation_digest, staleness"]
+    GIT --> L3["Layer 3: derive<br/>tools/wiki_deriver/*.py<br/>11 built dumb-tool capabilities<br/>flags, search, indexes, receipts"]
+    L3 --> DER["_DERIVED/<br/>vault_index, broken_links, orientation_digest,<br/>search views, trigger/status views, capture integrity"]
     DER --> L4["Layer 4: distill<br/>cold occasional agent pass<br/>writes settled notes back"]
     L4 --> WV
 
@@ -67,15 +67,21 @@ flowchart LR
     GIT --> LINK["tools/wiki_deriver/link_reference_checker.py"]
     GIT --> DIG["tools/wiki_deriver/build_orientation_digest.py"]
     GIT --> STALE["tools/wiki_deriver/derived_staleness_signal.py"]
+    GIT --> RET["tools/wiki_deriver/vault_search.py<br/>build_term_cooccurrence.py<br/>missed_retrieval_detector.py<br/>two_lane_search.py"]
+    GIT --> GOV["tools/wiki_deriver/source_census.py<br/>trigger_watcher.py<br/>session_link_index.py<br/>capture_integrity_checker.py"]
 
     IDX --> VI["_DERIVED/vault_index.json/md"]
     LINK --> BL["_DERIVED/broken_links.md"]
     DIG --> OD["_DERIVED/orientation_digest.md"]
     STALE --> DS["_DERIVED/derived_staleness.json/md"]
+    RET --> RS["_DERIVED/term_cooccurrence<br/>retrieval_detector<br/>two_lane_search_last"]
+    GOV --> GS["_DERIVED/source_census<br/>trigger_status<br/>session_index<br/>capture_integrity"]
 
     VI --> LINK
     VI --> DIG
     VI --> STALE
+    VI --> RET
+    VI --> GOV
 ```
 
 ## Layer Inventory
@@ -123,12 +129,28 @@ meaning. It commits bytes.
 
 ### Layer 3 - Derive
 
-Tools:
+Built dumb-tool capabilities:
 
-- `tools/wiki_deriver/build_vault_index.py`
-- `tools/wiki_deriver/link_reference_checker.py`
-- `tools/wiki_deriver/build_orientation_digest.py`
-- `tools/wiki_deriver/derived_staleness_signal.py`
+1. `tools/wiki_deriver/build_vault_index.py` - all-file index and basename collision surface.
+2. `tools/wiki_deriver/link_reference_checker.py` - broken/ambiguous reference checker.
+3. `tools/wiki_deriver/build_orientation_digest.py` - deterministic ground-truth orientation snapshot.
+4. `tools/wiki_deriver/derived_staleness_signal.py` - flags stale `_DERIVED/` views.
+5. `tools/wiki_deriver/source_census.py` - external-source/event census.
+6. `tools/wiki_deriver/trigger_watcher.py` - booked-trigger status dashboard.
+7. `tools/wiki_deriver/session_link_index.py` - session/report/archive link index.
+8. `tools/wiki_deriver/build_term_cooccurrence.py` - corpus-derived term overlap table.
+9. `tools/wiki_deriver/missed_retrieval_detector.py` - retrieval benchmark / miss detector.
+10. `tools/wiki_deriver/vault_search.py` with `two_lane_search.py` and `vault_search.ps1` - agent search door over vault and periphery lanes.
+11. `tools/wiki_deriver/capture_integrity_checker.py` - provenance/capture-gap flagger.
+
+Support files not counted as separate capabilities:
+
+- `tools/wiki_deriver/retrieval_common.py` - shared corpus/scoring helper.
+- `tools/wiki_deriver/*.config.json` - config-owned roots, thresholds, and deny-lists.
+
+Adjacent environment dumb tool:
+
+- `deps/tools/render_catalog.py` - dependency manifest/catalog renderer for roadmap 5.1. It follows the same dumb-tool rules but lives in the environment-reconstitution track rather than the wiki-deriver track.
 
 Outputs:
 
@@ -138,6 +160,13 @@ Outputs:
 - `_DERIVED/orientation_digest.md`
 - `_DERIVED/derived_staleness.json`
 - `_DERIVED/derived_staleness.md`
+- `_DERIVED/source_census.json/md`
+- `_DERIVED/trigger_status.json/md`
+- `_DERIVED/session_index.json/md`
+- `_DERIVED/retrieval_detector*.json/md`
+- `_DERIVED/term_cooccurrence.json/md`
+- `_DERIVED/two_lane_search_last.json/md`
+- `_DERIVED/capture_integrity.json/md`
 
 Role:
 
@@ -219,4 +248,3 @@ Use the Canvas when you want to zoom around the system visually:
 
 Use this Markdown note when you want the concise text explanation and Mermaid
 views.
-

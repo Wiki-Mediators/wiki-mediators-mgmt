@@ -30,7 +30,7 @@ Built the standalone all-file vault index artifacts for Tool 2.
 
 ## Link Checker Resolver Win Estimate
 
-- Broken rows that would resolve via all-file basename index: 3
+- Broken rows that would resolve via all-file basename index: 5
 - Additional line/symbol suffix rows that would resolve after index: 0
 - Broken rows that would become honest ambiguity: 0
 
