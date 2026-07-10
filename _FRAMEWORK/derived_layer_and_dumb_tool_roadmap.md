@@ -509,6 +509,12 @@ fixing-with-judgment is the housekeeping agent's job (last entry).
 - **Status:** built as `tools/wiki_deriver/trigger_watcher.py` on
   2026-07-06. v2 run: 1 fired entry, 2 not-fired entries, and 22
   not-machine-checkable entries.
+- **Booked refinement (do not build):** split `FIRED` into
+  `TRIGGER-EVIDENCE-RECORDED` (measured/banked/not actionable; must not hold
+  runner exit 1), `FIRED-ACTIONABLE`, and `FIRED-DEFERRED`; current examples:
+  3.9 = evidence-recorded, 3.2 = actionable. Trigger to build: the ambiguity
+  causes an actual session misread, or the runner exit code is wrongly held by
+  an evidence-only trigger and it matters.
 
 ### 3.13 Deriver runner / flags aggregator -- BUILT
 - **Job:** run the existing Layer 3 dumb derivers in config-owned order,

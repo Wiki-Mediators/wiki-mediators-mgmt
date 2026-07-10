@@ -60,7 +60,11 @@
     "^(?:links|other_file|wikilink|path|target|target\\\\)$",
     "^/(?:api|snapshot)\\b.*",
     "^\\.[A-Za-z0-9]+$",
-    ".*(?:scratchpad/|runtime/|_run_summary\\.json|status\\.json|guard_tripped\\.txt|_sidecar\\.json|_metadata\\.json).*"
+    ".*(?:scratchpad/|runtime/|_run_summary\\.json|status\\.json|guard_tripped\\.txt|_sidecar\\.json|_metadata\\.json).*",
+    "(?#intentional-shorthand)^(?:date .+ N files .+ folder1/, folder2/|tools/wiki_logger/state/|vault_index\\.json|candidates/|canonical/|\\.md/\\.py/\\.json|\\.md/\\.txt|_DERIVED/derivers_last_run\\.md/\\.json|_DERIVED/(?:source_census|session_index|term_cooccurrence|two_lane_search_last|capture_integrity|derivers_last_run)\\.json/md|nodes/)$",
+    "(?#provenance)^(?:~/\\.claude/history\\.jsonl|(?:tools/)?rescue_sweep\\.py|AA_CSV_nb_lib_realdata_trades_realistic_tickaligned_20260506\\.csv|10\\.(?:1142/S0219024920500569|1016/j\\.finmar\\.2013\\.07\\.001|1111/jofi\\.12513|1016/j\\.jfineco\\.2020\\.04\\.015|1090/noti1105|21314/JCF\\.2016\\.322)|coreych/optimal-trading-rules|CanerIrfanoglu/advances_in_ml)$",
+    "(?#planned-artifact)^(?:config/schedules\\.json|bundle/installers/|pyproject\\.toml|bootstrap\\.ps1|check_drift\\.py|recipes/ubuntu\\.yaml|nb_lib/scripts/probe_v14_wide_opening_window_reversal_family\\.py|nb_lib/probe_results/wide_opening_window_reversal_family_v14_probe\\.json|C:/VMShare/NT8lab/nb_lib_wide_opening_window_reversal_v14_gate_report\\.md|nb_lib/strategy_specs/canonical/prj3_fractal_pullback\\.md)$",
+    "(?#extractor-false-positive)^(?:0\\.4/0\\.4/0\\.2|last_confirmed_5m_swing_low/high|1/14|25/50/100|n/a)$"
   ],
   "ignored_context_regexes": [
     "\\bexample\\b",
