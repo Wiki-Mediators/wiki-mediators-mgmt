@@ -38,9 +38,12 @@ or quarantine the offending path instead of retrying every debounce cycle.
 Trigger: the guard-refused loop on 2026-07-02 12:44-12:56, caused by a large
 scratch extract under `codex_tmp/`.
 
-**Bridge v-next candidate -- BOOKED, NOT BUILT:** `--force` must not destroy
-the management vault `.git`; remote config persists in a config file.
-Trigger: the 2026-07-03 management-history reset.
+**Bridge v-next -- BUILT 2026-07-14:** ordinary and `--force` rebuilds preserve
+the management vault `.git`, refs, history, and config-owned remote. Missing
+identity requires explicit `--first-run`; deliberate identity destruction is
+isolated behind `--reinit-repository --first-run --force`. Bridge and auto-sync
+both refuse exact remote mismatches before mutation/publication. Trigger: the
+2026-07-03 management-history reset.
 
 ## 2. The retrieval decisions (what the research settled)
 

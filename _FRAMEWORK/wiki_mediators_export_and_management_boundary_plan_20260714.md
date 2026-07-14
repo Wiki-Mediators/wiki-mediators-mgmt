@@ -165,6 +165,11 @@ profile.
 
 ### Phase 4 — correspondence that survives management sync
 
+**Phase 4 prerequisite — SHIPPED 2026-07-14:** bridge v-next preserves `.git`,
+local/remote machine refs, history, and the config-owned remote through normal
+and `--force` rebuilds; scratch acceptance tests A–E and the auto-sync mismatch
+refusal passed.
+
 Use GitHub branches outside generated management `main` for correspondence:
 
 - `machine/<machine-name>` branches for requests/responses; or a dedicated
@@ -175,6 +180,41 @@ Use GitHub branches outside generated management `main` for correspondence:
 
 The first response to RYRY should be committed on `machine/nt8lab`, at the
 requested response path, and cite this plan. It must be reviewed before push.
+
+#### Minimal transport contract (v0, for review — smallest tested protocol)
+
+This contract is now the operating protocol. The Phase 4 bridge prerequisite
+shipped on 2026-07-14; delivery remains manually triggered,
+operator-mediated, and low volume.
+
+- **Paths (authoritative):** requests at
+  `_HANDOFFS/knowledge_requests/KR-<date>-<seq>_<slug>.md`; responses at
+  `_HANDOFFS/knowledge_responses/KR-<date>-<seq>_response.md`. One file per
+  request and one per response; amendments are appended sections, not new
+  files.
+- **Branch ownership:** `machine/<name>` branches are writer-owned: only
+  machine X commits to `machine/X`. Nobody rebases or force-pushes another
+  machine's branch. Generated `main` is bridge-owned and never a
+  correspondence surface.
+- **Lifecycle:** fetch before read; read the other machine's branch read-only;
+  write on your own branch; push manually on operator trigger. No watcher, no
+  automation, and no autonomous delivery; this stands until a future
+  deliberate decision.
+- **Status vocabulary (frontmatter `status:`):** `ready-for-review` →
+  `under-review` → `answered` → `closed`; `blocked` is permitted with a reason
+  line. The writer of the file owns its status field.
+- **Safety:** every correspondence file is repository-safe by construction:
+  no secrets, credentials, machine-local absolute paths beyond illustrative
+  ones, or non-exportable project data. Sensitivity is mandatory, and the
+  committing worker runs the same secret scan the bridge uses before any
+  push.
+- **Non-interference test (acceptance):** after any bridge rebuild and push of
+  `main`, all `machine/*` refs on the remote are unchanged and a fetched local
+  copy survives. This test passed against a disposable local bare remote on
+  2026-07-14 and remains a regression gate for bridge changes.
+- **Divergence rule:** correspondence branches are append-only. If a branch
+  diverges, the writer machine resolves it by appending a reconciliation
+  section, never by rewriting history.
 
 **Acceptance:** a bridge sync of `main` cannot overwrite or erase a fetched
 machine correspondence branch.
