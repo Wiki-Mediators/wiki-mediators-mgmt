@@ -84,17 +84,18 @@ Derived from roadmap statuses and tool-file presence.
 | `_FRAMEWORK/two_vault_architecture_prebuild_plan.md` | Two-Vault Architecture — Pre-Build Plan |
 | `_FRAMEWORK/wiki_architecture_current_future_visual_note_20260628.md` | Wiki Architecture Current/Future Visual Note |
 | `_FRAMEWORK/wiki_architecture_flow.md` | Wiki Architecture Flow Map |
+| `_FRAMEWORK/wiki_mediators_export_and_management_boundary_plan_20260714.md` | Wiki Mediators Export + Management Boundary Plan |
 
 ## Staged summary
 
-- total_files: **39**
+- total_files: **40**
 
 | directory | files |
 |---|---:|
 | `(root)` | 3 |
 | `_DERIVED` | 2 |
 | `_DIMENSIONS` | 3 |
-| `_FRAMEWORK` | 11 |
+| `_FRAMEWORK` | 12 |
 | `_worker_reports` | 5 |
 | `nb_lib` | 3 |
 | `tools` | 12 |

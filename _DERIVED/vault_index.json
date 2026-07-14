@@ -9,7 +9,7 @@
   "config_path": "tools/wiki_deriver/link_reference_checker.config.json",
   "counts_by_extension": {
     ".json": 2,
-    ".md": 26,
+    ".md": 27,
     ".ps1": 1,
     ".py": 6
   },
@@ -111,6 +111,13 @@
       "descriptor": "Wiki Architecture Flow Map",
       "extension": ".md",
       "path": "_FRAMEWORK/wiki_architecture_flow.md"
+    },
+    {
+      "basename": "wiki_mediators_export_and_management_boundary_plan_20260714.md",
+      "basename_collision": false,
+      "descriptor": "Wiki Mediators Export + Management Boundary Plan",
+      "extension": ".md",
+      "path": "_FRAMEWORK/wiki_mediators_export_and_management_boundary_plan_20260714.md"
     },
     {
       "basename": "_PROJECT_ALTITUDE_MAP.md",
@@ -260,7 +267,7 @@
       "path": "tools/wiki_deriver/vault_search_config.json"
     }
   ],
-  "entry_count": 35,
+  "entry_count": 36,
   "schema_version": 1,
   "tool": "tools/wiki_deriver/build_vault_index.py"
 }

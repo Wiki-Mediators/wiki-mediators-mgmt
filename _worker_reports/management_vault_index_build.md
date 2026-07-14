@@ -12,13 +12,13 @@ Built the standalone all-file vault index artifacts for Tool 2.
 
 ## Counts
 
-- Entries indexed: 35
+- Entries indexed: 36
 - Basename collisions: 1
 
 | Extension | Count |
 |---|---:|
 | `.json` | 2 |
-| `.md` | 26 |
+| `.md` | 27 |
 | `.ps1` | 1 |
 | `.py` | 6 |
 
@@ -30,7 +30,7 @@ Built the standalone all-file vault index artifacts for Tool 2.
 
 ## Link Checker Resolver Win Estimate
 
-- Broken rows that would resolve via all-file basename index: 5
+- Broken rows that would resolve via all-file basename index: 6
 - Additional line/symbol suffix rows that would resolve after index: 0
 - Broken rows that would become honest ambiguity: 0
 

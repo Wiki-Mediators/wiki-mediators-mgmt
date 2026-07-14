@@ -14,6 +14,10 @@ The bridge and auto-sync tools live in the working vault under
 `tools/management_bridge/`. They read the working vault, stage a clean
 management tree, run the secret scan, and write only to the management vault.
 
+The proposed boundary for reusable dumb tools, the thin management surface,
+and cross-machine correspondence is recorded in
+`_FRAMEWORK/wiki_mediators_export_and_management_boundary_plan_20260714.md`.
+
 The sync direction is one way:
 
 `working vault -> management vault -> GitHub`

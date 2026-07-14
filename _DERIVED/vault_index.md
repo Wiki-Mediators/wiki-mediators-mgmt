@@ -4,7 +4,7 @@ Deterministic all-file index generated from `_DERIVED/vault_index.json`.
 
 ## Summary
 
-- Entries: 35
+- Entries: 36
 - Basename collisions: 1
 
 ## Counts By Extension
@@ -12,7 +12,7 @@ Deterministic all-file index generated from `_DERIVED/vault_index.json`.
 | Extension | Count |
 |---|---:|
 | `.json` | 2 |
-| `.md` | 26 |
+| `.md` | 27 |
 | `.ps1` | 1 |
 | `.py` | 6 |
 
@@ -40,6 +40,7 @@ Deterministic all-file index generated from `_DERIVED/vault_index.json`.
 | `_FRAMEWORK/two_vault_architecture_prebuild_plan.md` | `two_vault_architecture_prebuild_plan.md` | `.md` | false | Two-Vault Architecture — Pre-Build Plan |
 | `_FRAMEWORK/wiki_architecture_current_future_visual_note_20260628.md` | `wiki_architecture_current_future_visual_note_20260628.md` | `.md` | false | Wiki Architecture Current/Future Visual Note |
 | `_FRAMEWORK/wiki_architecture_flow.md` | `wiki_architecture_flow.md` | `.md` | false | Wiki Architecture Flow Map |
+| `_FRAMEWORK/wiki_mediators_export_and_management_boundary_plan_20260714.md` | `wiki_mediators_export_and_management_boundary_plan_20260714.md` | `.md` | false | Wiki Mediators Export + Management Boundary Plan |
 | `_PROJECT_ALTITUDE_MAP.md` | `_PROJECT_ALTITUDE_MAP.md` | `.md` | false | Project Altitude Map |
 | `_worker_reports/RECENT_WORK_HANDOFF_20260708.md` | `RECENT_WORK_HANDOFF_20260708.md` | `.md` | false | Recent Work Handoff — Wiki Mediators Retrieval + Two-Lane Search |
 | `_worker_reports/TASK_agents_search_routing_edit_20260708.md` | `TASK_agents_search_routing_edit_20260708.md` | `.md` | false | TASK — AGENTS.md Search-Routing Edit |
