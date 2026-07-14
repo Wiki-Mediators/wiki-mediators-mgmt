@@ -139,6 +139,11 @@ unexamined import from NT8lab.
 
 ### Phase 3 — build the separate Wiki Mediators toolkit repository
 
+Packaging order (adopted 2026-07-14 from KR-20260714-002, RYRY acceptance
+review): 1. vault search closure (with retrieval_common), 2. orientation digest
+builder, 3. capture-integrity checker — retrieval, orientation,
+trustworthiness. Remaining instruments follow demonstrated demand.
+
 Create a repository with this broad shape:
 
 ```text
