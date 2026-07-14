@@ -261,9 +261,14 @@ The operator approved Phases 0–2 with these boundary clarifications:
    procedures are reusable, but worked examples, project paths, statuses, and
    source citations must become profile placeholders or neutral fixtures
    before export.
-4. Phase 3 remains blocked until the operator makes an explicit license
-   decision for the public/reusable toolkit repository. No license is inferred
-   from the current private vault or management repository.
+4. **License decision — adopted 2026-07-14:** the separate Wiki Mediators
+   toolkit is proprietary, **All Rights Reserved**. Internal packaging,
+   testing, and use by the operator or explicitly authorized agents may
+   proceed. Any future publicly visible repository remains proprietary: public
+   visibility grants no permission to use, modify, or redistribute beyond the
+   hosting platform's terms. No open-source or public-distribution grant is
+   authorized. The operator may explicitly relicense the toolkit later. This
+   decision does not license NT8lab project content or the management vault.
 
 Phase 1 also uses a config-driven `copy_as` rule to stage
 `_FRAMEWORK/management_vault_AGENTS.md` as root `AGENTS.md`. The source is not
