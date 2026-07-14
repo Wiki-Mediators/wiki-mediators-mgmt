@@ -256,6 +256,40 @@ The management inventory is descriptive and does not override these
 classifications. Packaging, templating, licensing, and toolkit-repository work
 remain Phase 3.
 
+## Adapter pattern — profile/policy split (accepted 2026-07-14)
+
+Every Phase 2 `NEEDS-ADAPTER` verdict resolves through one uniform mechanism,
+not per-tool improvisation:
+
+1. **Every tool config splits into two kinds of content:**
+   - **PROFILE (machine facts):** vault root, periphery/deny roots,
+     interpreter locations, remote URLs, and machine-local paths of any kind.
+     These move into one per-installation file (`vault-profile.json` or
+     equivalent), referenced by tools and never embedded in tool configs.
+   - **POLICY (learned judgment):** stopword lists, severity-by-role rules,
+     skip conventions, debounce/timeout values, status vocabularies, and
+     suppression classes. These ship portable as-is: they contain facts about
+     the method, not about any machine.
+2. **The exportable unit is:** tool closure (entrypoints, local helpers, and
+   wrappers) plus its policy configs, an `example-profile.json` with
+   placeholder paths, and a README stating inputs/outputs and the
+   compute-and-flag rule.
+3. **The proof of export-readiness is mechanical:** the closure must pass the
+   Phase 3 fixture-vault smoke test using only the example profile. If a tool
+   cannot run against a profile that is not NT8lab's, it is not ready.
+4. **Doctrine note:** this is the existing no-machine-facts-in-code rule
+   applied one level up: no machine facts in policy either; machine facts live
+   in exactly one file per installation. The same split makes local machine
+   migration a one-file edit, unifying the export problem with the 5.4
+   portability track.
+5. **Sequencing:** the split executes inside Phase 3, after the license gate,
+   tool by tool, using the Phase 2 dependency-closure table as the refactor
+   map. No dual-mode "export flags" are added to any tool: export is a
+   packaging property, never runtime behavior.
+
+Banked 2026-07-14: design policy only; no refactor, tool change, packaging, or
+Phase 3 execution was performed.
+
 ## Validation required for any implementation phase
 
 - Exact allow-list diff and staged secret-scan result, with no secret values
