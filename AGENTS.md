@@ -22,3 +22,11 @@ through the operator to a local worker on the working-vault machine. This
 generated `main` branch is bridge-owned and one-way. Machine correspondence
 branches are planned only after the boundary plan's Phase 4 prerequisites are
 implemented and verified; do not use `main` as a correspondence surface.
+
+## Mail check
+
+When the operator asks to check mail, messages, or requests (any phrasing), do
+this: `git fetch origin`; read any new or still-open files in
+`_HANDOFFS/knowledge_requests/` on `machine/nt8lab` addressed to this machine;
+execute what they ask; write the response at the contract's response path on
+this machine's own branch; push; report what you did in three lines.
