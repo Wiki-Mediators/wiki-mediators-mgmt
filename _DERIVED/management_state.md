@@ -11,9 +11,9 @@ Deterministically generated from roadmap statuses and tool-file presence. No han
 |---|---|---|---|---|
 | bridge | management bridge | BUILT | working | `tools/management_bridge/build_management_vault.py` |
 | auto_sync | management auto-sync | BUILT | working | `tools/management_bridge/management_auto_sync.py` |
-| vault_index | vault index builder | BUILT | management | `tools/wiki_deriver/build_vault_index.py` |
-| link_checker | link reference checker | BUILT | management | `tools/wiki_deriver/link_reference_checker.py` |
-| derived_staleness | derived staleness signal | BUILT | management | `tools/wiki_deriver/derived_staleness_signal.py` |
+| vault_index | vault index builder | UNSTATED | management | `tools/wiki_deriver/build_vault_index.py` |
+| link_checker | link reference checker | UNSTATED | management | `tools/wiki_deriver/link_reference_checker.py` |
+| derived_staleness | derived staleness signal | UNSTATED | management | `tools/wiki_deriver/derived_staleness_signal.py` |
 
 ## Roadmap Status Groups
 

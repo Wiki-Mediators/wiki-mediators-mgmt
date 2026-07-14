@@ -9,7 +9,7 @@ Deterministically generated from the staged management tree by `tools/management
 
 | path | title | exists |
 |---|---|---:|
-| `AGENTS.md` | NT8lab — Bootstrap for new sessions | true |
+| `AGENTS.md` | Wiki Mediators management vault — orientation | true |
 | `ninja-traitorate-methodology-reference.md` | Ninja Traitorate — Methodology Reference | true |
 | `_PROJECT_ALTITUDE_MAP.md` | Project Altitude Map | true |
 
@@ -56,9 +56,9 @@ Derived from roadmap statuses and tool-file presence.
 |---|---|---|---|
 | bridge | BUILT | working | `tools/management_bridge/build_management_vault.py` |
 | auto_sync | BUILT | working | `tools/management_bridge/management_auto_sync.py` |
-| vault_index | BUILT | management | `tools/wiki_deriver/build_vault_index.py` |
-| link_checker | BUILT | management | `tools/wiki_deriver/link_reference_checker.py` |
-| derived_staleness | BUILT | management | `tools/wiki_deriver/derived_staleness_signal.py` |
+| vault_index | UNSTATED | management | `tools/wiki_deriver/build_vault_index.py` |
+| link_checker | UNSTATED | management | `tools/wiki_deriver/link_reference_checker.py` |
+| derived_staleness | UNSTATED | management | `tools/wiki_deriver/derived_staleness_signal.py` |
 
 ### Roadmap counts
 
@@ -85,18 +85,19 @@ Derived from roadmap statuses and tool-file presence.
 | `_FRAMEWORK/wiki_architecture_current_future_visual_note_20260628.md` | Wiki Architecture Current/Future Visual Note |
 | `_FRAMEWORK/wiki_architecture_flow.md` | Wiki Architecture Flow Map |
 | `_FRAMEWORK/wiki_mediators_export_and_management_boundary_plan_20260714.md` | Wiki Mediators Export + Management Boundary Plan |
+| `_FRAMEWORK/wiki_mediators_tool_inventory.md` | Wiki Mediators instrument inventory |
 
 ## Staged summary
 
-- total_files: **40**
+- total_files: **31**
 
 | directory | files |
 |---|---:|
 | `(root)` | 3 |
 | `_DERIVED` | 2 |
 | `_DIMENSIONS` | 3 |
-| `_FRAMEWORK` | 12 |
+| `_FRAMEWORK` | 13 |
 | `_worker_reports` | 5 |
 | `nb_lib` | 3 |
-| `tools` | 12 |
+| `tools` | 2 |
 

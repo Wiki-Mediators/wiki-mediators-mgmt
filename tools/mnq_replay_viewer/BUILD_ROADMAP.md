@@ -3,6 +3,10 @@
 Status: canonical staged build plan.
 Created: 2026-05-14.
 
+> **Management-vault boundary:** descriptive only — the runtime, source files,
+> commands, APIs, and working paths referenced below live in the full working
+> vault and are not runnable from the management checkout.
+
 ## Current Build State
 
 Current app stage: Stage 9 V2 batch snapshots built; smoke clean,

@@ -4,7 +4,7 @@
   "bootstrap_files": [
     {
       "path": "AGENTS.md",
-      "title": "NT8lab \u2014 Bootstrap for new sessions",
+      "title": "Wiki Mediators management vault \u2014 orientation",
       "exists": true
     },
     {
@@ -204,6 +204,10 @@
     {
       "path": "_FRAMEWORK/wiki_mediators_export_and_management_boundary_plan_20260714.md",
       "title": "Wiki Mediators Export + Management Boundary Plan"
+    },
+    {
+      "path": "_FRAMEWORK/wiki_mediators_tool_inventory.md",
+      "title": "Wiki Mediators instrument inventory"
     }
   ],
   "management_state": {
@@ -381,34 +385,34 @@
         "name": "vault index builder",
         "path": "tools/wiki_deriver/build_vault_index.py",
         "source_root": "management",
-        "state": "BUILT"
+        "state": "UNSTATED"
       },
       {
         "id": "link_checker",
         "name": "link reference checker",
         "path": "tools/wiki_deriver/link_reference_checker.py",
         "source_root": "management",
-        "state": "BUILT"
+        "state": "UNSTATED"
       },
       {
         "id": "derived_staleness",
         "name": "derived staleness signal",
         "path": "tools/wiki_deriver/derived_staleness_signal.py",
         "source_root": "management",
-        "state": "BUILT"
+        "state": "UNSTATED"
       }
     ]
   },
   "staged_summary": {
-    "total_files": 40,
+    "total_files": 31,
     "by_directory": {
       "(root)": 3,
       "_DERIVED": 2,
       "_DIMENSIONS": 3,
-      "_FRAMEWORK": 12,
+      "_FRAMEWORK": 13,
       "_worker_reports": 5,
       "nb_lib": 3,
-      "tools": 12
+      "tools": 2
     }
   }
 }

@@ -200,6 +200,62 @@ content or weakening the management separation.
   orientation material needed to evaluate this proposal.
 - No automatic merge/push of cross-machine correspondence.
 
+## Phase 0 accepted deviations — 2026-07-14
+
+The operator approved Phases 0–2 with these boundary clarifications:
+
+1. Bridge v-next `--force` must preserve the management repository's `.git`
+   directory and configured remote instead of deleting and recreating them.
+   This is a Phase 4 prerequisite, not part of the present Phase 1 staging
+   edit. The requirement follows the 2026-07-03 `MGMT_HISTORY_RESET` recovery
+   evidence: generated content may be replaced, repository identity may not.
+2. "Thin" means **thin but informed**. Management keeps one explicitly
+   non-runnable inventory of all built Wiki Mediators instruments, with their
+   layer, job, inputs, and outputs. Source/config/runtime closures remain out.
+3. Operational playbooks are Phase 2 portability candidates. Their generic
+   procedures are reusable, but worked examples, project paths, statuses, and
+   source citations must become profile placeholders or neutral fixtures
+   before export.
+4. Phase 3 remains blocked until the operator makes an explicit license
+   decision for the public/reusable toolkit repository. No license is inferred
+   from the current private vault or management repository.
+
+Phase 1 also uses a config-driven `copy_as` rule to stage
+`_FRAMEWORK/management_vault_AGENTS.md` as root `AGENTS.md`. The source is not
+also allow-listed: the orientation file must appear exactly once in a fresh
+management tree.
+
+## Phase 2 portability and dependency inventory — 2026-07-14
+
+No instrument is approved for as-is export in this pass. `NEEDS-ADAPTER`
+means the generic job is worth carrying, but its complete closure must first
+be packaged with profile inputs, neutral fixtures, and clean-checkout tests.
+
+| Candidate | Generic job and carry trigger | Inputs → outputs | Dependency closure | NT8lab/project assumptions requiring adaptation | Classification |
+|---|---|---|---|---|---|
+| Vault index builder | Enumerate a vault when agents need a deterministic file/frontmatter/link map. | Markdown/files + profile → index JSON/Markdown and report | `build_vault_index.py`, `link_reference_checker.py`, link config, integrity config/module, Python stdlib | NT8lab ignore roots, frontmatter/status vocabulary, output/report paths and link policy | **NEEDS-ADAPTER** |
+| Link reference checker | Resolve references when structural integrity needs a LOUD, non-repairing check. | Notes + index/config → broken-link JSON/Markdown | Checker, link config, capture-integrity severity config/module, optional index | Baselines, ignored patterns, external prefixes, source-role/status severity policy and report paths | **NEEDS-ADAPTER** |
+| Orientation digest builder | Project a compact orientation surface when a large vault needs a deterministic first read. | Index + selected authoritative notes → digest/report | Builder, dynamic vault-index import, expected index schema | Hard-coded `nb_lib/strategy_specs` lanes, roadmap path, strategy status fields and collision rules | **NEEDS-ADAPTER** |
+| Derived staleness signal | Flag stale derived outputs when source/tool/config mtimes advance. | Known artifact/source sets → staleness JSON/Markdown | Signal, index/link/orientation builders and config; test fixture | Explicit NT8lab artifact registry, generated markers, output names and source policies | **NEEDS-ADAPTER** |
+| Source census | Count/classify research inputs when source coverage or verdict mix matters. | Configured source notes/frontmatter → census JSON/Markdown | `source_census.py`, stdlib, corpus conventions | `nb_lib/strategy_specs/source_artifacts`, excluded roots, source naming and verdict vocabulary | **NEEDS-ADAPTER** |
+| Trigger watcher | Compute documented work triggers when roadmap thresholds need a dumb signal. | Roadmap, newsroom, census and retrieval data → trigger JSON/Markdown | `trigger_watcher.py`, Git CLI, upstream derived schemas | NT8lab roadmap/newsroom paths, trigger wording, schema keys and thresholds | **NEEDS-ADAPTER** |
+| Deriver runner | Execute independent derivers in order when one dashboard/exit contract is needed. | Runner profile + full enabled closures → per-tool outputs and last-run dashboard | Python runner, PowerShell wrapper, runner config, every enabled tool/config and output parser | Absolute vault root, enabled set, LOUD/exit policy, timeouts, report schemas and self-reference exclusions | **NEEDS-ADAPTER** |
+| Session-link index | Link notes to archived sessions when durable provenance must stay separate from conversation tape. | Notes/frontmatter + Git + archive → session index JSON/Markdown | `session_link_index.py`, Git CLI, readable external archive | Hard-coded `C:/VMShare/conversation_archive`, session-ref conventions and repository layout | **NEEDS-ADAPTER** |
+| Capture-integrity checker | Flag capture/frontmatter/evidence problems when writer conventions need enforcement. | Corpus + Git + integrity/link profiles → integrity JSON/Markdown | Checker, `retrieval_common`, link checker, both configs, Git CLI | LOUD statuses, scratch roots, evidence markers, grandfathered vocabularies and path roles | **NEEDS-ADAPTER** |
+| Term co-occurrence builder | Build lexical-neighbor data when recall assist needs a deterministic corpus signal. | Markdown corpus + tokenizer settings → co-occurrence JSON/Markdown | Builder + `retrieval_common`; Python stdlib | Corpus skip rules, stopwords, output paths and tuned thresholds | **NEEDS-ADAPTER** |
+| Missed-retrieval detector | Benchmark paraphrase retrieval when search changes need regression evidence. | Query fixture + search/co-occurrence closure → detector report | Detector, `retrieval_common`, query JSON, co-occurrence data, vault-search closure | NT8lab query set, expected notes, scoring thresholds and derived output schema | **NEEDS-ADAPTER** |
+| Two-lane search | Keep vault truth separate from periphery/intake when wider search is explicitly requested. | Query + search profile + two corpora → ranked lanes and last-run artifacts | `two_lane_search.py`, search config, stdlib | Absolute vault/periphery/deny roots, lane contract, size/extensions and skip lists | **NEEDS-ADAPTER** |
+| Vault search | Retrieve concepts and neighbors when literal grep is insufficient. | Query + corpus/index/co-occurrence/profile → ranked results; optional two-lane files | `vault_search.py`, wrapper, **`retrieval_common.py`**, `two_lane_search.py`, search config, query fixture, co-occurrence artifact/builder | Vault paths, derived schemas, tuned weights/stopwords, benchmark corpus and periphery policy. `retrieval_common` travels with vault search or neither exports. | **NEEDS-ADAPTER** |
+| Wiki logger | Capture routine durable changes when Git should remain background infrastructure. | Git worktree + logger profile/wrappers → commits and logger state/logs | Logger Python, production/test configs, both Windows launchers, Git CLI and ignore/guard contract | NT8lab absolute root, exclusions, debounce/identity policy, Windows daemon assumptions and capture vocabulary | **NEEDS-ADAPTER** |
+| Management bridge | Materialize a safe thin view when selected state must cross a repository boundary. | Bridge profile + exact mappings + working sources → secret-scanned staged tree and scoped derived views | Bridge script/config, Git CLI, working-vault index builder/link closure, secret signatures | NT8lab roots/allow-list/key path, digest fields, selected architecture paths, commit/bootstrap expectations | **NEEDS-ADAPTER** |
+| Management auto-sync | Rebuild/compare/push generated management `main` when one-way publication is desired. | Auto-sync profile + bridge closure + Git repositories → validated commit/push and runtime log | Auto-sync script/config, bridge/config, Git CLI, disposable stage/runtime directories | Windows paths, repository/remote/branch identity, debounce and generated-main ownership rules | **NEEDS-ADAPTER** |
+| Operational playbooks | Standardize intake, banking, promotion, evaluation, review and triage when a repeatable human/agent procedure exists. | Request + template + vault conventions → reviewed notes/artifacts/logs/decisions | `_FRAMEWORK/playbooks/*.md` as a reviewed set; any named local helper must be separately packaged | Worked examples, source citations, paths, statuses, Pattern references and NT8lab authority hierarchy | **NEEDS-ADAPTER** |
+| Dependency manifest/catalog renderer | Render tool/data dependencies when the system needs an inspectable closure catalog. | Dependency manifest/profile → catalog Markdown | `deps/dependencies.yaml`, `deps/tools/render_catalog.py`, schema assumptions | NT8lab component names, repository paths, roles and catalog destination | **NEEDS-ADAPTER** |
+
+The management inventory is descriptive and does not override these
+classifications. Packaging, templating, licensing, and toolkit-repository work
+remain Phase 3.
+
 ## Validation required for any implementation phase
 
 - Exact allow-list diff and staged secret-scan result, with no secret values

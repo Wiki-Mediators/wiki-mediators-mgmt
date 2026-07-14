@@ -3,6 +3,10 @@
 Status: pre-implementation design.
 Created: 2026-05-14.
 
+> **Management-vault boundary:** descriptive only — the runtime, source files,
+> commands, APIs, and working paths referenced below live in the full working
+> vault and are not runnable from the management checkout.
+
 ## Purpose
 
 This document defines how strategy outputs from `nb_lib`, manual replay
@@ -465,4 +469,3 @@ Build adapters in this order:
 Do not start with the most complicated log shape. A summary trade
 overlay is useful quickly, but the schema must be ready for full
 lifecycle reconstruction.
-
