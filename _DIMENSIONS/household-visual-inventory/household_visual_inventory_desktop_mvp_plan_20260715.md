@@ -117,6 +117,19 @@ queue only. Non-label OCR remains quarantined. Grounding DINO, SAM 2, online
 vision, narrated video, and cross-session identity remain deferred to their
 existing triggers.
 
+### Staged roadmap - scene-diff cataloguing
+
+Scene-diff cataloguing (operator vision, 2026-07-15): the post-Stage-C
+loop inverts from operator-narrates-facts to photograph-and-walk-away -
+new photo of a known location diffs (deterministic set arithmetic, dumb-
+tool shape) model proposals against the ledger's last confirmed state
+for that location ID, emitting candidate move/arrival/departure events
+into the confirmation queue. Accuracy asymptote acknowledged <100%;
+the residual queue is the product's human session, by design. Ordering:
+Stage C detection first, scene-diff second (its own go), cross-session
+identity stays deferred on its existing trigger. Confirmation gate and
+append-only ledger are invariant across all automation depth.
+
 ## Local storage contract proposed for review
 
 The operator still selects the artifact root. Under a placeholder
