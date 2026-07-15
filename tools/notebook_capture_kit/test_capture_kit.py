@@ -131,7 +131,7 @@ class CaptureKitTests(unittest.TestCase):
         args = Namespace(
             session=str(self.session), camera_type="webcam", camera_index=0,
             width=1920, height=1080, interval=0.001, duration=60.0, shots=2,
-            immediate=True, open_folder=False, blur_min=20.0, mean_min=25.0,
+            prep_seconds=0.0, immediate=True, open_folder=False, blur_min=20.0, mean_min=25.0,
             mean_max=230.0, clipped_fraction_max=0.9,
         )
         with mock.patch.object(kit, "open_camera", return_value=FakeCamera()), mock.patch.object(kit, "beep"):
@@ -140,6 +140,12 @@ class CaptureKitTests(unittest.TestCase):
         self.assertEqual(len(rows), 2)
         self.assertTrue(all(row["status"] == "accepted" for row in rows))
         self.assertEqual(len(list((self.session / "images").glob("*.jpg"))), 2)
+
+    def test_startup_signal_has_alert_delay_and_start_tone(self):
+        with mock.patch.object(kit, "beep") as beeper, mock.patch.object(kit.time, "sleep") as sleeper:
+            kit.startup_signal(10.0)
+        self.assertEqual(beeper.call_args_list, [mock.call(660, 100), mock.call(660, 100), mock.call(1200, 450)])
+        self.assertEqual(sleeper.call_args_list, [mock.call(0.12), mock.call(10.0)])
 
 
 if __name__ == "__main__":

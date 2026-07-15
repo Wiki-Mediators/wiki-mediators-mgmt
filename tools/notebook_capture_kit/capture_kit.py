@@ -67,7 +67,7 @@ def has_exif(data: bytes) -> bool:
 
 @dataclass(frozen=True)
 class Thresholds:
-    blur_min: float = 85.0
+    blur_min: float = 20.0
     mean_min: float = 35.0
     mean_max: float = 225.0
     clipped_fraction_max: float = 0.85
@@ -301,12 +301,22 @@ def copy_stable_new_files(
     return copied
 
 
-def beep() -> None:
+def beep(frequency: int = 880, duration_ms: int = 120) -> None:
     if os.name == "nt":
         import winsound
-        winsound.Beep(880, 120)
+        winsound.Beep(frequency, duration_ms)
     else:
         print("\a", end="", flush=True)
+
+
+def startup_signal(prep_seconds: float) -> None:
+    beep(660, 100)
+    time.sleep(0.12)
+    beep(660, 100)
+    print(f"Preparation window: {prep_seconds:g}s — turn on lights, open shutter, and hold the first pose.")
+    time.sleep(max(0.0, prep_seconds))
+    beep(1200, 450)
+    print("Capture sequence started. First snapshot follows after one interval.")
 
 
 def watch(args: argparse.Namespace) -> int:
@@ -387,6 +397,7 @@ def capture(args: argparse.Namespace) -> int:
         "Rotate after each shot, then hold still for the next beep. Ctrl+C stops."
     )
     try:
+        startup_signal(args.prep_seconds)
         # Warm up exposure and discard stale startup frames.
         for _ in range(8):
             camera.read()
@@ -424,7 +435,7 @@ def capture(args: argparse.Namespace) -> int:
 
 
 def add_threshold_args(parser: argparse.ArgumentParser) -> None:
-    parser.add_argument("--blur-min", type=float, default=85.0)
+    parser.add_argument("--blur-min", type=float, default=20.0)
     parser.add_argument("--mean-min", type=float, default=35.0)
     parser.add_argument("--mean-max", type=float, default=225.0)
     parser.add_argument("--clipped-fraction-max", type=float, default=0.85)
@@ -476,6 +487,7 @@ def build_parser() -> argparse.ArgumentParser:
     direct.add_argument("--width", type=int, default=1920)
     direct.add_argument("--height", type=int, default=1080)
     direct.add_argument("--interval", type=float, default=3.0)
+    direct.add_argument("--prep-seconds", type=float, default=10.0)
     direct.add_argument("--duration", type=float, default=60.0)
     direct.add_argument("--shots", type=int, default=0, help="Exact shot count; overrides duration when positive")
     direct.add_argument("--immediate", action="store_true", help="Take the first shot immediately instead of after one interval")

@@ -28,13 +28,17 @@ physical shutter, place the object in view, then run:
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\capture_kit.ps1 capture "<printed-session-path>" --interval 3 --duration 60
 ```
 
-The first snapshot occurs after three seconds. At each beep the snapshot has
-just been taken: rotate the object to the next position, then hold it still
-until the next beep. Twenty snapshots are attempted in one minute. When the
-run ends, the tool opens `images\` in Explorer for thumbnail review. If every
-frame fails its quality gate, it opens `rejected\` instead so the failure is
-visible rather than presenting an empty folder. Use `--shots 60` for an exact
-count or `--no-open-folder` to suppress Explorer.
+Two quick alert beeps announce a 10-second preparation window for turning on
+lights, opening the physical shutter, and holding the first pose. A longer tone
+marks the sequence start. The first snapshot occurs three seconds later. At
+each subsequent beep the snapshot has just been taken: rotate the object to the
+next position, then hold it still until the next beep. Twenty snapshots are
+attempted in one minute. Override preparation time with `--prep-seconds`.
+
+When the run ends, the tool opens `images\` in Explorer for thumbnail review.
+If every frame fails its quality gate, it opens `rejected\` instead so the
+failure is visible rather than presenting an empty folder. Use `--shots 60`
+for an exact count or `--no-open-folder` to suppress Explorer.
 
 ## Camera Roll compatibility mode
 
@@ -88,7 +92,8 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\capture_kit.ps1 ingest
 
 Defaults are deliberately explicit and recorded in `checks\session_config.json`:
 
-- variance-of-Laplacian blur minimum: `85`
+- variance-of-Laplacian blur minimum: `20` (calibrated conservatively against
+  the notebook's Realtek camera at 1920×1080)
 - mean luma range: `35`–`225`
 - maximum near-black or near-white fraction: `0.85`
 
