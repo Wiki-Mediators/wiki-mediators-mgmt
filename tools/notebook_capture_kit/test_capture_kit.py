@@ -130,12 +130,13 @@ class CaptureKitTests(unittest.TestCase):
 
         args = Namespace(
             session=str(self.session), camera_type="webcam", camera_index=0,
-            width=1920, height=1080, interval=0.001, duration=60.0, shots=2,
+            width=1920, height=1080, zoom=150, interval=0.001, duration=60.0, shots=2,
             prep_seconds=0.0, immediate=True, open_folder=False, blur_min=20.0, mean_min=25.0,
             mean_max=230.0, clipped_fraction_max=0.9,
         )
-        with mock.patch.object(kit, "open_camera", return_value=FakeCamera()), mock.patch.object(kit, "beep"):
+        with mock.patch.object(kit, "open_camera", return_value=FakeCamera()) as opener, mock.patch.object(kit, "beep"):
             self.assertEqual(kit.capture(args), 0)
+        opener.assert_called_once_with(0, 1920, 1080, 150)
         rows = self.rows()
         self.assertEqual(len(rows), 2)
         self.assertTrue(all(row["status"] == "accepted" for row in rows))

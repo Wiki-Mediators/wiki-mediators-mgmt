@@ -371,7 +371,7 @@ def ingest(args: argparse.Namespace) -> int:
     return 0
 
 
-def open_camera(index: int, width: int, height: int) -> cv2.VideoCapture:
+def open_camera(index: int, width: int, height: int, zoom: int = 100) -> cv2.VideoCapture:
     backend = cv2.CAP_DSHOW if os.name == "nt" else cv2.CAP_ANY
     camera = cv2.VideoCapture(index, backend)
     if not camera.isOpened():
@@ -382,6 +382,15 @@ def open_camera(index: int, width: int, height: int) -> cv2.VideoCapture:
     camera.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*"MJPG"))
     camera.set(cv2.CAP_PROP_FRAME_WIDTH, width)
     camera.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
+    if zoom != 100:
+        if not camera.set(cv2.CAP_PROP_ZOOM, zoom):
+            camera.release()
+            raise SystemExit(f"Camera driver rejected zoom value {zoom}")
+        actual_zoom = camera.get(cv2.CAP_PROP_ZOOM)
+        if actual_zoom <= 0:
+            camera.release()
+            raise SystemExit("Camera driver did not report the requested zoom setting")
+        print(f"Camera zoom: requested={zoom}, active={actual_zoom:g}")
     return camera
 
 
@@ -389,7 +398,7 @@ def capture(args: argparse.Namespace) -> int:
     session = Path(args.session).resolve()
     ensure_session(session)
     thresholds = Thresholds(args.blur_min, args.mean_min, args.mean_max, args.clipped_fraction_max)
-    camera = open_camera(args.camera_index, args.width, args.height)
+    camera = open_camera(args.camera_index, args.width, args.height, args.zoom)
     total = args.shots if args.shots > 0 else max(1, int(args.duration // args.interval))
     accepted = 0
     rejected = 0
@@ -487,6 +496,7 @@ def build_parser() -> argparse.ArgumentParser:
     direct.add_argument("--camera-index", type=int, default=0)
     direct.add_argument("--width", type=int, default=1920)
     direct.add_argument("--height", type=int, default=1080)
+    direct.add_argument("--zoom", type=int, default=100, help="Driver zoom; Realtek baseline is 100")
     direct.add_argument("--interval", type=float, default=3.0)
     direct.add_argument("--prep-seconds", type=float, default=10.0)
     direct.add_argument("--duration", type=float, default=60.0)

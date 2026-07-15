@@ -40,6 +40,20 @@ If every frame fails its quality gate, it opens `rejected\` instead so the
 failure is visible rather than presenting an empty folder. Use `--shots 60`
 for an exact count or `--no-open-folder` to suppress Explorer.
 
+### Closer framing / macro-style captures
+
+The Realtek driver exposes zoom (`100` is the normal field of view) but does
+not expose adjustable focus. Try `--zoom 150` while keeping the object far
+enough away to remain sharp:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\capture_kit.ps1 capture "<printed-session-path>" --zoom 150 --interval 3 --duration 60
+```
+
+Zoom enlarges the center of the frame; it cannot create optical detail or fix
+an object placed inside the webcam's fixed minimum-focus distance. Use diffuse
+light, fill the center with the object, and judge the resulting blur scores.
+
 ## Camera Roll compatibility mode
 
 The older Windows Camera workflow remains available if direct capture ever
