@@ -1,9 +1,10 @@
 # Notebook Object-Capture Kit
 
-Notebook-side still-photo ingestion for the 3D-scanning feasibility trial.
-The Windows Camera app remains the camera controller. This tool creates the
-session record first, paces manual captures with a beep, sanitizes accepted
-copies, performs mechanical quality checks, and never deletes rejected inputs.
+Notebook-side still-photo capture and ingestion for the 3D-scanning
+feasibility trial. The direct mode controls the integrated camera, takes a
+1920×1080 snapshot on each beep, sanitizes accepted copies, performs mechanical
+quality checks, and never deletes rejected inputs. Windows Explorer thumbnails
+are the review interface; no custom GUI is required.
 
 ## First session
 
@@ -19,16 +20,33 @@ cd .\tools\notebook_capture_kit
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\capture_kit.ps1 init --object "test object" --lighting "diffuse lamp through cloth" --scale-reference "dice plus ruler, +/-0.5 mm" --notes "manual stop-spin-shoot"
 ```
 
-The command prints the new session path. Start the watcher, which ignores old
-Camera Roll content and ingests only photos created after it starts:
+The command prints the new session path. For the normal one-minute direct
+capture, close Windows Camera and any other webcam application, open the
+physical shutter, place the object in view, then run:
 
 ```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\capture_kit.ps1 watch "<printed-session-path>" --interval 3
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\capture_kit.ps1 capture "<printed-session-path>" --interval 3 --duration 60
 ```
 
-For a one-minute practice run that stops automatically, add `--duration 60`.
+The first snapshot occurs after three seconds. At each beep the snapshot has
+just been taken: rotate the object to the next position, then hold it still
+until the next beep. Twenty snapshots are attempted in one minute. When the
+run ends, the tool opens `images\` in Explorer for thumbnail review. If every
+frame fails its quality gate, it opens `rejected\` instead so the failure is
+visible rather than presenting an empty folder. Use `--shots 60` for an exact
+count or `--no-open-folder` to suppress Explorer.
 
-Then open the physical shutter and Windows Camera app. The default watched
+## Camera Roll compatibility mode
+
+The older Windows Camera workflow remains available if direct capture ever
+fails. The watcher ignores old Camera Roll content and ingests only photos
+created after it starts:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\capture_kit.ps1 watch "<printed-session-path>" --interval 3 --duration 60
+```
+
+Open the physical shutter and Windows Camera app. The default watched
 source is `%USERPROFILE%\Pictures\Camera Roll`. If Camera saves elsewhere,
 pass `--source-dir "<folder>"`. To watch only the session's `incoming\` folder,
 pass `--source-dir ""`.

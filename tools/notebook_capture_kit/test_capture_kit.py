@@ -4,6 +4,7 @@ import tempfile
 import unittest
 from argparse import Namespace
 from pathlib import Path
+from unittest import mock
 
 import cv2
 import numpy as np
@@ -114,6 +115,31 @@ class CaptureKitTests(unittest.TestCase):
         self.assertEqual(kit.copy_stable_new_files(camera_roll, incoming, baseline, observed), 1)
         self.assertFalse((incoming / "old.jpg").exists())
         self.assertTrue((incoming / "new.jpg").exists())
+
+    def test_direct_capture_exports_timed_snapshots(self):
+        class FakeCamera:
+            def __init__(self):
+                self.count = 0
+
+            def read(self):
+                self.count += 1
+                return True, np.roll(sharp_image(), self.count, axis=1)
+
+            def release(self):
+                pass
+
+        args = Namespace(
+            session=str(self.session), camera_type="webcam", camera_index=0,
+            width=1920, height=1080, interval=0.001, duration=60.0, shots=2,
+            immediate=True, open_folder=False, blur_min=20.0, mean_min=25.0,
+            mean_max=230.0, clipped_fraction_max=0.9,
+        )
+        with mock.patch.object(kit, "open_camera", return_value=FakeCamera()), mock.patch.object(kit, "beep"):
+            self.assertEqual(kit.capture(args), 0)
+        rows = self.rows()
+        self.assertEqual(len(rows), 2)
+        self.assertTrue(all(row["status"] == "accepted" for row in rows))
+        self.assertEqual(len(list((self.session / "images").glob("*.jpg"))), 2)
 
 
 if __name__ == "__main__":

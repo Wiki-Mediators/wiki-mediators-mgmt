@@ -360,6 +360,69 @@ def ingest(args: argparse.Namespace) -> int:
     return 0
 
 
+def open_camera(index: int, width: int, height: int) -> cv2.VideoCapture:
+    backend = cv2.CAP_DSHOW if os.name == "nt" else cv2.CAP_ANY
+    camera = cv2.VideoCapture(index, backend)
+    if not camera.isOpened():
+        camera.release()
+        raise SystemExit(
+            "Camera could not be opened. Close other camera applications, open the physical shutter, and retry."
+        )
+    camera.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*"MJPG"))
+    camera.set(cv2.CAP_PROP_FRAME_WIDTH, width)
+    camera.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
+    return camera
+
+
+def capture(args: argparse.Namespace) -> int:
+    session = Path(args.session).resolve()
+    ensure_session(session)
+    thresholds = Thresholds(args.blur_min, args.mean_min, args.mean_max, args.clipped_fraction_max)
+    camera = open_camera(args.camera_index, args.width, args.height)
+    total = args.shots if args.shots > 0 else max(1, int(args.duration // args.interval))
+    accepted = 0
+    rejected = 0
+    print(
+        f"Direct capture: {total} snapshot(s), every {args.interval:g}s. "
+        "Rotate after each shot, then hold still for the next beep. Ctrl+C stops."
+    )
+    try:
+        # Warm up exposure and discard stale startup frames.
+        for _ in range(8):
+            camera.read()
+        next_capture = time.monotonic() if args.immediate else time.monotonic() + args.interval
+        for shot_number in range(1, total + 1):
+            time.sleep(max(0.0, next_capture - time.monotonic()))
+            # Pull the freshest available frame before marking the capture moment.
+            frame = None
+            ok = False
+            for _ in range(3):
+                ok, frame = camera.read()
+            beep()
+            if not ok or frame is None:
+                print(f"Shot {shot_number:03d}: camera frame unavailable")
+                rejected += 1
+            else:
+                source = session / "incoming" / f"direct_{shot_number:04d}.png"
+                if not cv2.imwrite(str(source), frame):
+                    raise RuntimeError(f"Could not write camera frame: {source.name}")
+                row = process_file(session, source, thresholds, args.camera_type)
+                if row["status"] == "accepted":
+                    accepted += 1
+                else:
+                    rejected += 1
+            next_capture += args.interval
+    except KeyboardInterrupt:
+        print("\nDirect capture stopped by operator.")
+    finally:
+        camera.release()
+    review_folder = session / ("images" if accepted else "rejected")
+    print(f"Capture complete: accepted={accepted}, rejected={rejected}, review={review_folder}")
+    if args.open_folder and os.name == "nt":
+        os.startfile(review_folder)  # type: ignore[attr-defined]
+    return 0
+
+
 def add_threshold_args(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--blur-min", type=float, default=85.0)
     parser.add_argument("--mean-min", type=float, default=35.0)
@@ -405,6 +468,20 @@ def build_parser() -> argparse.ArgumentParser:
     watcher.add_argument("--beep", action=argparse.BooleanOptionalAction, default=True)
     add_threshold_args(watcher)
     watcher.set_defaults(func=watch)
+
+    direct = sub.add_parser("capture", help="Directly take timed snapshots from the integrated camera")
+    direct.add_argument("session")
+    direct.add_argument("--camera-type", choices=["webcam", "phone", "mixed"], default="webcam")
+    direct.add_argument("--camera-index", type=int, default=0)
+    direct.add_argument("--width", type=int, default=1920)
+    direct.add_argument("--height", type=int, default=1080)
+    direct.add_argument("--interval", type=float, default=3.0)
+    direct.add_argument("--duration", type=float, default=60.0)
+    direct.add_argument("--shots", type=int, default=0, help="Exact shot count; overrides duration when positive")
+    direct.add_argument("--immediate", action="store_true", help="Take the first shot immediately instead of after one interval")
+    direct.add_argument("--open-folder", action=argparse.BooleanOptionalAction, default=True)
+    add_threshold_args(direct)
+    direct.set_defaults(func=capture)
     return parser
 
 
