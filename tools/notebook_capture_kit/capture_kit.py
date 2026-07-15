@@ -323,9 +323,13 @@ def watch(args: argparse.Namespace) -> int:
     observed_sizes: dict[Path, int] = {}
     source_note = f" and new photos from {source_dir}" if source_dir else ""
     print(f"Watching {session / 'incoming'}{source_note}; Ctrl+C stops. Interval={args.interval:g}s")
+    started = time.monotonic()
     next_beep = time.monotonic()
     try:
         while True:
+            if args.duration > 0 and time.monotonic() - started >= args.duration:
+                print(f"Duration reached ({args.duration:g}s). Watcher stopped.")
+                break
             if source_dir:
                 copy_stable_new_files(source_dir, session / "incoming", baseline, observed_sizes)
             process_incoming(session, thresholds, args.camera_type)
@@ -392,6 +396,7 @@ def build_parser() -> argparse.ArgumentParser:
     watcher.add_argument("--camera-type", choices=["webcam", "phone", "mixed"], default="webcam")
     watcher.add_argument("--interval", type=float, default=3.0)
     watcher.add_argument("--poll", type=float, default=0.5)
+    watcher.add_argument("--duration", type=float, default=0.0, help="Stop after this many seconds; 0 runs until Ctrl+C")
     watcher.add_argument(
         "--source-dir",
         default=str(Path.home() / "Pictures" / "Camera Roll"),

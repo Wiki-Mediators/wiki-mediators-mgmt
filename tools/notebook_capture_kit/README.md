@@ -26,6 +26,8 @@ Camera Roll content and ingests only photos created after it starts:
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\capture_kit.ps1 watch "<printed-session-path>" --interval 3
 ```
 
+For a one-minute practice run that stops automatically, add `--duration 60`.
+
 Then open the physical shutter and Windows Camera app. The default watched
 source is `%USERPROFILE%\Pictures\Camera Roll`. If Camera saves elsewhere,
 pass `--source-dir "<folder>"`. To watch only the session's `incoming\` folder,
