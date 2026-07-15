@@ -23,10 +23,17 @@ generated `main` branch is bridge-owned and one-way. Machine correspondence
 branches are planned only after the boundary plan's Phase 4 prerequisites are
 implemented and verified; do not use `main` as a correspondence surface.
 
-## Mail check
+## Spoken operator commands
 
-When the operator asks to check mail, messages, or requests (any phrasing), do
-this: `git fetch origin`; read any new or still-open files in
-`_HANDOFFS/knowledge_requests/` on `machine/nt8lab` addressed to this machine;
-execute what they ask; write the response at the contract's response path on
-this machine's own branch; push; report what you did in three lines.
+### "Check the mail"
+
+For any phrasing of mail, messages, or requests: `git fetch origin`; read new
+or still-open files in `_HANDOFFS/knowledge_requests/` on `machine/nt8lab`
+addressed to this machine; do what they ask; write responses at the contract's
+response path on this machine's own branch; push; report what you did in three
+lines.
+
+### "Catch up" / "What's new"
+
+For any phrasing of catch up or what's new: pull `main`; summarize what changed
+since the previous pull in five lines or less.
