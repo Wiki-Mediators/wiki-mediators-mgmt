@@ -1,4 +1,5 @@
 vendor/
 sessions/
+baselines/
 __pycache__/
 *.pyc

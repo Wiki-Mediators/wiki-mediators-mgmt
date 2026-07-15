@@ -28,6 +28,7 @@ import numpy as np  # type: ignore  # noqa: E402
 from PIL import Image  # type: ignore  # noqa: E402
 
 IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".bmp", ".tif", ".tiff", ".webp"}
+CAMERA_TYPES = ["webcam", "phone", "mixed", "baseline"]
 MANIFEST_FIELDS = [
     "frame_id", "source_name", "accepted_name", "status", "reason",
     "source_sha256", "accepted_sha256", "width", "height", "blur_score",
@@ -447,7 +448,7 @@ def build_parser() -> argparse.ArgumentParser:
     init = sub.add_parser("init", help="Create a capture session before taking photos")
     init.add_argument("--object", required=True)
     init.add_argument("--purpose", default="reconstruction-feasibility")
-    init.add_argument("--camera-type", choices=["webcam", "phone", "mixed"], default="webcam")
+    init.add_argument("--camera-type", choices=CAMERA_TYPES, default="webcam")
     init.add_argument("--lighting", required=True)
     init.add_argument("--scale-reference", required=True)
     init.add_argument("--known-dimension", default="coarse ruler reference +/-0.5 mm")
@@ -461,13 +462,13 @@ def build_parser() -> argparse.ArgumentParser:
     ingest_parser = sub.add_parser("ingest", help="Process current incoming photos once")
     ingest_parser.add_argument("session")
     ingest_parser.add_argument("files", nargs="*")
-    ingest_parser.add_argument("--camera-type", choices=["webcam", "phone", "mixed"], default="webcam")
+    ingest_parser.add_argument("--camera-type", choices=CAMERA_TYPES, default="webcam")
     add_threshold_args(ingest_parser)
     ingest_parser.set_defaults(func=ingest)
 
     watcher = sub.add_parser("watch", help="Watch incoming/ and check new photos")
     watcher.add_argument("session")
-    watcher.add_argument("--camera-type", choices=["webcam", "phone", "mixed"], default="webcam")
+    watcher.add_argument("--camera-type", choices=CAMERA_TYPES, default="webcam")
     watcher.add_argument("--interval", type=float, default=3.0)
     watcher.add_argument("--poll", type=float, default=0.5)
     watcher.add_argument("--duration", type=float, default=0.0, help="Stop after this many seconds; 0 runs until Ctrl+C")
@@ -482,7 +483,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     direct = sub.add_parser("capture", help="Directly take timed snapshots from the integrated camera")
     direct.add_argument("session")
-    direct.add_argument("--camera-type", choices=["webcam", "phone", "mixed"], default="webcam")
+    direct.add_argument("--camera-type", choices=CAMERA_TYPES, default="webcam")
     direct.add_argument("--camera-index", type=int, default=0)
     direct.add_argument("--width", type=int, default=1920)
     direct.add_argument("--height", type=int, default=1080)

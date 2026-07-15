@@ -88,6 +88,9 @@ before processing:
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\capture_kit.ps1 ingest "<session-path>" "C:\path\photo1.jpg" "C:\path\photo2.jpg"
 ```
 
+Official or otherwise known-good datasets may be logged and ingested with
+`--camera-type baseline`; they follow the identical checks and export contract.
+
 ## Thresholds
 
 Defaults are deliberately explicit and recorded in `checks\session_config.json`:
