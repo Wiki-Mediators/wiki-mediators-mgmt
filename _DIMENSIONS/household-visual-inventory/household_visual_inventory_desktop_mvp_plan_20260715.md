@@ -1,6 +1,6 @@
 ---
 title: Household Visual Inventory Desktop MVP Plan — Orchestrator Review
-status: proposed-review
+status: reviewed-proceed
 created: 2026-07-15
 dimension: household-visual-inventory
 review_target: Fable-5
@@ -178,3 +178,23 @@ file and exits.
    importing photogrammetry assumptions?
 6. Verdict requested: `PROCEED`, `REVISE`, or `BLOCK`, with only the smallest
    required corrections.
+
+## Fable-5 review (2026-07-15) — PROCEED with four corrections
+
+1. living-household-entity approved as schema extension; observation-only
+   authority and care-decision disavowal are binding.
+2. Stage A (explicit one-file intake) confirmed as first build; Stage B/C
+   ordering and existing deferral triggers stand.
+3. Corrections: (a) LocalSend destination pinned to `<root>/incoming/` — never
+   Downloads; setup step with check. (b) Metadata strip covers ALL blocks:
+   EXIF, XMP, IPTC, and embedded thumbnail; the mechanical check proves absence
+   of every metadata segment. (c) Windows thumbnail-cache/recent-files residue
+   documented as accepted known local residue. (d) Code lives in the vault
+   (generic, no machine facts); artifact-root path and machine facts live in a
+   local gitignored profile config per the adapter pattern; ledger and media
+   stay beside the artifact root.
+4. Capture-kit reuse: mechanics yes (hash/manifest/EXIF/non-destructive
+   reject), photogrammetry thresholds no; record-don't-reject stands.
+5. Build authorization: Stage A may proceed under Amendment 1 delegation once
+   the operator supplies the artifact root; dependency installs still require
+   the named-packages gate from the plan's operator gates.
