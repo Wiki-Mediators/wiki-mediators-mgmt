@@ -50,6 +50,26 @@ related:
 - Poor-man's turntable candidate: the Ender build plate (controlled
   rotation via G-code jog) — untested idea, bank as-is.
 
+### Rig refinements (2026-07-14)
+
+(6) Capture rhythm RULED: metronome stills — audio beep paces
+move-settle-hold-shoot; interval is a PARAMETER, default 3s (1s risks
+mid-move blur; keep-rate data from trial one may argue it down). Session =
+~60 keeps across passes.
+
+(7) Rig amendment: object may be HAND-HELD and turned directly (stick
+optional); consequence — fingers occlude, so the second pass is mandatory as
+a REGRIP pass (different hold points), and the dice moves off-stick: blu-tack
+it to the object or use flat grid/ruler in frame as scale reference. Blur risk
+rises; the auto-junk checker (variance-of-Laplacian) is the countermeasure,
+and keep-rate decides if the stick returns.
+
+(8) Dual camera RULED IN as trial 1b: phone shoots on the same beeps (the
+metronome is the sync); reconstruct webcam-only first, then webcam+phone on
+the same session — the mesh delta IS the phone's measured fidelity
+contribution. Beep metronome is in-scope for the capture MVP (simpler than
+camera control; v1 may be beep-only with manual shutter).
+
 ## Pipeline shape (design only — nothing built)
 
 capture rig (dumb-tool shaped: lock, burst N frames, timestamp, save to
