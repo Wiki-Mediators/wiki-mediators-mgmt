@@ -117,6 +117,60 @@ queue only. Non-label OCR remains quarantined. Grounding DINO, SAM 2, online
 vision, narrated video, and cross-session identity remain deferred to their
 existing triggers.
 
+#### Rung-1 scorecard (2026-07-15, STAGEC-20260715T182353Z-801365f3)
+
+Engineering **PASS** (Pascal fp32 GPU inference, torch `2.6.0+cu118`,
+transformers `4.49.0` pinned after `5.8.1` incompatibility, model revision and
+safetensors hash recorded). Model performance **FAIL** versus the skim-and-veto
+bar: 12.5% confirmed coverage, approximately 9% thing recall, less than 6%
+ledger-conditioned precision, and all three known uncertainties unseen (no
+waffle, no guess - not detected). Failure class: dense cluttered scenes, small
+objects, and whole-frame detection; confidence band `0.117-0.482` throughout.
+Caveats: the ledger is not exhaustive, so the precision floor is understated;
+the conservative matcher may undercount vocabulary variants.
+
+#### Progressive-enrichment model ladder
+
+1. **Rung 1:** Florence-2 fast pass.
+2. **Rung 2:** Qwen2.5-VL-7B-class quantized VLM; sequential batch passes only,
+   never co-resident with another model in 12 GB VRAM.
+3. **Rung 3:** online inference only under the KR-007 privacy gates.
+
+Pattern 6 for vision: cross-model disagreement routes to the confirmation queue
+at priority. Qwen is the Rung-2 comparison default. MiniCPM-V 2.6 is banked
+separately against the deferred cross-session-identity trigger. VLM OCR of
+serials and barcodes remains quarantine-by-default regardless of capability.
+
+Rung-2 install decision waits on the tile-crop and matcher-audit experiments.
+If tiled recall remains below approximately 30-40%, the Rung-2 trigger fires
+with the named failure class and Qwen installs in the next authorized session.
+
+#### Rung-1 follow-up experiments (2026-07-15)
+
+**Tile-crop pass — `STAGEC-TILED-20260715T183746Z-547c9d74`.** Florence-2
+ran over overlapping 2x2 and 3x3 crops with 20% overlap. Region boxes were
+mapped back into full-frame coordinates; 48 overlap duplicates were removed.
+The meaningful deduplicated set held 181 non-empty region proposals. Against
+the same 48-observation ledger, mechanical recall rose from 12.5% to 22.9%
+(`+10.4` percentage points) and thing recall reached 25.0%, while
+ledger-conditioned precision fell from 8.7% to 6.1% (`-2.6` points). Tiling
+helped, but did not reach the approximately 30-40% skim-and-veto gate and
+increased proposal volume substantially.
+
+**Original matcher audit — 69 whole-frame region proposals.** A one-time
+semantic reconciliation removed three generic/ambiguous automatic matches and
+added three clear vocabulary or matcher misses (`footwear` to `shoes` in two
+photos; `shelf` to the confirmed lower-shelf place). The conservative corrected
+floor is therefore still 6 confirmed hits: 6/69 = 8.7% ledger-conditioned
+precision, 6/48 = 12.5% observation recall, and 5/44 = 11.4% thing recall.
+Generic `box` and `storage box` proposals were not credited to more specific
+confirmed box or basket records without identity evidence.
+
+**Rung-2 trigger: FIRED.** Named failure class: dense clutter plus small-object
+loss persists after tiling; the recall gain comes with proposal explosion and
+remains below the gate. Qwen2.5-VL-7B-class is next-session work under a
+separate install/run authorization; it is not installed by this experiment.
+
 ### Staged roadmap - scene-diff cataloguing
 
 Scene-diff cataloguing (operator vision, 2026-07-15): the post-Stage-C
