@@ -1,0 +1,4 @@
+vendor/
+sessions/
+__pycache__/
+*.pyc
