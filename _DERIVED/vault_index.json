@@ -3,7 +3,7 @@
   "basename_collisions": {},
   "config_path": "tools/wiki_deriver/link_reference_checker.config.json",
   "counts_by_extension": {
-    ".md": 35
+    ".md": 36
   },
   "entries": [
     {
@@ -68,6 +68,13 @@
       "descriptor": "Object Scanning \u2014 Seed (scan-to-print / scan-to-compare)",
       "extension": ".md",
       "path": "_DIMENSIONS/3d-printing/object_scanning_seed_20260714.md"
+    },
+    {
+      "basename": "household_visual_inventory_desktop_mvp_plan_20260715.md",
+      "basename_collision": false,
+      "descriptor": "Household Visual Inventory Desktop MVP Plan \u2014 Orchestrator Review",
+      "extension": ".md",
+      "path": "_DIMENSIONS/household-visual-inventory/household_visual_inventory_desktop_mvp_plan_20260715.md"
     },
     {
       "basename": "NHBM_v0_candidate_spec.md",
@@ -252,7 +259,7 @@
       "path": "tools/mnq_replay_viewer/STRATEGY_OVERLAY_ADAPTER_SPEC.md"
     }
   ],
-  "entry_count": 35,
+  "entry_count": 36,
   "schema_version": 1,
   "tool": "tools/wiki_deriver/build_vault_index.py"
 }

@@ -48,6 +48,7 @@ both refuse exact remote mismatches before mutation/publication. Trigger: the
 **Scanner v-next candidate:** URL-aware entropy scanning (recognize-and-verify
 public URLs before entropy scoring); trigger: URL false-positive suppressions
 accumulate past ~25 or a real secret hides in a URL-shaped string.
+2026-07-15: second slash-token false-positive class (status vocabulary in KR-007 response; finding 4d058e10...); evidence count toward trigger.
 
 ## 2. The retrieval decisions (what the research settled)
 

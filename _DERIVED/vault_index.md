@@ -4,14 +4,14 @@ Deterministic all-file index generated from `_DERIVED/vault_index.json`.
 
 ## Summary
 
-- Entries: 35
+- Entries: 36
 - Basename collisions: 0
 
 ## Counts By Extension
 
 | Extension | Count |
 |---|---:|
-| `.md` | 35 |
+| `.md` | 36 |
 
 ## Basename Collisions
 
@@ -30,6 +30,7 @@ _None._
 | `_DIMENSIONS/3d-printing/3d_printing_scanner_pipeline_research_input_20260714.md` | `3d_printing_scanner_pipeline_research_input_20260714.md` | `.md` | false | Homemade 3D Scanner — Photogrammetry Pipeline (Video/Photos → Watertight STL) |
 | `_DIMENSIONS/3d-printing/3d_printing_setup_outcome_research_input_20260710.md` | `3d_printing_setup_outcome_research_input_20260710.md` | `.md` | false | 3D Printing Setup — Outcome: Tuned Machine + First PETG Print |
 | `_DIMENSIONS/3d-printing/object_scanning_seed_20260714.md` | `object_scanning_seed_20260714.md` | `.md` | false | Object Scanning — Seed (scan-to-print / scan-to-compare) |
+| `_DIMENSIONS/household-visual-inventory/household_visual_inventory_desktop_mvp_plan_20260715.md` | `household_visual_inventory_desktop_mvp_plan_20260715.md` | `.md` | false | Household Visual Inventory Desktop MVP Plan — Orchestrator Review |
 | `_DIMENSIONS/no-host-content/NHBM_v0_candidate_spec.md` | `NHBM_v0_candidate_spec.md` | `.md` | false | NHBM_v0 — No-Host Battle Map — Candidate Spec |
 | `_DIMENSIONS/no-host-content/decision_graph_battle_edges_seed.md` | `decision_graph_battle_edges_seed.md` | `.md` | false | Decision Graphs With Battle Edges — Concept Seed |
 | `_DIMENSIONS/no-host-content/entertainment_layer_battle_map_20260703.md` | `entertainment_layer_battle_map_20260703.md` | `.md` | false | Entertainment Layer — Battle Map, Semantic Zoom, Fractal Concept |
