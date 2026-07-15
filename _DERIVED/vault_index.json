@@ -3,7 +3,7 @@
   "basename_collisions": {},
   "config_path": "tools/wiki_deriver/link_reference_checker.config.json",
   "counts_by_extension": {
-    ".md": 27
+    ".md": 34
   },
   "entries": [
     {
@@ -12,6 +12,55 @@
       "descriptor": "Wiki Mediators management vault \u2014 orientation",
       "extension": ".md",
       "path": "AGENTS.md"
+    },
+    {
+      "basename": "3d_printing_crtouch_corrections_addendum_20260712.md",
+      "basename_collision": false,
+      "descriptor": "CR Touch Install \u2014 Addendum: C29 Config Bug + Final Values",
+      "extension": ".md",
+      "path": "_DIMENSIONS/3d-printing/3d_printing_crtouch_corrections_addendum_20260712.md"
+    },
+    {
+      "basename": "3d_printing_crtouch_install_research_input_20260712.md",
+      "basename_collision": false,
+      "descriptor": "CR Touch Install \u2014 Ender 3 V2: Probe Setup, Stuck-Mesh Root Cause, Tramming, Final Config",
+      "extension": ".md",
+      "path": "_DIMENSIONS/3d-printing/3d_printing_crtouch_install_research_input_20260712.md"
+    },
+    {
+      "basename": "3d_printing_dimension_seed_20260710.md",
+      "basename_collision": false,
+      "descriptor": "3D Printing \u2014 Dimension Seed",
+      "extension": ".md",
+      "path": "_DIMENSIONS/3d-printing/3d_printing_dimension_seed_20260710.md"
+    },
+    {
+      "basename": "3d_printing_firmware_migration_research_input_20260710.md",
+      "basename_collision": false,
+      "descriptor": "Firmware Migration \u2014 Ender 3 V2 to mriscoc Marlin (Sprite Pro, 4.2.2)",
+      "extension": ".md",
+      "path": "_DIMENSIONS/3d-printing/3d_printing_firmware_migration_research_input_20260710.md"
+    },
+    {
+      "basename": "3d_printing_orca_setup_research_input_20260712.md",
+      "basename_collision": false,
+      "descriptor": "OrcaSlicer Setup \u2014 Ender 3 V2 (Sprite Pro + CR Touch) Profile & Start G-code",
+      "extension": ".md",
+      "path": "_DIMENSIONS/3d-printing/3d_printing_orca_setup_research_input_20260712.md"
+    },
+    {
+      "basename": "3d_printing_scanner_pipeline_research_input_20260714.md",
+      "basename_collision": false,
+      "descriptor": "Homemade 3D Scanner \u2014 Photogrammetry Pipeline (Video/Photos \u2192 Watertight STL)",
+      "extension": ".md",
+      "path": "_DIMENSIONS/3d-printing/3d_printing_scanner_pipeline_research_input_20260714.md"
+    },
+    {
+      "basename": "3d_printing_setup_outcome_research_input_20260710.md",
+      "basename_collision": false,
+      "descriptor": "3D Printing Setup \u2014 Outcome: Tuned Machine + First PETG Print",
+      "extension": ".md",
+      "path": "_DIMENSIONS/3d-printing/3d_printing_setup_outcome_research_input_20260710.md"
     },
     {
       "basename": "NHBM_v0_candidate_spec.md",
@@ -196,7 +245,7 @@
       "path": "tools/mnq_replay_viewer/STRATEGY_OVERLAY_ADAPTER_SPEC.md"
     }
   ],
-  "entry_count": 27,
+  "entry_count": 34,
   "schema_version": 1,
   "tool": "tools/wiki_deriver/build_vault_index.py"
 }

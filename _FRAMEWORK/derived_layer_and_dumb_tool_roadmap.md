@@ -45,6 +45,10 @@ isolated behind `--reinit-repository --first-run --force`. Bridge and auto-sync
 both refuse exact remote mismatches before mutation/publication. Trigger: the
 2026-07-03 management-history reset.
 
+**Scanner v-next candidate:** URL-aware entropy scanning (recognize-and-verify
+public URLs before entropy scoring); trigger: URL false-positive suppressions
+accumulate past ~25 or a real secret hides in a URL-shaped string.
+
 ## 2. The retrieval decisions (what the research settled)
 
 Full evidence: `_RESEARCH/two_tier_retrieval_2026.md`. The decisions that

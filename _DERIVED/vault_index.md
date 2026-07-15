@@ -4,14 +4,14 @@ Deterministic all-file index generated from `_DERIVED/vault_index.json`.
 
 ## Summary
 
-- Entries: 27
+- Entries: 34
 - Basename collisions: 0
 
 ## Counts By Extension
 
 | Extension | Count |
 |---|---:|
-| `.md` | 27 |
+| `.md` | 34 |
 
 ## Basename Collisions
 
@@ -22,6 +22,13 @@ _None._
 | Path | Basename | Ext | Collision | Descriptor |
 |---|---|---|---:|---|
 | `AGENTS.md` | `AGENTS.md` | `.md` | false | Wiki Mediators management vault — orientation |
+| `_DIMENSIONS/3d-printing/3d_printing_crtouch_corrections_addendum_20260712.md` | `3d_printing_crtouch_corrections_addendum_20260712.md` | `.md` | false | CR Touch Install — Addendum: C29 Config Bug + Final Values |
+| `_DIMENSIONS/3d-printing/3d_printing_crtouch_install_research_input_20260712.md` | `3d_printing_crtouch_install_research_input_20260712.md` | `.md` | false | CR Touch Install — Ender 3 V2: Probe Setup, Stuck-Mesh Root Cause, Tramming, Final Config |
+| `_DIMENSIONS/3d-printing/3d_printing_dimension_seed_20260710.md` | `3d_printing_dimension_seed_20260710.md` | `.md` | false | 3D Printing — Dimension Seed |
+| `_DIMENSIONS/3d-printing/3d_printing_firmware_migration_research_input_20260710.md` | `3d_printing_firmware_migration_research_input_20260710.md` | `.md` | false | Firmware Migration — Ender 3 V2 to mriscoc Marlin (Sprite Pro, 4.2.2) |
+| `_DIMENSIONS/3d-printing/3d_printing_orca_setup_research_input_20260712.md` | `3d_printing_orca_setup_research_input_20260712.md` | `.md` | false | OrcaSlicer Setup — Ender 3 V2 (Sprite Pro + CR Touch) Profile & Start G-code |
+| `_DIMENSIONS/3d-printing/3d_printing_scanner_pipeline_research_input_20260714.md` | `3d_printing_scanner_pipeline_research_input_20260714.md` | `.md` | false | Homemade 3D Scanner — Photogrammetry Pipeline (Video/Photos → Watertight STL) |
+| `_DIMENSIONS/3d-printing/3d_printing_setup_outcome_research_input_20260710.md` | `3d_printing_setup_outcome_research_input_20260710.md` | `.md` | false | 3D Printing Setup — Outcome: Tuned Machine + First PETG Print |
 | `_DIMENSIONS/no-host-content/NHBM_v0_candidate_spec.md` | `NHBM_v0_candidate_spec.md` | `.md` | false | NHBM_v0 — No-Host Battle Map — Candidate Spec |
 | `_DIMENSIONS/no-host-content/decision_graph_battle_edges_seed.md` | `decision_graph_battle_edges_seed.md` | `.md` | false | Decision Graphs With Battle Edges — Concept Seed |
 | `_DIMENSIONS/no-host-content/entertainment_layer_battle_map_20260703.md` | `entertainment_layer_battle_map_20260703.md` | `.md` | false | Entertainment Layer — Battle Map, Semantic Zoom, Fractal Concept |
