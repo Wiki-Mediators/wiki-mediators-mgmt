@@ -70,6 +70,10 @@ the same session — the mesh delta IS the phone's measured fidelity
 contribution. Beep metronome is in-scope for the capture MVP (simpler than
 camera control; v1 may be beep-only with manual shutter).
 
+(9) If video capture ever triggers: the metronome beep doubles as the audio
+sync marker (clapperboard principle) — both devices' audio tracks carry it;
+align on the spikes. Flash marker unnecessary.
+
 ## Pipeline shape (design only — nothing built)
 
 capture rig (dumb-tool shaped: lock, burst N frames, timestamp, save to
