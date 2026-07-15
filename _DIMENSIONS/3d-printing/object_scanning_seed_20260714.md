@@ -52,6 +52,31 @@ related:
 
 ### Rig refinements (2026-07-14)
 
+(1) Stills workflow tolerates hand-motion BETWEEN shots completely;
+rigidity matters only at shutter time — rest the stick/object against
+a support (putty, notch, mug rim), settle ~1s, shoot, nudge, repeat.
+Continuous video is where hand-wobble becomes fatal; this reinforces
+stills-first.
+
+(2) Dual-camera design rule (superseded in part by item 8's handheld
+phone): cameras that are fixed keep a constant stereo-like baseline;
+any camera shooting within the same stop-spin pause is synchronized by
+the pause itself.
+
+(3) Lighting: diffuse it (cloth over lamp / bounced light) — moving
+specular highlights are the feature-matcher's worst enemy; hard shadows
+rotating with the object are second. If still shiny under diffusion,
+matte dusting (chalk/flour) is the classical fix.
+
+(4) Dice promotion: it is also the rigidity/quality witness — crisp
+dice + bad object = surface problem; both bad = rig problem.
+
+(5) Camera sync is a NON-PROBLEM for stills: reconstruction treats each
+pause as a frozen scene, so any number of cameras may shoot within the
+same pause, seconds apart, in any order. Mixed lenses/sensors are fine;
+intrinsics solve per camera. Millisecond sync becomes real ONLY for
+continuous video of a moving object.
+
 (6) Capture rhythm RULED: metronome stills — audio beep paces
 move-settle-hold-shoot; interval is a PARAMETER, default 3s (1s risks
 mid-move blur; keep-rate data from trial one may argue it down). Session =
@@ -73,6 +98,15 @@ camera control; v1 may be beep-only with manual shutter).
 (9) If video capture ever triggers: the metronome beep doubles as the audio
 sync marker (clapperboard principle) — both devices' audio tracks carry it;
 align on the spikes. Flash marker unnecessary.
+
+(10) Beep-lag calibration (operator idea, 2026-07-14): the beep-to-capture
+delay differs per machine (audio output latency + camera shutter latency);
+recording the beep train alongside timestamped captures yields each device's
+lag constant and jitter — a per-machine timing fingerprint,
+discover-and-cancel style. Harmless in stills (pauses absorb it); becomes
+load-bearing only if continuous video triggers, where it sharpens beep-based
+stream alignment. Trigger: inherited from the video-capture idea; measure only
+after a stills baseline exists.
 
 ## Pipeline shape (design only — nothing built)
 
