@@ -12,12 +12,12 @@ Built the standalone all-file vault index artifacts for Tool 2.
 
 ## Counts
 
-- Entries indexed: 34
+- Entries indexed: 35
 - Basename collisions: 0
 
 | Extension | Count |
 |---|---:|
-| `.md` | 34 |
+| `.md` | 35 |
 
 ## Collision List
 

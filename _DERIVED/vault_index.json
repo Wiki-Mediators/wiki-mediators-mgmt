@@ -3,7 +3,7 @@
   "basename_collisions": {},
   "config_path": "tools/wiki_deriver/link_reference_checker.config.json",
   "counts_by_extension": {
-    ".md": 34
+    ".md": 35
   },
   "entries": [
     {
@@ -61,6 +61,13 @@
       "descriptor": "3D Printing Setup \u2014 Outcome: Tuned Machine + First PETG Print",
       "extension": ".md",
       "path": "_DIMENSIONS/3d-printing/3d_printing_setup_outcome_research_input_20260710.md"
+    },
+    {
+      "basename": "object_scanning_seed_20260714.md",
+      "basename_collision": false,
+      "descriptor": "Object Scanning \u2014 Seed (scan-to-print / scan-to-compare)",
+      "extension": ".md",
+      "path": "_DIMENSIONS/3d-printing/object_scanning_seed_20260714.md"
     },
     {
       "basename": "NHBM_v0_candidate_spec.md",
@@ -245,7 +252,7 @@
       "path": "tools/mnq_replay_viewer/STRATEGY_OVERLAY_ADAPTER_SPEC.md"
     }
   ],
-  "entry_count": 34,
+  "entry_count": 35,
   "schema_version": 1,
   "tool": "tools/wiki_deriver/build_vault_index.py"
 }
