@@ -141,6 +141,103 @@ at priority. Qwen is the Rung-2 comparison default. MiniCPM-V 2.6 is banked
 separately against the deferred cross-session-identity trigger. VLM OCR of
 serials and barcodes remains quarantine-by-default regardless of capability.
 
+Thermal watch (2026-07-15): `n=2` hard system freezes occurred during
+sustained Florence-2 tile batches. Physical maintenance triggers only on
+confirmed thermal readings from durable GPU telemetry, not on the freezes
+alone.
+
+#### Post-flash lighting delta and adopted operating rules (2026-07-15)
+
+| Model/configuration | Dim recall | Flash recall | Dim precision | Flash precision |
+|---|---:|---:|---:|---:|
+| Florence-2 tiled | 22.9% | 45.7% | 6.1% | 9.4% |
+| Qwen2.5-VL whole-frame | 22.9% | 27.7% | 34.4% | 56.5% |
+
+The two retained proposal sources jointly provided semantic prefills for
+53.5% of the 86 visually scorable objects in answer key 2. Neither model
+expressed uncertainty on the operator-confirmed uncertain observations it
+matched. The comparison is batch-level evidence: lighting and framing changed
+together, and the detailed answer key may still understate precision.
+
+**CAPTURE DOCTRINE — ADOPTED:** good/flash lighting is standard for inventory
+captures. In this measured batch its effect was worth more than the preceding
+model upgrade, so capture quality is corrected before another model rung is
+considered.
+
+**GPU RULE — ADOPTED:** a 180 W power cap is standard for all sustained
+inference runs. Survival at 59 degrees C for one capped Florence tile run
+provisionally supports the thermal diagnosis (`n=1` capped survival);
+physical maintenance waits for another data point.
+
+#### Post-flash 2x2 and merge closure (2026-07-15)
+
+All four cells below use the same ten flash photos and the 94-observation
+answer key. Precision remains a ledger-conditioned floor.
+
+| Model | Whole-frame recall / precision | Tiled recall / precision |
+|---|---:|---:|
+| Florence-2-large | 29.8% / 20.9% | 45.7% / 9.4% |
+| Qwen2.5-VL-7B | 27.7% / 56.5% | 53.2% / 21.7% |
+
+The object-only 86-observation view is: Florence whole `32.6% / 20.9%`,
+Florence tiled `47.7% / 8.9%`, Qwen whole `29.1% / 54.4%`, and Qwen tiled
+`55.8% / 20.9%`. Qwen tiled ran as
+`STAGEC-QWEN-TILED-20260715T215924Z-ad1d32b2`: 287 raw proposals became
+230 after within-run overlap deduplication; two malformed responses and two
+OCR rows were quarantined. Five durable chunks completed under the 180 W cap,
+peaking at 68 degrees C without a freeze; the 250 W default was restored.
+This is the second capped-survival data point, so physical maintenance remains
+untriggered on the observed thermal evidence.
+
+The deterministic proposal merge reduced the original 505-row
+Florence-tiled plus Qwen-whole queue to 432 rows (73 collapsed), including 11
+cross-model agreement rows and 62 priority disagreement rows. With both
+recall-best tiled configurations, 689 source proposals became 580 derived
+queue rows (109 collapsed), with 47 cross-model agreement rows, 163
+cross-model disagreement pairs, and 248 priority rows. Source proposals were
+not mutated; every merge retains source IDs, labels, regions, model identities,
+and uncalibrated confidence components.
+
+**Pre-committed 70% bar: NOT MET.** The merged recall-best queue mechanically
+prefilled 54/86 visually scorable objects = **62.8%**. Skim-and-veto is not yet
+adopted as the standard confirmation workflow, and rung-3 discussion opens;
+this is not rung-3 authorization. Residual gaps are small or partly occluded
+shelf objects (snail, lamps, candles, notepads), thin/low-salience tools
+(sprayers, broom-like object, utensils, dustpan), specific identity inside
+generic boxes/bags, and edge/transparent objects. The 62.8% is an optimistic
+mechanical ceiling because generic or contextual tokens (`box`, `bottle`,
+`handle`, `green`) still create some false matches; a conservative human audit
+can only lower it.
+
+#### Narrated-video hands-free pilot (2026-07-15)
+
+Run `VIDEOPILOT-20260715T225903Z-8b0e04db` processed the pending 90.1-second
+poor-lighting shelf video locally. One-frame-per-second sampling produced 90
+candidates: 3 failed hard image checks, 5 near-identical neighbors were
+removed, 82 usable frames remained, and 10 evenly spaced keyframes were kept.
+Faster-whisper `1.2.1` (`small.en` snapshot
+`d1d751a5f8271d482d14ca55d9e2deeebbae577f`, CPU int8) produced 152 timestamped words;
+the transcript and aligned +/-3-second evidence remain quarantined pending
+redaction review, and the source audio never left the local artifact store.
+
+Pinned Qwen2.5-VL-7B-Instruct Q4_K_M tiled inference produced 223 raw rows and
+211 post-tile-dedup proposal rows. Five durable chunks completed under the
+180 W cap, peaked at 66 degrees C, and restored the 250 W default. Ledger
+reconciliation for `HOME/basement/stairs-hallway/shelf-unit-01` yielded 28
+CORROBORATED current records, 46 LEDGER-UNSEEN records, and 44 grouped NOVEL
+exceptions from 104 proposal rows. Eight proposal rows also agreed with their
+same-frame narration window. Nothing promoted and no confirmed record changed.
+
+Known-truth coverage was **28/(28+46) = 37.8%**, above the 22.9% dim-photo
+reference. This supports `plumbing works; poor lighting remains limiting`, not
+an accuracy claim against the flash batch. Workflow cost was **zero operator
+minutes** and 15.159 machine wall-clock minutes, or 0.541 machine minutes per
+corroborated record. The flash-photo route's available interaction-window
+proxy was 20.509 operator minutes / 94 confirmations = 0.218 operator minutes
+per confirmation; the two figures measure different resource axes and are not
+added or treated as a speed equivalence. The 44-item exception list remains
+optional operator work, not confirmed truth.
+
 Rung-2 install decision waits on the tile-crop and matcher-audit experiments.
 If tiled recall remains below approximately 30-40%, the Rung-2 trigger fires
 with the named failure class and Qwen installs in the next authorized session.

@@ -340,6 +340,8 @@ not per-tool improvisation:
 Banked 2026-07-14: design policy only; no refactor, tool change, packaging, or
 Phase 3 execution was performed.
 
+2026-07-15: first live defect of the hardcoded-path class (capture kit line 190 → guard loop); profile/policy split evidence n+=1.
+
 ## Validation required for any implementation phase
 
 - Exact allow-list diff and staged secret-scan result, with no secret values

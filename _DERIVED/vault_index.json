@@ -3,7 +3,7 @@
   "basename_collisions": {},
   "config_path": "tools/wiki_deriver/link_reference_checker.config.json",
   "counts_by_extension": {
-    ".md": 36
+    ".md": 39
   },
   "entries": [
     {
@@ -68,6 +68,27 @@
       "descriptor": "Object Scanning \u2014 Seed (scan-to-print / scan-to-compare)",
       "extension": ".md",
       "path": "_DIMENSIONS/3d-printing/object_scanning_seed_20260714.md"
+    },
+    {
+      "basename": "capture_cascade_spec_20260716.md",
+      "basename_collision": false,
+      "descriptor": "Capture Cascade \u2014 Progressive Refinement with Quality-Gated Routing",
+      "extension": ".md",
+      "path": "_DIMENSIONS/household-visual-inventory/capture_cascade_spec_20260716.md"
+    },
+    {
+      "basename": "household_inventory_build_order_20260716.md",
+      "basename_collision": false,
+      "descriptor": "Household Visual Inventory \u2014 Build Order",
+      "extension": ".md",
+      "path": "_DIMENSIONS/household-visual-inventory/household_inventory_build_order_20260716.md"
+    },
+    {
+      "basename": "household_inventory_north_star_20260716.md",
+      "basename_collision": false,
+      "descriptor": "Household Visual Inventory \u2014 North Star: Catalogue + Overlays",
+      "extension": ".md",
+      "path": "_DIMENSIONS/household-visual-inventory/household_inventory_north_star_20260716.md"
     },
     {
       "basename": "household_visual_inventory_desktop_mvp_plan_20260715.md",
@@ -259,7 +280,7 @@
       "path": "tools/mnq_replay_viewer/STRATEGY_OVERLAY_ADAPTER_SPEC.md"
     }
   ],
-  "entry_count": 36,
+  "entry_count": 39,
   "schema_version": 1,
   "tool": "tools/wiki_deriver/build_vault_index.py"
 }

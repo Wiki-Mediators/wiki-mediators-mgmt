@@ -37,6 +37,10 @@ regenerates from source, never hand-maintains).**
 or quarantine the offending path instead of retrying every debounce cycle.
 Trigger: the guard-refused loop on 2026-07-02 12:44-12:56, caused by a large
 scratch extract under `codex_tmp/`.
+2026-07-15: SECOND guard-loop firing (first: 2026-07-03). Trigger evidence
+n=2. v1.2 scope: quarantine-on-trip (move offender to quarantine dir, alert
+once, resume) + guard-trip must surface as a LOUD signal visible at session
+start. Priority raised.
 
 **Bridge v-next -- BUILT 2026-07-14:** ordinary and `--force` rebuilds preserve
 the management vault `.git`, refs, history, and config-owned remote. Missing
