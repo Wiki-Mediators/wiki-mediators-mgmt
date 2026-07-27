@@ -1,0 +1,146 @@
+# Pantry Picker
+
+Status: local one-page consumables ledger interface.
+
+The Pantry Picker is part of the household ledger family, but it has its own
+append-only event vocabulary. Pantry counts are not photo observations.
+
+## Run
+
+Double-click `Open Pantry Picker.cmd`, or run:
+
+```powershell
+.\tools\household_inventory\pantry_picker\start_pantry_picker.ps1
+```
+
+The bridge binds only to `127.0.0.1`. The page keeps unfinished edits in
+browser storage as a draft. Only an explicit **Save to ledger** appends
+operator-confirmed events to:
+
+`<artifact_root>\ledger\pantry_events.jsonl`
+
+The current pantry is always projected from that append-only file.
+
+## Phone access on the trusted home network
+
+First double-click `Install Phone Access.cmd` once and accept the Windows
+Administrator prompt. This installs the narrow firewall rule.
+
+Then double-click `Open Pantry Picker on Home Network.cmd`.
+
+The launcher:
+
+- binds the server to the home LAN for that session only;
+- generates a new random access token;
+- places the token in the URL fragment, which is not sent in ordinary HTTP
+  requests or server logs;
+- copies the phone link to the clipboard;
+- requires the token on ledger reads and writes;
+- stops sharing when its launcher window closes.
+
+The firewall rule is restricted to the Python executable, TCP 8770, the
+Windows **Private** profile, and `LocalSubnet`. Use this only on a trusted home
+network. Do not add router port forwarding or expose the port to the internet.
+
+## Catalogue identity
+
+The catalogue distinguishes:
+
+- generic ingredients;
+- blends and mixes;
+- branded products.
+
+Brand is a separate field, so a branded ketchup does not replace generic
+ketchup. The current seed contains 421 entries: 317 ingredients, 64
+blends/mixes, and 40 branded products. Users can add another brand or blend
+from the page without changing the source catalogue.
+
+The 2026-07-26 food-family expansion adds distinct everyday and advanced rows
+for lettuces, salad/cooking greens and green medleys; pasta shapes and Asian
+noodle families; dairy milk varieties and plant-based milk beverages; and
+frozen green/vegetable medleys. Generic `Lettuce`, `Spinach`, and `Milk` remain
+for backward compatibility with existing selections.
+
+## Location scope
+
+The first site is `HOME`. An optional radius in metres records the intended
+on-site boundary without storing coordinates. The page leaves radius blank by
+default: blank or zero means the `HOME` site itself. Radius is an advanced
+setting, not a requirement for ordinary pantry use. Future named sites use stable
+`SITE-<NAME>` identifiers.
+
+## Interface defaults
+
+- the Full catalogue is the default view;
+- Expand all and Collapse all control the category list;
+- import, export, reset, catalogue filtering, and radius live under
+  **Tools & advanced**;
+- the right-hand On site panel is reserved for selected items and the explicit
+  ledger save.
+- stock levels are visible one-tap controls on every selected item:
+  **Enough**, **Low**, **One portion left**, and **None**;
+- the On site panel summarizes the current count in all four stock levels.
+- category panels contain the full editor for each selected item: amount, unit,
+  stock level, and remove;
+- the On site list is a compact summary; selecting a summary row opens its
+  category and moves to that item's inline editor;
+- urgent items sort first everywhere: **None**, then **One portion left**, then
+  **Low**, followed by **Enough**; categories containing urgent items also rise
+  above all-Enough categories;
+- every category includes a quick generic-ingredient entry field, while the
+  top product form remains available for brands and blends.
+
+The visible wording is independent from the stable ledger vocabulary:
+`Enough → on-hand`, `Low → low`, `One portion left → last-meal`, and
+`None → out`.
+
+## One-time legacy import
+
+The Import action recognizes the archived prototype's
+`type: "pantry-selection"` JSON format. It maps old names and categories to
+stable current catalogue IDs, translates `ok` to `on-hand`, `last` to
+`last-meal`, and `to taste` to `to-taste`, while retaining unmatched rows as
+custom ingredients. Legacy rows default to the `Ingredient` item kind because
+the old format did not record blend or branded-product identity. The reader
+also removes an optional Windows UTF-8 BOM before parsing older exports.
+
+Legacy imports merge into the recoverable browser draft. They do not append
+ledger events until the operator reviews the result and presses
+**Save to ledger**.
+
+Legacy conversion requires the connected page opened by
+`Open Pantry Picker.cmd`; the direct `file:///.../pantry_picker.html` copy does
+not have the catalogue or ledger service. The page reports this distinction
+explicitly instead of attempting a partial import.
+
+## Local-flyer integration direction
+
+Flipp and reebee are external deal-discovery sources, not pantry authorities.
+The safe build order is:
+
+1. derive a shopping-needs list from items marked Low, Last meal, or Out;
+2. let the operator provide a postal-code area and open/search Flipp for those
+   generic names, brands, or blends;
+3. capture candidate deals separately with store, price, package size, unit
+   price, valid-from/until dates, and the original flyer/deal link;
+4. match those candidates to stable pantry IDs and aliases;
+5. require an explicit operator action before a deal becomes a shopping-list
+   item.
+
+Flyer results must never change confirmed pantry counts. Direct automated
+ingestion should use an authorized feed or documented integration if one
+becomes available; it should not depend on brittle page scraping or a copied
+signed-in browser session.
+
+External reference checked 2026-07-26: Flipp's official Canadian site supports
+postal-code-localized flyers and searches for items, brands, and stores, while
+Flipp's current corporate FAQ describes reebee as part of its Canadian
+shopper-facing distribution:
+
+- https://flipp.com/?locale=en-ca
+- https://corp.flipp.com/faq/
+
+## Archive
+
+`archive/pantry_picker_v0_20260726.html` is an exact SHA-256-preserved copy of
+the downloaded prototype. It is historical input, not the live page.

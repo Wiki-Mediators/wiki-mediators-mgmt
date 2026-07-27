@@ -4,18 +4,20 @@ Deterministic all-file index generated from `_DERIVED/vault_index.json`.
 
 ## Summary
 
-- Entries: 40
-- Basename collisions: 0
+- Entries: 43
+- Basename collisions: 1
 
 ## Counts By Extension
 
 | Extension | Count |
 |---|---:|
-| `.md` | 40 |
+| `.md` | 43 |
 
 ## Basename Collisions
 
-_None._
+| Basename | Count | Paths |
+|---|---:|---|
+| `README.md` | 2 | `nb_lib/strategy_specs/composition_nodes/README.md`<br>`tools/household_inventory/pantry_picker/README.md` |
 
 ## Entries
 
@@ -34,6 +36,8 @@ _None._
 | `_DIMENSIONS/household-visual-inventory/household_inventory_build_order_20260716.md` | `household_inventory_build_order_20260716.md` | `.md` | false | Household Visual Inventory — Build Order |
 | `_DIMENSIONS/household-visual-inventory/household_inventory_north_star_20260716.md` | `household_inventory_north_star_20260716.md` | `.md` | false | Household Visual Inventory — North Star: Catalogue + Overlays |
 | `_DIMENSIONS/household-visual-inventory/household_visual_inventory_desktop_mvp_plan_20260715.md` | `household_visual_inventory_desktop_mvp_plan_20260715.md` | `.md` | false | Household Visual Inventory Desktop MVP Plan — Orchestrator Review |
+| `_DIMENSIONS/household-visual-inventory/pantry_picker_consumables_ledger_20260726.md` | `pantry_picker_consumables_ledger_20260726.md` | `.md` | false | Pantry Picker Consumables Ledger |
+| `_DIMENSIONS/local-deals/flipp_kw_fetch_recon_20260727.md` | `flipp_kw_fetch_recon_20260727.md` | `.md` | false | Flipp KW Fetch Reconnaissance |
 | `_DIMENSIONS/local-deals/local_deals_dimension_seed_20260723.md` | `local_deals_dimension_seed_20260723.md` | `.md` | false | Local Deals & Price Research — Dimension Seed |
 | `_DIMENSIONS/no-host-content/NHBM_v0_candidate_spec.md` | `NHBM_v0_candidate_spec.md` | `.md` | false | NHBM_v0 — No-Host Battle Map — Candidate Spec |
 | `_DIMENSIONS/no-host-content/decision_graph_battle_edges_seed.md` | `decision_graph_battle_edges_seed.md` | `.md` | false | Decision Graphs With Battle Edges — Concept Seed |
@@ -56,8 +60,9 @@ _None._
 | `_worker_reports/TASK_regime_attribution_panel_20260706.md` | `TASK_regime_attribution_panel_20260706.md` | `.md` | false | TASK — Implement and Run the Regime Attribution Panel |
 | `_worker_reports/TASK_rung1_vault_search_findings_20260708.md` | `TASK_rung1_vault_search_findings_20260708.md` | `.md` | false | Rung 1 Vault Search Findings |
 | `nb_lib/probe_results/regime_attribution_panel_report.md` | `regime_attribution_panel_report.md` | `.md` | false | Regime Attribution Panel Report |
-| `nb_lib/strategy_specs/composition_nodes/README.md` | `README.md` | `.md` | false | Composition Nodes |
+| `nb_lib/strategy_specs/composition_nodes/README.md` | `README.md` | `.md` | true | Composition Nodes |
 | `nb_lib/strategy_specs/composition_nodes/regime_attribution_panel.md` | `regime_attribution_panel.md` | `.md` | false | Retroactively tag closed candidate trades by causal day-state to test whether failed strategies were tested unconditionally in regimes wh... |
 | `ninja-traitorate-methodology-reference.md` | `ninja-traitorate-methodology-reference.md` | `.md` | false | Ninja Traitorate — Methodology Reference |
+| `tools/household_inventory/pantry_picker/README.md` | `README.md` | `.md` | true | Pantry Picker |
 | `tools/mnq_replay_viewer/BUILD_ROADMAP.md` | `BUILD_ROADMAP.md` | `.md` | false | MNQ Replay Viewer - Build Roadmap |
 | `tools/mnq_replay_viewer/STRATEGY_OVERLAY_ADAPTER_SPEC.md` | `STRATEGY_OVERLAY_ADAPTER_SPEC.md` | `.md` | false | MNQ Replay Viewer - Strategy Overlay Adapter Spec |

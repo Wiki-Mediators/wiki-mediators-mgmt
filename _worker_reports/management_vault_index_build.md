@@ -12,16 +12,18 @@ Built the standalone all-file vault index artifacts for Tool 2.
 
 ## Counts
 
-- Entries indexed: 40
-- Basename collisions: 0
+- Entries indexed: 43
+- Basename collisions: 1
 
 | Extension | Count |
 |---|---:|
-| `.md` | 40 |
+| `.md` | 43 |
 
 ## Collision List
 
-_None._
+| Basename | Count | Paths |
+|---|---:|---|
+| `README.md` | 2 | `nb_lib/strategy_specs/composition_nodes/README.md`<br>`tools/household_inventory/pantry_picker/README.md` |
 
 ## Link Checker Resolver Win Estimate
 
