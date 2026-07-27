@@ -89,13 +89,13 @@ Derived from roadmap statuses and tool-file presence.
 
 ## Staged summary
 
-- total_files: **43**
+- total_files: **44**
 
 | directory | files |
 |---|---:|
 | `(root)` | 3 |
 | `_DERIVED` | 2 |
-| `_DIMENSIONS` | 15 |
+| `_DIMENSIONS` | 16 |
 | `_FRAMEWORK` | 13 |
 | `_worker_reports` | 5 |
 | `nb_lib` | 3 |

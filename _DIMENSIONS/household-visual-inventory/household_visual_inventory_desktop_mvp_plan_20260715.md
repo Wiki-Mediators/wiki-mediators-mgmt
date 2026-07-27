@@ -169,6 +169,33 @@ inference runs. Survival at 59 degrees C for one capped Florence tile run
 provisionally supports the thermal diagnosis (`n=1` capped survival);
 physical maintenance waits for another data point.
 
+**GPU-cap task automation — BOOKED (2026-07-18):** the intended profile-owned
+on-demand pair (`HouseholdGPUCap-180` / `HouseholdGPUCap-restore`) did not pass
+ordinary-account query/run verification after three UAC-bounded registration
+attempts. Evidence is retained in `_worker_reports/GPU_TASK_REGISTRATION_20260718.md`;
+use the single elevated-run fallback until a cold-session 180-to-250 round trip passes.
+
+**Adaptive GPU throughput protocol — ADOPTED (2026-07-18):** sustained-run
+line-finding proceeds across runs at 200 W, then 220 W after a clean run, with
+a hard 230 W ceiling; 250 W is idle restoration only, never a sustained-run
+setting. A freeze at level X permanently sets the ceiling to X-20 W and fires
+physical maintenance: dust-out first, PSU health check second. Telemetry is
+mandatory. Within a run, each chunk logs its peak and governor decision:
+below 62 C skips cooldown and raises the next chunk from 30 to 60 crops;
+62-75 C uses 30 seconds and 30 crops; above 75 C uses the full 75 seconds,
+returns to 30 crops, and drops one power step for the remainder. The governor
+is config-owned and batch-local, never a daemon. Each pass reports wall clock
+against its 180 W baseline; if 200 W buys less than 10%, escalation stops on
+evidence because watts were not the bottleneck.
+
+**200 W line-finder result (2026-07-18):** clean completion, five chunks,
+68 C peak, no downshift, and 250 W idle restoration verified. Qwen processed
+156 crops in 580.094 s (3.719 s/crop) versus the 180 W baseline's 130 crops in
+846.156 s (6.509 s/crop): 42.87% faster after crop-count normalization. This
+clears the precommitted 10% bar and makes 220 W the next eligible run. The gain
+is attributed to the combined protocol, not watts alone, because adaptive
+cooldowns and chunk growth changed in the same run.
+
 #### Post-flash 2x2 and merge closure (2026-07-15)
 
 All four cells below use the same ten flash photos and the 94-observation
@@ -362,3 +389,50 @@ file and exits.
 5. Build authorization: Stage A may proceed under Amendment 1 delegation once
    the operator supplies the artifact root; dependency installs still require
    the named-packages gate from the plan's operator gates.
+
+#### Phase 1 matcher correction + memoization closure (2026-07-17)
+
+The semantic matcher now uses a config-owned generic-token list and requires
+identity evidence from the proposal side. Bare labels such as `box`,
+`container`, `shelf`, or `item` cannot credit a specific confirmed record.
+The previous figures were matcher-inflated; the corrected values below are
+CPU-only re-scores of the retained proposal artifacts against the same keys.
+
+| Answer key / model configuration | Previous recall / precision | Corrected recall / precision | Recall inflation removed |
+|---|---:|---:|---:|
+| Key 1 - Florence whole | 12.5% / 8.7% | 8.5% / 5.8% | 4.0 pp |
+| Key 1 - Florence tiled | 22.9% / 6.1% | 12.8% / 3.3% | 10.1 pp |
+| Key 1 - Qwen whole | 22.9% / 34.4% | 12.8% / 18.8% | 10.1 pp |
+| Key 1 - Qwen tiled | not run | not run | n/a |
+| Key 2 - Florence whole | 32.6% / 20.9% | 18.6% / 11.9% | 14.0 pp |
+| Key 2 - Florence tiled | 47.7% / 8.9% | 27.9% / 5.2% | 19.8 pp |
+| Key 2 - Qwen whole | 29.1% / 54.4% | 18.6% / 34.8% | 10.5 pp |
+| Key 2 - Qwen tiled | 55.8% / 20.9% | 33.7% / 12.6% | 22.1 pp |
+
+The merged best-config prefill corrected from **54/86 = 62.8%** to
+**38/86 = 44.2%**, removing **18.6 percentage points** of generic-token
+inflation. The video pilot corrected from **28/74 = 37.8%** to
+**20/74 = 27.0%**, removing **10.8 points**. These corrections supersede the
+earlier figures for grading future runs; source proposals remain unchanged.
+
+Inference memoization is keyed by `(photo content SHA-256, model revision,
+prompt configuration)`, with tile identity included in prompt configuration.
+The cache lives at the machine-local artifact root under `inference_cache/v1/`,
+never in the vault. Replays of all seven retained scored configurations were
+100% cache hits (18, 211, 6, 30, 459, 9, and 229 keys respectively) with
+**zero GPU invocations**. Detailed local scorecard:
+`C:\VMShare\household-inventory\experiments\phase1_steps2_3_20260717\corrected_scorecard.json`.
+
+**Environment watch (2026-07-17; file, do not fix):** the bundled Codex Python
+and system Python 3.12 both lacked the previously available `cv2` import, so
+OpenCV-dependent intake tests could not load; identify the environment drift
+before the pantry run, but install or repin nothing without a separate go.
+## Queue-quality pass verdict (2026-07-18)
+
+256 cards vs <=120 bar — software honestly exhausted on pre-doctrine footage.
+Stacker yield 2/25 = capture-rhythm evidence, not tool failure (video predates
+fixate-and-pivot doctrine; stability gate correctly refused smeared windows).
+Narration corroboration near zero for the same reason (sparse speech). Path to
+the honest convergence number: operator reshoots ONE bird-rhythm narrated
+flash video; old video retained as pre-doctrine baseline. Sitting bar
+restated: T1-T3 evidenced tier, target <=60 cards.

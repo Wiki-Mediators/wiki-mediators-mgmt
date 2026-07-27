@@ -89,3 +89,59 @@ surveillance video; cluttered handheld household shots will see far
 less. NoScope's per-video TRAINED specialist models are explicitly NOT
 adopted — this cascade stays zero-training, config-only. External
 claims remain research-input grade until measured here.
+
+## PASS 0.5 — CLASSICAL MULTI-FRAME STACKING
+
+Operator, 2026-07-18: astronomy-lineage shift-and-add / lucky-imaging SR —
+NOT neural upscaling, which remains banned from measurement and answer-key
+paths. Mechanism: each keeper frame is re-rendered by registering and stacking
+its pass-0-parked near-duplicate neighbors (sub-pixel hand jitter IS the
+signal); deterministic registration (ECC/phase correlation), stability-gated
+(stack only windows whose inter-frame diff is below threshold —
+object-being-moved windows are excluded), full provenance per stacked frame
+(source frames, method, weights). Output feeds models AND confirmation display
+legitimately — stacked frames are better measurements, not inventions.
+Expected yield: modest honest gains (~1.5-2x effective resolution, strong
+denoise) on exactly the residual-gap classes (small items, label text).
+Trigger amended by operator authority, 2026-07-18: build before the deferred
+answer-key #3 sitting because the 322-card confirmation queue is itself the
+evidence. Measurability shifts from answer-key delta to before/after queue
+metrics: cards shown, grouped distinct-object estimate, label-OCR yield, and
+stacked-vs-raw proposal delta. The sitting resumes only at <=120 grouped cards
+with duplicates collapsed and label reads present.
+
+## Narration alignment — deictic-lag finding (operator, 2026-07-18)
+
+Speech leads and trails its visual target; line-per-frame or segment-midpoint
+assignment is false precision. Tier 1 uses a config-owned asymmetric frame
+window (default -6s/+4s) and weights matches by temporal distance; every
+corroboration marker carries its measured delta (for example, `Δ+2.3s`). Tier
+2 treats Whisper utterances as events that seek their frame: utterance text is
+matched against proposal labels and permitted label-OCR reads across the
+window under tightened matcher rules, with generic-only tokens excluded. An
+utterance attaches where its content matches, not merely where its midpoint
+lands. Transcript text and matches remain quarantined proposals; nothing
+self-promotes. Tier 3, model-inferred narrative flow, is explicitly refused:
+it would invent temporal/identity links beyond the recorded evidence.
+
+### Narration enrichment mechanisms (operator, 2026-07-18)
+
+The config-owned pantry lexicon supplies canonical grocery, spice, condiment,
+dairy, and meat vocabulary with explicit aliases and known
+mis-transcriptions. Edit-distance plus phonetic matching may emit a
+`LEXICON-CORRECTED` proposal, but it always preserves and displays the original
+transcript text; only an operator tap ratifies it. Every operator-confirmed
+label is eligible for deterministic append to the lexicon's `confirmed`
+section, so the household teaches its own vocabulary without model authority.
+
+A deliberately small relation vocabulary (`behind`, `background`, `back-left`,
+`next to`, `top`, `hidden`, `cannot see`) preserves matched utterance text as a
+location hint. The hint enters observation location context only with operator
+confirmation. Scene-graph parsing remains refused under the Tier-3 rule.
+
+If an utterance lexicon-matches an item but no model proposal exists in its
+deictic window, it becomes a T2 `narration-only` card. This is operator spoken
+testimony, not visual corroboration. Narrator-declared invisibility is the
+distinct evidence state `DECLARED-OCCLUDED`, extending the standing separation:
+not-analyzed != not-visible != absent != declared-occluded. The verbatim
+utterance remains quarantined and nothing self-promotes.

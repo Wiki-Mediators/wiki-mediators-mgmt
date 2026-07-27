@@ -47,7 +47,12 @@ related:
 
 ## Phase 4 — first overlay
 10. Pantry catalogue matures: quantity/expiry/opened-state fields live;
-    consumption events join the vocabulary.
+    consumption events join the vocabulary. Foundation advanced early on
+    2026-07-26 by direct operator request: the local Pantry Picker now has a
+    separate append-only `pantry-ledger-v1` count/clear/scope event branch,
+    stable ingredient IDs, a `HOME` radius, and a 260-item seed catalogue.
+    This does not close item-thousands expansion, expiry/opened fields, or
+    consumption-event maturation.
 11. Cooking overlay: pantry x recipes join; grocery-suggestion learning
     loop begins.
 
@@ -60,3 +65,7 @@ line, not a build).
 180W GPU cap + chunked batches + temp CSV; append-after-completion;
 nothing self-promotes; every bar pre-drawn before its result exists;
 audio local-only; quarantines stand.
+
+Household pipeline runs ONLY in its dedicated venv; host Pythons are never a
+dependency. Venv rebuilds from pinned requirements are routine maintenance,
+not incidents.
