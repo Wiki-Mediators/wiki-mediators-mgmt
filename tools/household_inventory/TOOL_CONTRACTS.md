@@ -68,7 +68,7 @@ reconciliation, and merge reporter surfaces above gained `--summary` here.
 | Field | Contract |
 |---|---|
 | Desktop installer | Double-click `tools\household_inventory\pantry_picker\Install Desktop Shortcut.cmd`, or run `install_desktop_shortcut.ps1`; idempotently creates `Pantry Picker.lnk` for the current Windows user. `-Remove` removes only that exact shortcut. No Administrator privilege is required. |
-| Local launcher | `tools\household_inventory\pantry_picker\Open Pantry Picker.cmd`; invokes `start_pantry_picker.ps1`, binds `127.0.0.1:8770`, and opens the app window. |
+| Local launcher | `tools\household_inventory\pantry_picker\Open Pantry Picker.cmd`; invokes `start_pantry_picker.ps1`, binds `127.0.0.1:8770`, and opens the app window. It reuses only a health response with the current API contract and visibly refuses an outdated Pantry server on the port. |
 | Phone launcher | Run `Install Phone Access.cmd` once with the Administrator prompt, then run `Open Pantry Picker on Home Network.cmd`; the latter invokes `start_pantry_picker_home_lan.ps1`. |
 | Direct bridge | `<profile python_executable> tools\household_inventory\pantry_picker\server.py [--host IP] [--port PORT] [--profile PATH] [--access-token TOKEN]`. A non-loopback bind is refused unless a token of at least 24 characters is supplied. |
 | Needs/flyer join | `<profile python_executable> tools\household_inventory\pantry_picker\pantry_flyer_join.py run --site HOME --config tools\local_deals\local_deals.config.json [--summary]`. |

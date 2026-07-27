@@ -47,6 +47,9 @@ support named `SITE-<NAME>` boundaries.
 - idempotent one-time desktop-shortcut installer for the connected local
   launcher; it uses a built-in Windows icon and requires no Administrator
   privilege.
+- launcher API-contract check prevents a newer page from silently reusing an
+  outdated Pantry bridge; catalogue/ledger startup is isolated from optional
+  flyer-endpoint failure.
 - Full catalogue as the default view, with Expand all and Collapse all;
 - compact `Tools & advanced` menu for Basic-only filtering, optional radius,
   import, export, and draft reset.

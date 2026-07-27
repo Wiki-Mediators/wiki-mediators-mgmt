@@ -13,6 +13,10 @@ Double-click `Open Pantry Picker.cmd`, or run:
 .\tools\household_inventory\pantry_picker\start_pantry_picker.ps1
 ```
 
+The launcher checks the API contract before reusing a server already listening
+on port 8770. It refuses an outdated Pantry process with a visible instruction
+instead of opening a newer page against an incompatible bridge.
+
 The bridge binds only to `127.0.0.1`. The page keeps unfinished edits in
 browser storage as a draft. Only an explicit **Save to ledger** appends
 operator-confirmed events to:
@@ -20,6 +24,10 @@ operator-confirmed events to:
 `<artifact_root>\ledger\pantry_events.jsonl`
 
 The current pantry is always projected from that append-only file.
+
+Catalogue and ledger loading are independent from the optional flyer endpoint.
+If an older bridge lacks flyer support, the confirmed pantry remains available
+and only the flyer panel asks for a restart.
 
 ## One-time desktop shortcut
 
