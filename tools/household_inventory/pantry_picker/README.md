@@ -99,6 +99,8 @@ setting, not a requirement for ordinary pantry use. Future named sites use stabl
 ## Interface defaults
 
 - the Full catalogue is the default view;
+- all catalogue categories start collapsed; search, Expand all, a deliberate
+  category click, or a summary-item navigation opens them;
 - Expand all and Collapse all control the category list;
 - import, export, reset, catalogue filtering, and radius live under
   **Tools & advanced**;
@@ -109,6 +111,8 @@ setting, not a requirement for ordinary pantry use. Future named sites use stabl
 - the On site panel summarizes the current count in all four stock levels.
 - category panels contain the full editor for each selected item: amount, unit,
   stock level, and remove;
+- item toggles, removals, and stock-level rerenders preserve the current
+  viewport anchor instead of bouncing the operator to the top of the page;
 - the On site list is a compact summary; selecting a summary row opens its
   category and moves to that item's inline editor;
 - urgent items sort first everywhere: **None**, then **One portion left**, then
@@ -116,6 +120,9 @@ setting, not a requirement for ordinary pantry use. Future named sites use stabl
   above all-Enough categories;
 - every category includes a quick generic-ingredient entry field, while the
   top product form remains available for brands and blends.
+- Data tools explain their effects in place: Export downloads a JSON backup,
+  Import loads current or legacy JSON into the reviewable draft, and Discard
+  unsaved edits returns to the last confirmed ledger save.
 
 The visible wording is independent from the stable ledger vocabulary:
 `Enough → on-hand`, `Low → low`, `One portion left → last-meal`, and
@@ -161,6 +168,11 @@ Every run lands outside the vault under `C:\VMShare\local-deals\runs\`:
 - pending `candidate_shopping_list.jsonl`;
 - `ambiguity_review.jsonl`;
 - an immutable run manifest with the pantry-ledger hash before and after.
+
+The page projects current retained offers onto a horizontal 14-day calendar:
+the prior six local dates, today, and the next seven dates. Candidate and
+review bars show flyer validity spans; the calendar does not manufacture dates
+or reconstruct history that was never collected.
 
 An offer is never ranked without a positive cash price and one unambiguous
 package size. Points promotions, combo ads, missing/multiple sizes, and

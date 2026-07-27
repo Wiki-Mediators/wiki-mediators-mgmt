@@ -93,3 +93,15 @@ This remains a low-frequency, operator-triggered dumb tool. Flipp's postal JSON
 surface is provisional and not an officially documented consumer API; raw
 evidence and schema-drift refusals are therefore part of the contract. An
 agent is reserved for the ambiguity queue, not the weekly deterministic fetch.
+
+## Calendar and history direction
+
+Pantry Picker now projects retained candidate and review offers onto a
+horizontal 14-day window: six local dates before today, today, and seven dates
+after today. Bars use the source offer's `valid_from` and `valid_to`; missing
+dates are not inferred.
+
+The later history view should extend this same timeline backward across dated
+run manifests and raw snapshots, with horizontal period navigation and a
+current/history switch. History begins at the first retained collection and
+must never backfill prices or flyer periods that were not observed.

@@ -62,6 +62,11 @@ support named `SITE-<NAME>` boundaries.
   matching inline editor;
 - stock urgency sorts `None`, `One portion left`, `Low`, then `Enough` in both
   inline and summary lists, and promotes categories containing urgent items.
+- categories start collapsed, while item/state rerenders preserve their
+  viewport anchor instead of returning the operator to the top;
+- Data tools carry plain-language, action-specific descriptions;
+- a horizontally scrollable 14-day flyer calendar shows retained candidate
+  and review validity spans around the current date.
 - one-time legacy-import adapter for the archived prototype's
   `pantry-selection` JSON exports; conversion lands in the unsaved draft rather
   than bypassing the explicit Save boundary; legacy rows default to Ingredient,
