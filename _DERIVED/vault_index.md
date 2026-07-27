@@ -4,14 +4,14 @@ Deterministic all-file index generated from `_DERIVED/vault_index.json`.
 
 ## Summary
 
-- Entries: 43
+- Entries: 45
 - Basename collisions: 1
 
 ## Counts By Extension
 
 | Extension | Count |
 |---|---:|
-| `.md` | 43 |
+| `.md` | 45 |
 
 ## Basename Collisions
 
@@ -39,6 +39,7 @@ Deterministic all-file index generated from `_DERIVED/vault_index.json`.
 | `_DIMENSIONS/household-visual-inventory/pantry_picker_consumables_ledger_20260726.md` | `pantry_picker_consumables_ledger_20260726.md` | `.md` | false | Pantry Picker Consumables Ledger |
 | `_DIMENSIONS/local-deals/flipp_kw_fetch_recon_20260727.md` | `flipp_kw_fetch_recon_20260727.md` | `.md` | false | Flipp KW Fetch Reconnaissance |
 | `_DIMENSIONS/local-deals/local_deals_dimension_seed_20260723.md` | `local_deals_dimension_seed_20260723.md` | `.md` | false | Local Deals & Price Research — Dimension Seed |
+| `_DIMENSIONS/local-deals/pantry_needs_flyer_join_20260727.md` | `pantry_needs_flyer_join_20260727.md` | `.md` | false | Pantry Needs to Local Flyer Join |
 | `_DIMENSIONS/no-host-content/NHBM_v0_candidate_spec.md` | `NHBM_v0_candidate_spec.md` | `.md` | false | NHBM_v0 — No-Host Battle Map — Candidate Spec |
 | `_DIMENSIONS/no-host-content/decision_graph_battle_edges_seed.md` | `decision_graph_battle_edges_seed.md` | `.md` | false | Decision Graphs With Battle Edges — Concept Seed |
 | `_DIMENSIONS/no-host-content/entertainment_layer_battle_map_20260703.md` | `entertainment_layer_battle_map_20260703.md` | `.md` | false | Entertainment Layer — Battle Map, Semantic Zoom, Fractal Concept |
@@ -63,6 +64,7 @@ Deterministic all-file index generated from `_DERIVED/vault_index.json`.
 | `nb_lib/strategy_specs/composition_nodes/README.md` | `README.md` | `.md` | true | Composition Nodes |
 | `nb_lib/strategy_specs/composition_nodes/regime_attribution_panel.md` | `regime_attribution_panel.md` | `.md` | false | Retroactively tag closed candidate trades by causal day-state to test whether failed strategies were tested unconditionally in regimes wh... |
 | `ninja-traitorate-methodology-reference.md` | `ninja-traitorate-methodology-reference.md` | `.md` | false | Ninja Traitorate — Methodology Reference |
+| `tools/household_inventory/TOOL_CONTRACTS.md` | `TOOL_CONTRACTS.md` | `.md` | false | Household Inventory Tool Contracts |
 | `tools/household_inventory/pantry_picker/README.md` | `README.md` | `.md` | true | Pantry Picker |
 | `tools/mnq_replay_viewer/BUILD_ROADMAP.md` | `BUILD_ROADMAP.md` | `.md` | false | MNQ Replay Viewer - Build Roadmap |
 | `tools/mnq_replay_viewer/STRATEGY_OVERLAY_ADAPTER_SPEC.md` | `STRATEGY_OVERLAY_ADAPTER_SPEC.md` | `.md` | false | MNQ Replay Viewer - Strategy Overlay Adapter Spec |

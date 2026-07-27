@@ -113,32 +113,43 @@ Legacy conversion requires the connected page opened by
 not have the catalogue or ledger service. The page reports this distinction
 explicitly instead of attempting a partial import.
 
-## Local-flyer integration direction
+## Local-flyer candidate join
 
-Flipp and reebee are external deal-discovery sources, not pantry authorities.
-The safe build order is:
+The page can now derive shopping needs from pantry rows marked **Low**,
+**One portion left**, or **None**, then run an operator-triggered,
+postal-scoped Flipp lookup. **Enough** rows are sealed out of needs derivation.
 
-1. derive a shopping-needs list from items marked Low, Last meal, or Out;
-2. let the operator provide a postal-code area and open/search Flipp for those
-   generic names, brands, or blends;
-3. capture candidate deals separately with store, price, package size, unit
-   price, valid-from/until dates, and the original flyer/deal link;
-4. match those candidates to stable pantry IDs and aliases;
-5. require an explicit operator action before a deal becomes a shopping-list
-   item.
+The deterministic adapter uses `N2M 5E5`, presents Food Basics, Sobeys, and
+Real Canadian Superstore as preferred stores, and retains other local grocery
+flyers when they produce a cheaper confident match. Matching rules and
+exclusions live in `tools/local_deals/local_deals.config.json`; branded
+products use brand-locked matching, while generic ingredients use
+product-family matching.
 
-Flyer results must never change confirmed pantry counts. Direct automated
-ingestion should use an authorized feed or documented integration if one
-becomes available; it should not depend on brittle page scraping or a copied
-signed-in browser session.
+Every run lands outside the vault under `C:\VMShare\local-deals\runs\`:
 
-External reference checked 2026-07-26: Flipp's official Canadian site supports
-postal-code-localized flyers and searches for items, brands, and stores, while
-Flipp's current corporate FAQ describes reebee as part of its Canadian
-shopper-facing distribution:
+- raw postal-scoped Flipp responses;
+- the derived `needs.json`;
+- normalized `offers.jsonl`;
+- pending `candidate_shopping_list.jsonl`;
+- `ambiguity_review.jsonl`;
+- an immutable run manifest with the pantry-ledger hash before and after.
 
-- https://flipp.com/?locale=en-ca
-- https://corp.flipp.com/faq/
+An offer is never ranked without a positive cash price and one unambiguous
+package size. Points promotions, combo ads, missing/multiple sizes, and
+configured identity hazards are parked for review rather than treated as
+confident.
+
+The **Check current flyers** button only creates pending proposals. A deal
+enters the separate append-only shopping-list ledger only after the operator
+presses that candidate's **Accept** button and confirms the prompt. Acceptance
+does not replenish, decrement, or otherwise change a pantry count. There is no
+automatic acceptance path.
+
+Flipp is an external discovery source, not a pantry authority. Its current
+postal JSON surface is provisional rather than an officially documented
+consumer API, so the adapter runs at low operator-triggered frequency, retains
+raw evidence, and refuses loudly on schema drift.
 
 ## Archive
 

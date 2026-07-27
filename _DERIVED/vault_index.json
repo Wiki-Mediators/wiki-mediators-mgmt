@@ -8,7 +8,7 @@
   },
   "config_path": "tools/wiki_deriver/link_reference_checker.config.json",
   "counts_by_extension": {
-    ".md": 43
+    ".md": 45
   },
   "entries": [
     {
@@ -122,6 +122,13 @@
       "descriptor": "Local Deals & Price Research \u2014 Dimension Seed",
       "extension": ".md",
       "path": "_DIMENSIONS/local-deals/local_deals_dimension_seed_20260723.md"
+    },
+    {
+      "basename": "pantry_needs_flyer_join_20260727.md",
+      "basename_collision": false,
+      "descriptor": "Pantry Needs to Local Flyer Join",
+      "extension": ".md",
+      "path": "_DIMENSIONS/local-deals/pantry_needs_flyer_join_20260727.md"
     },
     {
       "basename": "NHBM_v0_candidate_spec.md",
@@ -292,6 +299,13 @@
       "path": "ninja-traitorate-methodology-reference.md"
     },
     {
+      "basename": "TOOL_CONTRACTS.md",
+      "basename_collision": false,
+      "descriptor": "Household Inventory Tool Contracts",
+      "extension": ".md",
+      "path": "tools/household_inventory/TOOL_CONTRACTS.md"
+    },
+    {
       "basename": "README.md",
       "basename_collision": true,
       "descriptor": "Pantry Picker",
@@ -313,7 +327,7 @@
       "path": "tools/mnq_replay_viewer/STRATEGY_OVERLAY_ADAPTER_SPEC.md"
     }
   ],
-  "entry_count": 43,
+  "entry_count": 45,
   "schema_version": 1,
   "tool": "tools/wiki_deriver/build_vault_index.py"
 }
