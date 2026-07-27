@@ -65,6 +65,8 @@ support named `SITE-<NAME>` boundaries.
 - categories start collapsed, while item/state rerenders preserve their
   viewport anchor instead of returning the operator to the top;
 - Data tools carry plain-language, action-specific descriptions;
+- the On site summary has a synchronized four-state stock selector, and JSON
+  exports include both stable `stock_state` and readable `stock_state_label`;
 - a horizontally scrollable 14-day flyer calendar shows retained candidate
   and review validity spans around the current date.
 - one-time legacy-import adapter for the archived prototype's

@@ -62,8 +62,7 @@ terms/permission review before unattended production use.
 
 1. Fetch active flyers for `N2M5E5`.
 2. Retain grocery-category flyers and their raw metadata.
-3. Fetch each active flyer once and append its raw item records to the dated
-   snapshot store.
+3. Search only for current pantry needs; do not sweep every flyer detail.
 4. Deduplicate observations by postal code, flyer-item ID, validity interval,
    and advertised price.
 5. Run local deterministic matching against the watch-list configuration.
@@ -169,7 +168,13 @@ These prices are dated evidence, not timeless facts.
 
 ## Token doctrine
 
-The steady-state weekly run should require no model inference. A cheap agent
-or browser is justified only for the small ambiguity queue or when the
-provisional JSON adapter fails. Raw unmatched items may still be retained
-cheaply and later proposed as Advanced catalogue candidates.
+The steady-state weekly run should require no model inference. It uses one
+cached postal index plus only current-needs searches, with a two-second minimum
+request interval. A cheap agent or browser is justified only for the small
+ambiguity queue or when the provisional JSON adapter fails.
+
+The earlier 29-grocery-detail sweep demonstrated technical feasibility but is
+not the operating design. Bulk detail fetching is now refused. Any later
+crawler experiment needs separate approval, a hard request/byte cap, and no
+more than two small-cover flyers selected deterministically from the cached
+index.

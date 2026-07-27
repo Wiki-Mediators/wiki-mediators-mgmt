@@ -105,3 +105,29 @@ The later history view should extend this same timeline backward across dated
 run manifests and raw snapshots, with horizontal period navigation and a
 current/history switch. History begins at the first retained collection and
 must never backfill prices or flyer periods that were not observed.
+
+## Low-rate flyer discovery direction
+
+A single read-only postal index request for debug postal code `N2H2E9` on
+2026-07-27 returned metadata for all 103 flyer cards visible in Flipp's page
+and was 125,399 bytes. Therefore page-source crawling is unnecessary for flyer
+discovery: fetch and cache the postal index once, then filter its metadata
+locally.
+
+`N2M5E5` remains the HOME production location. `N2H2E9` is only a nearby
+Kitchener debug fixture; postal codes must not be rotated to evade source
+caching or rate limits.
+
+Normal Pantry joins now make one index request plus only the item-search
+requests required by current needs, with a two-second minimum interval. They
+do not sweep every grocery flyer detail. Bulk detail fetching is a loud
+refusal.
+
+Any later crawler probe requires its own approval and should:
+
+1. reuse a fresh cached postal index when available;
+2. select at most two small-cover flyers deterministically from index metadata;
+3. wait at least two seconds between requests;
+4. cap requests and response bytes before the run;
+5. store raw responses and stop loudly on schema drift;
+6. never use postal-code rotation as a traffic-avoidance technique.

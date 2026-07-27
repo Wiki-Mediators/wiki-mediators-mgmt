@@ -113,6 +113,9 @@ setting, not a requirement for ordinary pantry use. Future named sites use stabl
   stock level, and remove;
 - item toggles, removals, and stock-level rerenders preserve the current
   viewport anchor instead of bouncing the operator to the top of the page;
+- the On site summary exposes the same four stock levels as a compact selector;
+  changes synchronize with the category editor and remain draft-only until
+  Save to ledger;
 - the On site list is a compact summary; selecting a summary row opens its
   category and moves to that item's inline editor;
 - urgent items sort first everywhere: **None**, then **One portion left**, then
@@ -123,6 +126,11 @@ setting, not a requirement for ordinary pantry use. Future named sites use stabl
 - Data tools explain their effects in place: Export downloads a JSON backup,
   Import loads current or legacy JSON into the reviewable draft, and Discard
   unsaved edits returns to the last confirmed ledger save.
+
+Pantry JSON exports carry both the durable `stock_state` value
+(`on-hand`, `low`, `last-meal`, or `out`) and a human-readable
+`stock_state_label`. Imports use the durable value and safely ignore the
+display label.
 
 The visible wording is independent from the stable ledger vocabulary:
 `Enough → on-hand`, `Low → low`, `One portion left → last-meal`, and
