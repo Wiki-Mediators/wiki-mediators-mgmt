@@ -44,6 +44,9 @@ support named `SITE-<NAME>` boundaries.
   pasta/noodle shapes, dairy and plant-based milk varieties, and frozen
   vegetable medleys;
 - token-protected trusted-home-LAN launcher for phone access.
+- idempotent one-time desktop-shortcut installer for the connected local
+  launcher; it uses a built-in Windows icon and requires no Administrator
+  privilege.
 - Full catalogue as the default view, with Expand all and Collapse all;
 - compact `Tools & advanced` menu for Basic-only filtering, optional radius,
   import, export, and draft reset.
@@ -105,7 +108,6 @@ As of 2026-07-26:
   then require operator acceptance into a shopping list;
 - use only an authorized/documented external feed for automated flyer
   ingestion; do not let flyer candidates mutate confirmed pantry counts;
-- a desktop shortcut if the operator wants one;
 - operator visual review of the new page.
 
 External-source anchor, checked 2026-07-26: Flipp's official Canadian surface

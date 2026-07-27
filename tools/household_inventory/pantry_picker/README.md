@@ -21,6 +21,25 @@ operator-confirmed events to:
 
 The current pantry is always projected from that append-only file.
 
+## One-time desktop shortcut
+
+Double-click `Install Desktop Shortcut.cmd` once. It creates or refreshes
+`Pantry Picker.lnk` on the current Windows user's Desktop. The shortcut has a
+built-in Windows PowerShell icon and launches the existing connected
+`Open Pantry Picker.cmd` workflow; it does not create a second server or copy
+the Pantry files.
+
+The installer is idempotent and does not require Administrator privileges.
+For scripted installation or removal:
+
+```powershell
+.\tools\household_inventory\pantry_picker\install_desktop_shortcut.ps1
+.\tools\household_inventory\pantry_picker\install_desktop_shortcut.ps1 -Remove
+```
+
+Keep the launcher window open while using Pantry Picker. Closing that window
+stops a server instance started by the shortcut.
+
 ## Phone access on the trusted home network
 
 First double-click `Install Phone Access.cmd` once and accept the Windows
