@@ -53,7 +53,7 @@ The boundary has three loud stop conditions:
 ## First live snapshot
 
 As of 2026-07-27, run
-`LD-20260727T205718Z-21ee855c` derived one need: Maple syrup in `low` state.
+`LD-20260727T210437Z-aae5e2cd` derived one need: Maple syrup in `low` state.
 It produced one pending candidate:
 
 - Your Independent Grocer;
@@ -63,20 +63,28 @@ It produced one pending candidate:
 - unit price $0.032/mL.
 
 The source is
-`C:\VMShare\local-deals\runs\2026-07-27\LD-20260727T205718Z-21ee855c\run_manifest.json`.
+`C:\VMShare\local-deals\runs\2026-07-27\LD-20260727T210437Z-aae5e2cd\run_manifest.json`.
 The pantry ledger SHA-256 before and after was
 `e66bd49b292f51928ebf8f32af5dd5ea04ed18f00a4057e3bb62356bc6f1cad9`.
 Nothing was accepted.
 
+Three alternatives were parked for review even though a confident candidate
+existed: Sobeys Panache at $9.99 with package size missing, a No Frills
+points-only offer, and a Sobeys Scene+ points-only offer. The cheaper-looking
+Sobeys cash price was not ranked because its missing size makes unit-price
+comparison unsafe.
+
 ## Verification
 
-- 20 focused contract, pantry-ledger, and flyer-join tests passed.
+- 64 household tests passed, including focused contract, pantry-ledger, and
+  flyer-join coverage.
 - The four-way state seal proved `on-hand` excluded and `low`,
   `last-meal`, and `out` included in urgency order.
 - Missing sizes, combo ads, points promotions, and sweet-potato exclusions
   were parked or excluded.
-- The served page returned HTTP 200, contained the Local Flyers panel, and the
-  state endpoint loaded the live run with one candidate and zero review rows.
+- The served page returned HTTP 200 and contained the Local Flyers panel. The
+  state endpoint loaded the initial live run successfully; the final live
+  rerun retained one candidate and three review rows.
 - The live command emitted a six-line summary and preserved the pantry hash.
 
 ## Operating doctrine
