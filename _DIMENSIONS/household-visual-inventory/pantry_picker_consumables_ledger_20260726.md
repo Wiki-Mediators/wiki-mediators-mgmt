@@ -8,11 +8,17 @@ source_artifact: tools/household_inventory/pantry_picker/
 related:
   - household_inventory_build_order_20260716.md
   - household_inventory_north_star_20260716.md
+  - pantry_picker_current_state_and_recipe_overlay_20260728.md
   - ../../tools/household_inventory/pantry_picker/README.md
   - ../local-deals/flipp_kw_fetch_recon_20260727.md
 ---
 
 # Pantry Picker Consumables Ledger
+
+> Current-state continuation: the flyer-viewer completion and first
+> pantry-to-recipe cookbook overlay are recorded in
+> `pantry_picker_current_state_and_recipe_overlay_20260728.md`. This note
+> remains the build record for the original consumables-ledger branch.
 
 ## Decision
 

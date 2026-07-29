@@ -54,7 +54,12 @@ related:
     This does not close item-thousands expansion, expiry/opened fields, or
     consumption-event maturation.
 11. Cooking overlay: pantry x recipes join; grocery-suggestion learning
-    loop begins.
+    loop begins. First deterministic surface built 2026-07-28 from the
+    operator-supplied CC0 Kaggle 64K archive: 62,126 raw rows collapse to
+    25,021 exact-content-unique recipes, projected read-only against the
+    confirmed pantry. Quantity sufficiency and shopping proposals remain
+    subsequent gated work; see
+    `pantry_picker_current_state_and_recipe_overlay_20260728.md`.
 
 ## Booked, not sequenced
 Tool-chest placement; expiry sweeps (falls out of 8+10); loan tracking

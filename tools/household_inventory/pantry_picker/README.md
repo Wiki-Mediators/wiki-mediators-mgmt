@@ -1,6 +1,6 @@
 # Pantry Picker
 
-Status: local one-page consumables ledger interface.
+Status: local consumables ledger with read-only flyer and recipe overlays.
 
 The Pantry Picker is part of the household ledger family, but it has its own
 append-only event vocabulary. Pantry counts are not photo observations.
@@ -14,16 +14,158 @@ Double-click `Open Pantry Picker.cmd`, or run:
 ```
 
 The launcher checks the API contract before reusing a server already listening
-on port 8770. It refuses an outdated Pantry process with a visible instruction
-instead of opening a newer page against an incompatible bridge.
+on port 8770. If an older local-only Pantry Picker owns the port, the launcher
+reconfirms the Pantry health identity, resolves the exact TCP-listener PID,
+requires a Python process, stops that verified stale server, and starts the
+current bridge. It refuses automatic shutdown when the listener is unrelated,
+cannot be uniquely identified, changes during verification, or is an active
+phone/LAN-sharing server.
 
-The bridge binds only to `127.0.0.1`. The page keeps unfinished edits in
-browser storage as a draft. Only an explicit **Save to ledger** appends
-operator-confirmed events to:
+The bridge binds only to `127.0.0.1`. Each item, quantity, stock-state, watch,
+custom-item, and radius edit immediately refreshes a recoverable browser draft.
+On restart, that draft is restored only when its base ledger event count still
+matches the confirmed ledger. Draft persistence is not ledger persistence:
+there is deliberately no timer that posts changes after 10 seconds or any
+other delay. Only an explicit **Save to ledger** appends operator-confirmed
+events to:
 
 `<artifact_root>\ledger\pantry_events.jsonl`
 
 The current pantry is always projected from that append-only file.
+
+A future inactivity reminder may highlight the Save button or show an unsaved
+countdown, but it must not call the ledger endpoint. This preserves forgotten
+work without converting accidental clicks into confirmed append-only history.
+
+## Pantry Cookbook
+
+The top-bar **Cookbook** link opens `/cookbook.html` through the same local
+Pantry service. It joins the confirmed `HOME` pantry projection against a
+local recipe index and offers:
+
+- food-aware search across recipe titles and indexed food layers. After two
+  characters, a local autocomplete offers
+  spelling-tolerant food terms (for example, `Califlower` suggests
+  `Cauliflower`) and representative recipe titles; no web request or model
+  call is made. Choosing a recipe-category suggestion activates the visible
+  category chip instead of treating the category name as ordinary title text;
+- a searchable category-layers panel: combine categories, remove them as
+  chips, return to all categories, or use **Only** for a quick single-category
+  view;
+- **No listed gaps** through **Missing at most 5** coverage filters;
+- progressive 60-recipe pages with an explicit **Load more** control instead
+  of a hidden 100-result ceiling;
+- an **All recipe sources** filter and a visible source label on every card;
+- green available, amber Low/One portion left, red missing, and grey
+  not-yet-mapped ingredient lines;
+- ingredients and step-by-step directions inside each recipe card;
+- deterministic ranking with no model call during ordinary browsing.
+
+The first supported source is Kaggle's **Recipes Dataset: 64k Dishes**. Its
+listing identifies the dataset as CC0 and documents the CSV/JSON fields for
+title, category, subcategory, ingredients, directions, and counts. The local
+copy is retained outside the vault under:
+
+`C:\VMShare\household-inventory\recipes\`
+
+The supplied archive is named `kaggle_recipes_64k_dishes_cc0.zip`; its two
+files are extracted under `kaggle_recipes_64k_dishes_cc0\`. The deterministic
+SQLite index is `recipe_index.sqlite`.
+
+The source CSV contains 62,126 rows. Import collapses exact
+title+ingredients+directions duplicates while preserving every distinct
+category assignment, producing 25,021 unique recipes across 267 categories in
+the 2026-07-28 index.
+
+The second source is Kaggle's **Food.com - Recipes and Reviews**, with only
+`recipes.parquet` retained; reviews and duplicate CSV forms were deliberately
+not downloaded. Its local files are:
+
+- `foodcom_recipes_522517_cc0_parquet.zip` — 178,227,338 bytes, SHA256
+  `4EDBAFDAAA82BB086FC011EC62EDF6C767EF7C1BACA98C2C3639C0AA609C7BC4`;
+- `foodcom_recipes_522517_cc0\recipes.parquet` — 178,723,234 bytes.
+
+The combined index contains 545,317 recipes: 25,021 from 64K Dishes and
+520,296 usable Food.com rows. Sources remain separate and selectable. Food.com
+quantity/name arrays differ in 405,336 imported records; for those rows the
+importer retains ingredient names, omits unsafe quantity pairing, and marks the
+card **Source list needs review**. No cross-source recipe is silently repaired
+or overwritten.
+
+The retained Food.com Parquet file also contains `AggregatedRating` and
+`ReviewCount`; the Cookbook imports and displays both without requiring the
+separate review-text archive. Ranking uses a ten-review, 4.5-star prior so a
+single five-star vote does not outrank a strongly reviewed recipe.
+
+Near-identical Food.com rows are grouped conservatively by normalized source,
+title, and ingredient-name set. The config-owned equivalence map currently
+treats sea, fine-sea, kosher, and table salt as the `salt` family for this
+grouping only. Pantry matching and the original ingredient wording are not
+rewritten. The strongest review-supported version is shown, and up to eight
+alternatives remain available under **similar versions grouped here**.
+
+All 314 Food.com `Keywords` values are indexed through
+`recipe_facet_config.json` into nine filter layers: Cuisine, Dietary,
+Difficulty & cost, Household & non-food, Ingredient or dish, Meal or course,
+Method, Occasion, and Time. Different layers combine with AND; multiple values
+inside one layer combine with OR. The original keyword wording is retained.
+The 64K source has no equivalent keyword field, so the importer does not invent
+these facets for it.
+
+The 64K source remains selectable pending a measured overlap audit. A future
+downgrade should compare its unique recipes, genuine subcategories, ingredient
+quality, and instructions against Food.com rather than removing it merely
+because Food.com has richer ratings and facets.
+
+Rebuild the combined index with:
+
+```powershell
+C:\VMShare\household-inventory\venv\Scripts\python.exe `
+  .\tools\household_inventory\pantry_picker\recipe_cookbook.py `
+  --profile .\tools\household_inventory\local_profile.json import --summary
+```
+
+The cookbook is read-only. It cannot mutate pantry counts, accept flyer deals,
+or add recipe ingredients to the shopping list. Quantity sufficiency is not
+yet calculated, and unrecognized ingredient wording remains visibly
+unrecognized rather than being guessed. Exact duplicate removal and
+catalogue-owned phrase matching happen once during import so browsing remains
+a low-cost local operation.
+
+The Cookbook defaults to 60 recipes per page. The **Recipes per page** control
+offers 20, 40, 60, 100, 150, and 250; the browser remembers that display
+preference while the recipe and pantry data remain server-owned.
+
+Food.com rows omit measurement units and frequently have quantity/name arrays
+of different lengths. A Food.com card therefore offers **Retrieve full
+ingredients**. This is an explicit, on-demand server action:
+
+1. the local Pantry server requests that recipe's public Food.com page;
+2. it reads the page's Schema.org `recipeIngredient` lines;
+3. it requires the title to match and every local ingredient name to appear in
+   the recovered sequence, in order;
+4. only a verified result is written under
+   `C:\VMShare\household-inventory\recipes\foodcom_recovered\<record-id>.json`.
+
+The card updates in place and no Food.com tab opens. Later views use the local
+cache and work offline. Failed retrieval or verification leaves the original
+ingredient list and warning intact. The cache stores the extracted raw
+ingredient lines, source URL, retrieval time, verification counts, and source
+page hash; it does not rewrite `recipe_index.sqlite`, append pantry events, or
+alter a shopping list.
+
+Food.com cards also provide **View original source beside Cookbook**. It opens
+the public source page in a closable split-screen inspector while the Cookbook
+remains visible. That browser view does not send pantry or ledger data to
+Food.com. **Open in new tab** is an explicit fallback if the source site cannot
+render inside the inspector.
+
+The companion Kaggle notebook **Crafting Readable Dish Instructions** was
+reviewed as a display reference. Its useful presentation idea—numbered cooking
+steps—is used by the Cookbook, but its string-replacement parsing is not:
+Pantry Cookbook decodes the source ingredient and direction arrays as JSON so
+adjacent directions cannot be silently joined. Raw wording remains in the
+index; readability is a display concern, not a recipe rewrite.
 
 Catalogue and ledger loading are independent from the optional flyer endpoint.
 If an older bridge lacks flyer support, the confirmed pantry remains available
@@ -80,7 +222,12 @@ The catalogue distinguishes:
 Brand is a separate field, so a branded ketchup does not replace generic
 ketchup. The current seed contains 421 entries: 317 ingredients, 64
 blends/mixes, and 40 branded products. Users can add another brand or blend
-from the page without changing the source catalogue.
+from the page without changing the source catalogue. A custom addition appears
+immediately as both a selected editor and a reusable **custom** tile inside its
+chosen category. Saved custom items are restored as tiles on later launches;
+unsaved custom-tile identity remains with the recoverable browser draft. Add,
+import, save, and refusal messages also appear briefly as an on-screen
+confirmation instead of being visible only below the long On-site list.
 
 The 2026-07-26 food-family expansion adds distinct everyday and advanced rows
 for lettuces, salad/cooking greens and green medleys; pasta shapes and Asian
@@ -108,6 +255,9 @@ setting, not a requirement for ordinary pantry use. Future named sites use stabl
   ledger save.
 - stock levels are visible one-tap controls on every selected item:
   **Enough**, **Low**, **One portion left**, and **None**;
+- the eye control is a separate draftable **Watch flyer prices** setting shown
+  on catalogue tiles, inline editors, and On site summary rows; changing it in
+  any view updates every other view immediately;
 - the On site panel summarizes the current count in all four stock levels.
 - category panels contain the full editor for each selected item: amount, unit,
   stock level, and remove;
@@ -168,6 +318,15 @@ exclusions live in `tools/local_deals/local_deals.config.json`; branded
 products use brand-locked matching, while generic ingredients use
 product-family matching.
 
+The config supplies the initial **Staples** watch category: maple syrup, milk,
+potatoes, spaghetti, and peanut butter. The operator can turn the eye on for
+any other catalogue item or turn an initial default off. Watch changes are
+append-only `watch-set` events, independent from counts, and are confirmed only
+by **Save to ledger**. If a watched staple is already Low, One portion left, or
+None, the join merges the watch label into that one need instead of searching
+it twice. Watching creates price proposals only; it does not change pantry
+stock state or automatically add anything to the shopping list.
+
 Every run lands outside the vault under `C:\VMShare\local-deals\runs\`:
 
 - raw postal-scoped Flipp responses;
@@ -177,21 +336,82 @@ Every run lands outside the vault under `C:\VMShare\local-deals\runs\`:
 - `ambiguity_review.jsonl`;
 - an immutable run manifest with the pantry-ledger hash before and after.
 
-The page projects current retained offers onto a horizontal 14-day calendar:
-the prior six local dates, today, and the next seven dates. Candidate and
-review bars show flyer validity spans; the calendar does not manufacture dates
-or reconstruct history that was never collected.
+The optional **Flyer calendar** disclosure projects current retained offers
+onto a horizontal 14-day calendar: the prior six local dates, today, and the
+next seven dates. It is collapsed by default because a large offer set is more
+useful when grouped by pantry item. Candidate and review bars show flyer
+validity spans; the calendar does not manufacture dates or reconstruct history
+that was never collected.
+
+Each item card carries its useful timing directly. The selected candidate shows
+its store, price, and **Ends Mon D** label. Other retained store listings for
+that item are grouped underneath for review. If a retained listing begins
+after the current local day, the same deterministic formatter shows
+**Starts Mon D · ends Mon D**, so preview ads can be represented without a
+separate calendar mode. Full ISO timestamps remain in the snapshot artifacts;
+the page only formats them for display.
+
+The sticky header carries a compact flyer-status indicator. It is stationary
+while Pantry Picker is reading a saved snapshot and shows when that snapshot
+was checked plus the next retained offer expiry. It animates only during an
+operator-requested live check or cache-only preview; it does not imply a
+background crawler. Snapshots older than 24 hours, or snapshots whose retained
+offers have all expired, are marked as potentially outdated.
+
+The compact flyer view shows up to three alternate stores beneath a confident
+item, up to four offers for a review-only item, and eight rows if the optional
+calendar is opened. **Show all offers** expands every candidate and parked
+offer already present in that saved snapshot; it performs no network request.
+**Compact view** restores the smaller presentation.
 
 An offer is never ranked without a positive cash price and one unambiguous
 package size. Points promotions, combo ads, missing/multiple sizes, and
 configured identity hazards are parked for review rather than treated as
-confident.
+confident. When Flipp supplies a clipping image, the parked review row shows
+that retained source image so the operator can inspect package wording.
+Clicking either its thumbnail, **View larger clipping**, or an image-backed
+alternate-store line opens an in-page flyer viewer. When retained context is
+available, the viewer first loads the original store-flyer overview, projects
+the selected clipping at its retained coordinate box, zooms toward that
+selection, and then resolves into the clean clipping. **Overview** and
+**Focused clipping** let the operator move between both states manually.
+When the same pantry item has more than one retained clipping, the viewer
+adds previous/next arrows and a bottom row of selectable dots. The darkest
+dot marks the current clipping, the counter shows its position, and the left
+and right arrow keys provide the same navigation. Moving within that
+item-level carousel opens the next clipping directly rather than replaying
+the overview animation. When retained flyer-page context is available, the
+original full flyer page for the clipping that opened the viewer is appended
+as the final carousel image, so two offer clippings appear as three selectable
+images rather than losing the source page after the animation.
+This on-demand effect loads only the clicked flyer overview; it is not a bulk
+flyer-detail fetch, a permanent local clone, or evidence that unsearched flyer
+items were collected.
+
+Review-only offers use responsive flyer tiles rather than narrow text rows.
+The clipping keeps its natural aspect ratio at a larger size, with store,
+price, timing, and the review reason directly beneath it. The layout adapts
+its column count to the available width and retains the same compact versus
+**Show all offers** boundary.
+
+The viewer does not open a new browser tab or initiate a download; it closes
+with its × button, Escape, or a backdrop click. An optional local Qwen2.5-VL
+pass may later propose a size from that clipping, but model output remains
+untrusted review evidence: it cannot promote, rank, or accept an offer without
+explicit operator confirmation.
 
 The **Check current flyers** button only creates pending proposals. A deal
 enters the separate append-only shopping-list ledger only after the operator
 presses that candidate's **Accept** button and confirms the prompt. Acceptance
 does not replenish, decrement, or otherwise change a pantry count. There is no
 automatic acceptance path.
+
+**Preview all as Low** is a cache-only coverage test. It treats every saved
+pantry row as a hypothetical Low need in memory, reuses only retained HOME
+postal-code item searches, reports cache misses explicitly, and makes zero
+network requests. Preview candidates cannot be accepted, the preview is stored
+separately under `C:\VMShare\local-deals\previews\`, and the pantry-ledger hash
+must remain unchanged.
 
 Flipp is an external discovery source, not a pantry authority. Its current
 postal JSON surface is provisional rather than an officially documented

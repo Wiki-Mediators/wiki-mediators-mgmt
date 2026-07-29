@@ -4,14 +4,14 @@ Deterministic all-file index generated from `_DERIVED/vault_index.json`.
 
 ## Summary
 
-- Entries: 45
+- Entries: 46
 - Basename collisions: 1
 
 ## Counts By Extension
 
 | Extension | Count |
 |---|---:|
-| `.md` | 45 |
+| `.md` | 46 |
 
 ## Basename Collisions
 
@@ -37,6 +37,7 @@ Deterministic all-file index generated from `_DERIVED/vault_index.json`.
 | `_DIMENSIONS/household-visual-inventory/household_inventory_north_star_20260716.md` | `household_inventory_north_star_20260716.md` | `.md` | false | Household Visual Inventory — North Star: Catalogue + Overlays |
 | `_DIMENSIONS/household-visual-inventory/household_visual_inventory_desktop_mvp_plan_20260715.md` | `household_visual_inventory_desktop_mvp_plan_20260715.md` | `.md` | false | Household Visual Inventory Desktop MVP Plan — Orchestrator Review |
 | `_DIMENSIONS/household-visual-inventory/pantry_picker_consumables_ledger_20260726.md` | `pantry_picker_consumables_ledger_20260726.md` | `.md` | false | Pantry Picker Consumables Ledger |
+| `_DIMENSIONS/household-visual-inventory/pantry_picker_current_state_and_recipe_overlay_20260728.md` | `pantry_picker_current_state_and_recipe_overlay_20260728.md` | `.md` | false | Pantry Picker Current State and Recipe Overlay |
 | `_DIMENSIONS/local-deals/flipp_kw_fetch_recon_20260727.md` | `flipp_kw_fetch_recon_20260727.md` | `.md` | false | Flipp KW Fetch Reconnaissance |
 | `_DIMENSIONS/local-deals/local_deals_dimension_seed_20260723.md` | `local_deals_dimension_seed_20260723.md` | `.md` | false | Local Deals & Price Research — Dimension Seed |
 | `_DIMENSIONS/local-deals/pantry_needs_flyer_join_20260727.md` | `pantry_needs_flyer_join_20260727.md` | `.md` | false | Pantry Needs to Local Flyer Join |

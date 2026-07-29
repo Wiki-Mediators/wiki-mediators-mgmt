@@ -131,3 +131,45 @@ Any later crawler probe requires its own approval and should:
 4. cap requests and response bytes before the run;
 5. store raw responses and stop loudly on schema drift;
 6. never use postal-code rotation as a traffic-avoidance technique.
+
+## Ambiguous package-size review
+
+Retained Flipp search rows may include `clipping_image_url` or
+`clean_image_url` even when indexed text omits the package size. The adapter
+now carries that URL into normalized offers, and Pantry Picker backfills it
+from older retained raw searches when necessary. Parked offers display the
+flyer clipping beside the deterministic refusal reason.
+
+The operator remains the authority. A future optional Qwen2.5-VL pass may
+propose visible package wording through the existing loopback-only LM Studio
+route, but its output must stay in the ambiguity queue and cannot create a
+ranked candidate or shopping-list event without explicit confirmation.
+
+## All-Low cache preview
+
+Pantry Picker includes a deliberately non-persistent coverage test that treats
+every currently saved item as Low in memory. It uses retained HOME
+postal-code searches only, performs zero network requests, writes under the
+separate `C:\VMShare\local-deals\previews\` branch, and reports cache hits and
+misses. Its candidate rows are `preview-only` and use a filename that the
+shopping acceptance command refuses. The pantry hash is sealed before and
+after the preview.
+
+## Staples always-watch category
+
+Normal flyer joins include an operator-adjustable **Staples** watch
+independently of inventory state. The config supplies initial defaults for
+maple syrup, milk, potatoes, spaghetti, and peanut butter. Eye toggles in the
+catalogue, inline editor, and On site summary all edit the same recoverable
+draft. **Save to ledger** appends a separate `watch-set` event; it does not
+recount the product. An explicit false override disables a config default.
+
+A watched product that is already an urgent pantry need is merged by stable
+ingredient identity, retains its real urgency, and is searched only once.
+Otherwise it enters the lookup as `stock_state: watch` with
+`watch_category: Staples`. Watches remain active even when the item is not
+currently counted as physically on site.
+
+This category changes search coverage, not inventory truth. Its offers remain
+pending proposals under the same matching, ambiguity, and explicit-acceptance
+boundaries as ordinary Low/One portion left/None needs.

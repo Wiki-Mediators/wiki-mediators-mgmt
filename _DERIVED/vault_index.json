@@ -8,7 +8,7 @@
   },
   "config_path": "tools/wiki_deriver/link_reference_checker.config.json",
   "counts_by_extension": {
-    ".md": 45
+    ".md": 46
   },
   "entries": [
     {
@@ -108,6 +108,13 @@
       "descriptor": "Pantry Picker Consumables Ledger",
       "extension": ".md",
       "path": "_DIMENSIONS/household-visual-inventory/pantry_picker_consumables_ledger_20260726.md"
+    },
+    {
+      "basename": "pantry_picker_current_state_and_recipe_overlay_20260728.md",
+      "basename_collision": false,
+      "descriptor": "Pantry Picker Current State and Recipe Overlay",
+      "extension": ".md",
+      "path": "_DIMENSIONS/household-visual-inventory/pantry_picker_current_state_and_recipe_overlay_20260728.md"
     },
     {
       "basename": "flipp_kw_fetch_recon_20260727.md",
@@ -327,7 +334,7 @@
       "path": "tools/mnq_replay_viewer/STRATEGY_OVERLAY_ADAPTER_SPEC.md"
     }
   ],
-  "entry_count": 45,
+  "entry_count": 46,
   "schema_version": 1,
   "tool": "tools/wiki_deriver/build_vault_index.py"
 }
