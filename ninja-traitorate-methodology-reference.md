@@ -502,6 +502,40 @@ Process-management overhead (asking "are you ready", "should we stop")
 adds friction to the work. **Rule:** if a real correctness issue shows up,
 flag it once, clearly. Otherwise execute.
 
+### Trade-day Jaccard is degenerate for session-frequent strategies
+BLC's dedup check saturated at 1.0 day-level Jaccard against a sleeve
+strategy, because both fire on nearly every session — the metric was
+measuring shared calendars, not shared trades. **Rule:** for
+session-frequent candidates, use trade-level temporal adjacency (same
+session, same direction, entry within ±N minutes, N declared in advance)
+instead of day-level Jaccard. This is scoped to session-frequent
+candidates only — day-level Jaccard remains valid for selective setups
+that fire on a subset of days, and the prior-day/overnight break-retest
+rejection built on it stands. (Cross-reference:
+`_FRAMEWORK/blc_findings_20260802.md` Part 1.1.)
+
+### Price improvement can be an adverse signal
+BLC's second-entry review found entries filling at a better price than
+the first were structural failures far more often than worse-priced
+entries — the better fill was the signature of a continuation running to
+a fresh extreme, not a valid pullback holding. **Rule:** entry-price
+improvement is a proxy, not the price itself, and it cannot discriminate a
+genuine second leg from continuation — both produce the same "better
+fill" observation. Measure the structure directly. (Cross-reference:
+`_FRAMEWORK/blc_findings_20260802.md` Part 1.3.)
+
+### Ratio-based affordability filters are blind to fixed costs
+BLC v0.3's signal_range_over_atr <= 2.0 axis passed a detection with a 3.75-point
+stop because ATR was locally low - costs are fixed in points, so a ratio filter
+cannot see them. Measured across 6,978 detections: 67.3% of 30s detections give up
+more than 5% of stop distance to the 0.60-pt round-trip cost, 23.3% more than 10%,
+against 26.1% and 1.5% on 2m. **Rule:** when a candidate's risk is defined by bar
+size, screen absolute stop distance in points alongside any ATR-normalised
+affordability ratio. Shorter timeframes are structurally penalised because stop
+distance scales with timeframe and fixed costs do not.
+Cross-reference: nb_lib/probe_results/blc_v0_variant_ledger.csv
+DIAG-v0.3-ABSOLUTE-STOP-COST.
+
 ---
 
 ## 11. NinjaScript / NT8 implementation rules

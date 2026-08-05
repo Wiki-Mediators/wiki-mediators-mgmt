@@ -53,6 +53,10 @@ local recipe index and offers:
   chips, return to all categories, or use **Only** for a quick single-category
   view;
 - **No listed gaps** through **Missing at most 5** coverage filters;
+- a fast **10 meal ideas** lane on first open: it samples only configured
+  meal categories, excludes desserts, preserves, drinks, sauces, quick salads,
+  and other non-meal classes, then shows zero-missing recipes before using
+  one-missing recipes as backfill;
 - progressive 60-recipe pages with an explicit **Load more** control instead
   of a hidden 100-result ceiling;
 - an **All recipe sources** filter and a visible source label on every card;
@@ -132,9 +136,15 @@ unrecognized rather than being guessed. Exact duplicate removal and
 catalogue-owned phrase matching happen once during import so browsing remains
 a low-cost local operation.
 
-The Cookbook defaults to 60 recipes per page. The **Recipes per page** control
-offers 20, 40, 60, 100, 150, and 250; the browser remembers that display
-preference while the recipe and pantry data remain server-owned.
+The Cookbook first shows ten quick meal ideas. **Find recipes** switches to the
+full filtered catalogue. The **Recipes per page** control offers 20, 40, 60,
+100, 150, and 250 for full searches; the browser remembers that display
+preference while the recipe and pantry data remain server-owned. Quick-meal
+category inclusion, exclusions, minimum recipe substance, and candidate-pool
+size are owned by `recipe_facet_config.json`. The Pantry server prepares the
+quick-meal candidate pool on a background thread at startup; Cookbook still
+reads the current pantry projection when opened, so warming does not stale or
+rewrite inventory.
 
 Food.com rows omit measurement units and frequently have quantity/name arrays
 of different lengths. A Food.com card therefore offers **Retrieve full
@@ -152,13 +162,37 @@ cache and work offline. Failed retrieval or verification leaves the original
 ingredient list and warning intact. The cache stores the extracted raw
 ingredient lines, source URL, retrieval time, verification counts, and source
 page hash; it does not rewrite `recipe_index.sqlite`, append pantry events, or
-alter a shopping list.
+alter a shopping list. Newly seen ingredient wording is rematched against the
+existing Pantry catalogue but does not automatically create inventory. A
+future catalogue-enrichment queue should present those unmatched lines for
+operator acceptance before adding selectable ingredient definitions.
 
 Food.com cards also provide **View original source beside Cookbook**. It opens
 the public source page in a closable split-screen inspector while the Cookbook
 remains visible. That browser view does not send pantry or ledger data to
 Food.com. **Open in new tab** is an explicit fallback if the source site cannot
 render inside the inspector.
+
+### Favourites integration direction
+
+Favourites should be uniform across Cookbook, Pantry Picker, and flyer views,
+but they must remain distinct from inventory and accepted shopping needs:
+
+1. store favourite/unfavourite events on the local server using the stable
+   recipe source plus source record ID, not browser-only `localStorage`;
+2. show the same star state on recipe cards, source inspection, and future
+   meal-planning views;
+3. favouriting records interest only and never changes pantry counts or adds a
+   shopping item;
+4. an explicit **Plan this meal** action may derive missing ingredients from a
+   favourite recipe and send them to the existing flyer join as proposals;
+5. flyer proposals still require operator acceptance, and future receipt or
+   shopping-list image recognition remains a separate visual-confirmation
+   workflow before any pantry event is appended.
+
+Recovered full ingredient lines and quantities may improve a planned meal's
+proposal, but unknown ingredients remain flagged until the catalogue-enrichment
+queue is operator-reviewed.
 
 The companion Kaggle notebook **Crafting Readable Dish Instructions** was
 reviewed as a display reference. Its useful presentation idea—numbered cooking

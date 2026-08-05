@@ -77,3 +77,67 @@ This note itself is an example: the sandbox/logger rule above was first
 learned by one agent and is banked here so all agents get it. Anything
 that survives the "is this how I work, or how the project works?" test
 belongs in the vault, not in private memory.
+
+## PowerShell Native-Command Gotchas (Windows PowerShell 5.1)
+
+Found empirically 2026-08-03 during `Convert-OneAviToMkv.ps1` hardening
+(`tools/media_converter/`). Both apply anywhere in the vault that shells out
+to a native exe from PowerShell, not just that script.
+
+- **`ProcessStartInfo.ArgumentList` returns `$null` on this machine**,
+  despite running .NET Framework 4.8 (which should support it, added in
+  4.6.1+). Confirmed directly:
+  `(New-Object System.Diagnostics.ProcessStartInfo).ArgumentList -eq $null`
+  returns `True`. Calling `.Add(...)` on it throws "You cannot call a
+  method on a null-valued expression." **Build a manually-quoted
+  `Arguments` string instead.** Only whitespace and embedded double-quotes
+  need quoting for Win32 argv parsing (`CommandLineToArgvW`) — `&`, `,`,
+  and `+` are not special and pass through a quoted argument unescaped.
+- **With `$ErrorActionPreference = "Stop"`, native-command stderr
+  redirection (`2>`) is unreliable.** Either PowerShell promotes each
+  stderr line into a terminating `NativeCommandError` before the redirect
+  captures it (killing the whole script instantly), or — if
+  `$ErrorActionPreference` is scoped down to `SilentlyContinue` around the
+  call to avoid that crash — the stderr content is silently discarded
+  rather than merely suppressed from display. Neither behavior lets you
+  actually read what the native command wrote to stderr.
+  **Use `System.Diagnostics.Process` directly** (`RedirectStandardOutput`,
+  `RedirectStandardError`, `UseShellExecute = $false`) when you need real
+  stdout/stderr/exit-code from a native exe — it bypasses PowerShell's
+  native-command stream/error-record handling entirely.
+
+## Silent Truncation from Subset-Rebuilt Indexes
+
+Found empirically 2026-08-04/05 in `conversation_archive`'s
+`tools/rescue_sweep.py`. Applies to any index or manifest file that gets
+*regenerated from scratch* by a tool that only knows about some of what
+produced the index's current content — not specific to that repo, that
+language, or that file format.
+
+**An index rebuilt from a subset of its own inputs silently deletes
+everything outside that subset, and keeps doing it on every subsequent
+run, not just the first.** `rescue_sweep.py` wrote `manifest.json` by
+overwriting it wholesale with only what its own `collect_sources()` +
+`extract_claude_ai_exports()` knew how to fetch (claude_code, codex,
+claude_ai). On 2026-07-03 a separate, never-persisted script correctly
+filed a ChatGPT export and wrote 105 manifest entries including it
+(commit `27bc471`). The next routine `rescue_sweep.py` run — 26 days
+later, 2026-07-29, fired by an unrelated daily scheduled task — reset the
+manifest to 38 entries, silently dropping every ChatGPT row. The files
+themselves were never touched; only the manifest's *knowledge* of them
+was destroyed, and it kept being destroyed on every run after that too.
+Confirmed by diffing manifest entry counts commit-by-commit in `git log`
+— the gap was invisible in normal use for 26 days because nothing read
+the manifest to check completeness in that window.
+
+**Stale is detectable; silently truncated is not.** A stale index still
+contains everything it once knew, just missing what's newer — a human or
+a diff can notice the gap. A silently-truncated index actively asserts a
+smaller, wrong world as current truth, indistinguishable from "that's
+everything" unless someone independently already knows what should be
+there. **Rule: an index that gets rebuilt (not incrementally updated)
+must be built by walking what actually exists, not by asking each known
+producer what it made.** Fixed in that same repo by splitting FETCH
+(source-aware, pulls bytes in — unchanged) from INVENTORY (a disk walk,
+made the *only* writer of the manifest) — `tools/rescue_sweep.py` in
+`conversation_archive`.
