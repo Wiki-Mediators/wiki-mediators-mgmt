@@ -4,14 +4,14 @@ Deterministic all-file index generated from `_DERIVED/vault_index.json`.
 
 ## Summary
 
-- Entries: 46
+- Entries: 45
 - Basename collisions: 1
 
 ## Counts By Extension
 
 | Extension | Count |
 |---|---:|
-| `.md` | 46 |
+| `.md` | 45 |
 
 ## Basename Collisions
 
@@ -61,7 +61,6 @@ Deterministic all-file index generated from `_DERIVED/vault_index.json`.
 | `_worker_reports/TASK_agents_search_routing_edit_20260708.md` | `TASK_agents_search_routing_edit_20260708.md` | `.md` | false | TASK — AGENTS.md Search-Routing Edit |
 | `_worker_reports/TASK_regime_attribution_panel_20260706.md` | `TASK_regime_attribution_panel_20260706.md` | `.md` | false | TASK — Implement and Run the Regime Attribution Panel |
 | `_worker_reports/TASK_rung1_vault_search_findings_20260708.md` | `TASK_rung1_vault_search_findings_20260708.md` | `.md` | false | Rung 1 Vault Search Findings |
-| `nb_lib/probe_results/regime_attribution_panel_report.md` | `regime_attribution_panel_report.md` | `.md` | false | Regime Attribution Panel Report |
 | `nb_lib/strategy_specs/composition_nodes/README.md` | `README.md` | `.md` | true | Composition Nodes |
 | `nb_lib/strategy_specs/composition_nodes/regime_attribution_panel.md` | `regime_attribution_panel.md` | `.md` | false | Retroactively tag closed candidate trades by causal day-state to test whether failed strategies were tested unconditionally in regimes wh... |
 | `ninja-traitorate-methodology-reference.md` | `ninja-traitorate-methodology-reference.md` | `.md` | false | Ninja Traitorate — Methodology Reference |

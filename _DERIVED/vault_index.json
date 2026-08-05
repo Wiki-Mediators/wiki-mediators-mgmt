@@ -8,7 +8,7 @@
   },
   "config_path": "tools/wiki_deriver/link_reference_checker.config.json",
   "counts_by_extension": {
-    ".md": 46
+    ".md": 45
   },
   "entries": [
     {
@@ -278,13 +278,6 @@
       "path": "_worker_reports/TASK_rung1_vault_search_findings_20260708.md"
     },
     {
-      "basename": "regime_attribution_panel_report.md",
-      "basename_collision": false,
-      "descriptor": "Regime Attribution Panel Report",
-      "extension": ".md",
-      "path": "nb_lib/probe_results/regime_attribution_panel_report.md"
-    },
-    {
       "basename": "README.md",
       "basename_collision": true,
       "descriptor": "Composition Nodes",
@@ -334,7 +327,7 @@
       "path": "tools/mnq_replay_viewer/STRATEGY_OVERLAY_ADAPTER_SPEC.md"
     }
   ],
-  "entry_count": 46,
+  "entry_count": 45,
   "schema_version": 1,
   "tool": "tools/wiki_deriver/build_vault_index.py"
 }
